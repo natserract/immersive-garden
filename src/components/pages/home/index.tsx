@@ -1,18 +1,21 @@
 
 import React from "react";
-import Header from '../../reusable/header/Header'
+import './index.css'
+import Header from "../../reusable/header/Header";
 
-import { ContextProvider, ContextInterface } from '../../context/'
 
-const store: ContextInterface = {
-    mainScroll: false
-}
-
-const Index = () => {
+const Index: React.SFC = () => {
     return (
-        <ContextProvider value={store}>
-            <Header/>   
-        </ContextProvider>
+        <section className="c-home" >
+            <Header/>
+            <section className="c-banner">
+                <div className="c-banner-container">
+                    <div className="c-brand">
+                        <img src={require('../../../assets/img/logotype.png')} alt="Immersive Garden - Logotype" />
+                    </div>
+                </div>
+            </section> 
+        </section>
     )
 }
 

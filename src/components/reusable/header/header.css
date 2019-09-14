@@ -2,5 +2,22 @@
 .c-header {
     background: #000;
     height: 20px;
-    width: 100%
+    width: 100%;
+    position: fixed;
+    top: 70px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.c-menu {
+    width: 89%;
+    margin: 0 auto;
+    text-align: right;
+}
+.c-menu > a {
+    color: #555;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1.8;
+    letter-spacing: .34em;
+    text-transform: uppercase;
 }

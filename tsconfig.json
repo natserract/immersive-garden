@@ -1,6 +1,10 @@
 {
   "compilerOptions": {
     "target": "es5",
+    "typeRoots": [
+      "../node_modules/@types/react",
+      "../@types/react"
+    ],
     "lib": [
       "dom",
       "dom.iterable",
@@ -17,7 +21,8 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react"
+    "jsx": "react",
+    "noImplicitAny": false
   },
   "include": [
     "src", "react-app-env.d.ts", "serviceWorker.ts"

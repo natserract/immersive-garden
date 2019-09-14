@@ -1,12 +1,15 @@
 
 import React from 'react'
+import { Link } from 'react-router-dom'
 import './header.css'
 
-const Header: React.FC = () => {
+
+const Header: React.SFC = () => {
     return (
         <header className="c-header">
-            <span>This is header</span>
-            <a href="#">About us</a>
+            <div className="c-menu">
+                <Link to="/about">About Us</Link>
+            </div>
         </header>
     )
 }

@@ -1,0 +1,34 @@
+.c-banner {
+    color: #fff;
+    background: #000;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    cursor: url('../../../assets//img/arrow-cursor.png'), auto;
+}
+
+.c-banner h1 {
+    font-family: Freight, sans-serif;
+}
+
+.c-banner-container {
+    width: 80%;
+    margin: 0 auto;
+    position: relative;
+}
+
+.c-brand {
+    position: absolute;
+    top: 50;
+    left: 0;
+    min-width: 100%;
+    max-width: 498px;
+    transform: translateY(-50%);
+    margin: -10px 0 0px 20px;
+}
+
+.c-brand img {
+    opacity: .55;
+    width: 100%;
+    max-width: 34%;
+}
