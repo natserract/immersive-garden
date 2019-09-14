@@ -1,3 +1,3 @@
 ### Immersive-G
 
-Demonstrating the common patterns when using React, Context API, and TypeScript.
+Frontend development using react, context api, and typescript.
