@@ -1,1 +1,3 @@
-### Frontend dev with react tecnology
+### Immersive-G
+
+Demonstrating the common patterns when using React, Context API, and TypeScript.
