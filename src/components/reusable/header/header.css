@@ -1,12 +1,12 @@
 
 .c-header {
-    background: #000;
     height: 20px;
     width: 100%;
     position: fixed;
     top: 70px;
     left: 50%;
     transform: translateX(-50%);
+    z-index: 999;
 }
 .c-menu {
     width: 89%;
@@ -20,4 +20,5 @@
     line-height: 1.8;
     letter-spacing: .34em;
     text-transform: uppercase;
+    mix-blend-mode: color;
 }

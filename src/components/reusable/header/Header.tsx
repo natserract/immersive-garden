@@ -3,12 +3,17 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import './header.css'
 
+interface Props  {
+    to: string,
+    menuName: string
+    src?: string,
+}
 
-const Header: React.SFC = () => {
+const Header = ({ to, menuName }: Props) => {
     return (
         <header className="c-header">
             <div className="c-menu">
-                <Link to="/about">About Us</Link>
+                <Link to={`/${to}`}>{menuName}</Link>
             </div>
         </header>
     )
