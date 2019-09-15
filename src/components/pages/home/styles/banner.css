@@ -1,0 +1,26 @@
+
+.c-banner h1 {
+    font-family: Freight, sans-serif;
+}
+
+.c-banner-container {
+    width: 80%;
+    margin: 0 auto;
+    position: relative;
+    z-index: 5
+}
+
+.c-brand {
+    position: absolute;
+    left: -5px;
+    min-width: 100%;
+    max-width: 498px;
+    transform: translateY(-50%);
+    margin: 0px 0 0px 20px;
+}
+
+.c-brand img {
+    opacity: .55;
+    width: 100%;
+    max-width: 35%;
+}

@@ -1,0 +1,42 @@
+.section-fixed {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    transition: background .5s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.section-fixed>div {
+    will-change: transform, background-color;
+    transition: transform 1s cubic-bezier(.23, 1, .32, 1), background-color 1s cubic-bezier(.23, 1, .32, 1) !important;
+     
+}
+.section-fixed .c-banner,
+.section-fixed .c-home-news {
+    background: #000;
+}
+.section-fixed .section-scrolled {
+    background: #f7f7f7;
+}
+.c-banner, .c-home-news {
+    color: #fff;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    cursor: url('../../../../assets//img/arrow-cursor.png'), auto;
+    transition: all ease-out;
+    position: relative;
+}
+
+.section-scrolled {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    background-color: #f7f7f7;
+    overflow: auto;
+    overflow-x: hidden;
+}
+
+.section-scrolled h3 {
+    font-size: 50em;
+}
+
