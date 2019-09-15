@@ -68,14 +68,16 @@ const Index: React.SFC = () => {
             <Header {...headerProps} />
 
             <div className="section-fixed">
-                <div className="c-banner" onClick={() => accessiblityHandler({ type: 'FIRST' })} style={{ transform: initalTransform }}>
+                <div className="c-banner" style={{ transform: initalTransform }}>
+                    <div className="c_click_area" onClick={() => accessiblityHandler({ type: 'FIRST' })} ></div>
                     <div className="c-banner-container">
                         <div className="c-brand">
                             <img src={require('../../../assets/img/logotype.png')} alt="Immersive Garden - Logotype" />
                         </div>
                     </div>
                 </div>
-                <div className="c-home-news" onClick={() => accessiblityHandler({ type: 'SECOND' })} style={{ transform: newTransform }}>
+                <div className="c-home-news" style={{ transform: newTransform }}>
+                    <div className="c_click_area" onClick={() => accessiblityHandler({ type: 'SECOND' })}></div>
                     <div className="chn__column">
                         <div className="chn__column_left">
                             <div className="c-home__news__subtitle">
@@ -84,7 +86,7 @@ const Index: React.SFC = () => {
                         </div>
                         <div className="chn__column_right">
                             <a href="https://www.facebook.com/immersive.g/photos/a.850906044922470.1073741828.843690335644041/1884925721520492/?type=3&theater" className="chn_title" target="_blank">
-                                <h2><span>Studio Of The Year 2017 by both Awwwards and CSS Design Awards</span></h2>
+                                <h2 className="font_weight_light"><span>Studio Of The Year 2017 by both Awwwards <br /> and CSS Design Awards</span></h2>
                             </a>
                         </div>
                     </div>

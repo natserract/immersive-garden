@@ -8,5 +8,15 @@ body {
 }
 
 a {
+    display: block;
     text-decoration: none;
+    -webkit-font-smoothing: antialiased;
+}
+
+.font_weight_light {
+    font-weight: 300;
+}
+
+h2 {
+    margin: 0 !important;
 }

@@ -1,7 +1,7 @@
 
 .c-header {
     height: 20px;
-    width: 100%;
+    width: 89%;
     position: fixed;
     top: 70px;
     left: 50%;
@@ -9,8 +9,6 @@
     z-index: 999;
 }
 .c-menu {
-    width: 89%;
-    margin: 0 auto;
     text-align: right;
 }
 .c-menu > a {
@@ -20,5 +18,6 @@
     line-height: 1.8;
     letter-spacing: .34em;
     text-transform: uppercase;
-    mix-blend-mode: color;
+    width: 110px;
+    float: right;
 }
