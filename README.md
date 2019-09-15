@@ -1,1 +1,3 @@
-### Frontend dev with react tecnology
+### Immersive-G
+
+Frontend development using react, context api, and typescript.
