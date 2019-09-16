@@ -23,5 +23,5 @@
     transition: color 1s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 .c-menu > a.color-active{
-    
+    color: #0c0c0d;
 }
