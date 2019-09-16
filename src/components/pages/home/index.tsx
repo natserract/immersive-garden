@@ -54,15 +54,17 @@ const Index: React.SFC = () => {
         }
     }
 
-
     // Check when page scrolled
     React.useEffect(() => {
         window.addEventListener('scroll', handleScroll);
     })
 
-
     //Check window
     const windowHeight = () => window.scrollBy(0, window.innerHeight);
+
+    //convert to lowercase string
+    const { caseTitle } = contentProps
+    const url = caseTitle.toLowerCase().replace(/ +/g, "-");
 
     //Act when user scroll
     const handleScroll = ({ type }) => {
@@ -92,8 +94,7 @@ const Index: React.SFC = () => {
                 />
                 <div className="section-scrolled" style={{ transform: mainTransform }} >
                     <div className="p-home__section">
-                        <Content {...contentProps} />
-                        <Content {...contentProps} />
+                        <Content pathTo={url} {...contentProps} />
                     </div>
                 </div>
             </div>
