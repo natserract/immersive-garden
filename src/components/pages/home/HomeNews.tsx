@@ -4,7 +4,7 @@ import './styles/homenews.css'
 import OutsideArea from './OutsideArea'
 
 type Props = {
-    onClick(): void,
+    onClick(),
     transformStyle: any,
 }
 

@@ -9,19 +9,20 @@ import Content from './Content'
 
 
 //Initial props
-const headerProps = {
-    menuName: 'About Us',
-    to: 'about'
+const staticProps = {
+    headerProps: {
+        menuName: 'About Us',
+        to: 'about'
+    },
+    contentProps: {
+        caseTitle: 'The new Mobile Workforce',
+        caseDescription: 'Race Day requires optimal performance. Take a look at how the Citrix team uses data to analyze, model, & design the car.',
+        poster: 'https://immersive-g.com/admin_a09ce8cf/storage/uploads/2018/02/23/5a905583ad08aCitrix-Thumb.jpg',
+        title: 'Immersive Garden - The new Mobile Workforce',
+        source: 'https://immersive-g.com/admin_a09ce8cf/storage/uploads/2018/02/23/5a905587b47d9Citrix-Thumb.mp4'
+    }
 }
 
-//Static props
-const contentProps = {
-    caseTitle: 'The new Mobile Workforce',
-    caseDescription: 'Race Day requires optimal performance. Take a look at how the Citrix team uses data to analyze, model, & design the car.',
-    poster: 'https://immersive-g.com/admin_a09ce8cf/storage/uploads/2018/02/23/5a905583ad08aCitrix-Thumb.jpg',
-    title: 'Immersive Garden - The new Mobile Workforce',
-    source: 'https://immersive-g.com/admin_a09ce8cf/storage/uploads/2018/02/23/5a905587b47d9Citrix-Thumb.mp4'
-}
 
 const Index: React.SFC = () => {
     const [move, setMove] = React.useState({
@@ -63,7 +64,7 @@ const Index: React.SFC = () => {
     const windowHeight = () => window.scrollBy(0, window.innerHeight);
 
     //convert to lowercase string
-    const { caseTitle } = contentProps
+    const { caseTitle } = staticProps.contentProps
     const url = caseTitle.toLowerCase().replace(/ +/g, "-");
 
     //Act when user scroll
@@ -81,7 +82,7 @@ const Index: React.SFC = () => {
 
     return (
         <section className="c-home">
-            <Header {...headerProps} />
+            <Header {...staticProps.headerProps} />
 
             <div className="home-landing-section">
                 <Banner onClick={() =>
@@ -94,7 +95,7 @@ const Index: React.SFC = () => {
                 />
                 <div className="section-scrolled" style={{ transform: mainTransform }} >
                     <div className="p-home__section">
-                        <Content pathTo={url} {...contentProps} />
+                        <Content pathTo={url} {...staticProps.contentProps} />
                     </div>
                 </div>
             </div>

@@ -1,18 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { ContextInterface, ContextProvider } from './context/index'
-import {
-    BrowserRouter as Router,
-    Route
-} from 'react-router-dom'
+import Routes from './config/Routes'
 import * as serviceWorker from './serviceWorker';
 import './index.css';
-
-/* Pages */
-import Home from './components/pages/home/'
-import About from './components/pages/about/About'
-import Cases from './components/pages/cases/'
-import NotFound from './components/pages/404'
 
 const store: ContextInterface = {
     mainScroll: false
@@ -20,12 +11,7 @@ const store: ContextInterface = {
 
 ReactDOM.render(
     <ContextProvider value={store}>
-        <Router>
-            <Route exact path="/" component={Home} />
-            <Route exact path="/about" component={About} />
-            <Route exact path="/cases/:caseId" component={Cases} />
-            <Route component={NotFound}/>
-        </Router>,
+        <Routes/>
     </ContextProvider>,
     document.getElementById('root'));
 

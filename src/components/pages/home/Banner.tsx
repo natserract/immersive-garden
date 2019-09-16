@@ -5,7 +5,7 @@ import OutsideArea from './OutsideArea'
 import imgSource from '../../../config/ImageSource'
 
 type Props = {
-    onClick(): void,
+    onClick(),
     transformStyle: any,
 }
 
