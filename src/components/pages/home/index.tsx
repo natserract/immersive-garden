@@ -23,7 +23,6 @@ const staticProps = {
     }
 }
 
-
 const Index: React.SFC = () => {
     const [move, setMove] = React.useState({
         color: 'red',
@@ -54,43 +53,31 @@ const Index: React.SFC = () => {
         }
     }
 
-    // Check when page scrolled
-    React.useEffect(() => {
-        window.addEventListener('scroll', handleScroll);
-    })
-
-    //Check window
-    const windowHeight = () => window.scrollBy(0, window.innerHeight);
 
     //convert title
     const { caseTitle } = staticProps.contentProps
     const url = caseTitle.toLowerCase().replace(/ +/g, "-");
 
-    //Act when user scroll
-    const handleScroll = ({ type }) => {
-        if (type === 'FIRST' && windowHeight) {
-            accessiblityHandler({ type: 'FIRST' })
-        } else if (type === 'SECOND' && windowHeight) {
-            accessiblityHandler({ type: 'SECOND' })
-        }
-    }
 
+    //state conditions
     let newTransformStyle = 
         move.transform ? (move.transform = '-100%') : (move.newTransform ?
-        (move.newTransform = 'translateY(-100%)') : (move.mainTransform = 'translateY(-200%)'))
-        
+        (move.newTransform = 'translateY(-100%)') : (move.mainTransform = 'translateY(-200%)'));
+
+    let pushClassEl = move.mainTransform ? 'home-bg-active' : 'home-bg-normal',
+        changeColorEl = move.mainTransform ? 'color-active' : 'color-default'
 
     return (
         <section className="c-home">
-            <Header {...staticProps.headerProps} />
+            <Header {...staticProps.headerProps} passingClass={changeColorEl} />
 
-            <div className="home-landing-section">
+            <div className={`home-landing-section ${pushClassEl}`}>
                 <Banner onClick={() =>
                     accessiblityHandler({ type: 'FIRST' })}
                     transformStyle={{ transform: newTransformStyle }}
                 />
-                <HomeNews onClick={() =>
-                    accessiblityHandler({ type: 'SECOND' })}
+                <HomeNews onClick={() => 
+                    accessiblityHandler({ type: 'SECOND' })} 
                     transformStyle={{ transform: newTransformStyle }}
                 />
                 <div className="section-scrolled" style={{ transform: newTransformStyle }} >
