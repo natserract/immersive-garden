@@ -7,6 +7,9 @@
     height: 100vh;
     background-color: #f7f7f7;
 }
+.p404_column{
+    text-align: center;
+}
 .p404_column > span {
     text-transform: uppercase;
     color: #a4a4a4;

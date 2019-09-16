@@ -44,8 +44,7 @@ const Index: React.SFC = () => {
             }
             case 'SECOND': {
                 setMove({
-                    newTransform: 'translateY(-200%)',
-                    mainTransform: !move.mainTransform,
+                    mainTransform: !move.mainTransform
                 })
                 break
             }
@@ -63,7 +62,7 @@ const Index: React.SFC = () => {
     //Check window
     const windowHeight = () => window.scrollBy(0, window.innerHeight);
 
-    //convert to lowercase string
+    //convert title
     const { caseTitle } = staticProps.contentProps
     const url = caseTitle.toLowerCase().replace(/ +/g, "-");
 
@@ -76,9 +75,10 @@ const Index: React.SFC = () => {
         }
     }
 
-    const initalTransform = move.transform ? 'translateY(0px)' : 'translateY(-100%)',
-        newTransform = move.newTransform ? 'translateY(-100%)' : 'translateY(0px)',
-        mainTransform = move.mainTransform ? 'translateY(-200%)' : 'translateY(0px)';
+    let newTransformStyle = 
+        move.transform ? (move.transform = '-100%') : (move.newTransform ?
+        (move.newTransform = 'translateY(-100%)') : (move.mainTransform = 'translateY(-200%)'))
+        
 
     return (
         <section className="c-home">
@@ -87,13 +87,13 @@ const Index: React.SFC = () => {
             <div className="home-landing-section">
                 <Banner onClick={() =>
                     accessiblityHandler({ type: 'FIRST' })}
-                    transformStyle={{ transform: initalTransform }}
+                    transformStyle={{ transform: newTransformStyle }}
                 />
                 <HomeNews onClick={() =>
                     accessiblityHandler({ type: 'SECOND' })}
-                    transformStyle={{ transform: newTransform }}
+                    transformStyle={{ transform: newTransformStyle }}
                 />
-                <div className="section-scrolled" style={{ transform: mainTransform }} >
+                <div className="section-scrolled" style={{ transform: newTransformStyle }} >
                     <div className="p-home__section">
                         <Content pathTo={url} {...staticProps.contentProps} />
                     </div>
