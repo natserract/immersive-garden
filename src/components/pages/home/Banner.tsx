@@ -2,7 +2,7 @@ import React from "react";
 import './styles/banner.css'
 
 import OutsideArea from './OutsideArea'
-import imgSource from '../../../config/ImageSource'
+import imgSource from '../../../config/MediaSource'
 
 type Props = {
     onClick(),

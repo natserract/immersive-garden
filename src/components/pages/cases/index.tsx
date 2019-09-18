@@ -1,14 +1,40 @@
 
-import React from 'react'
+import React, { useContext } from 'react'
+import './styles/index.css'
+import { Redirect } from 'react-router'
+import Context from '../../../context/index'
 
-const Index = ({ match, location }) => {
-    return (
-        <>
-            <p>Hello</p>
-            <p>{JSON.stringify(match)}</p>
-            <p>{JSON.stringify(location)}</p>
-        </>
+
+const Index = ({ match }) => {
+    const DATA = useContext(Context);
+    const GETURL = match.url.replace('/cases/', '')
+
+    const URLFILTER = DATA.contentProps.some(URL =>
+        URL.caseTitle.toLowerCase().replace(/ +/g, "-") === GETURL
     )
+
+    if (!URLFILTER) {
+        return <Redirect to='/' />
+    }
+    else {
+        return (
+            <section className="p-case">
+                <div className="pc_container">
+                    <div className="pc__label">
+                        <span>Experience</span>
+                    </div>
+                    <div className="pc_container__wrapper">
+                        <div className="pc_wrap_column">
+                            <h1>{JSON.stringify(match.params.caseId)}</h1>
+                        </div>
+                        <div className="pc_wrap_column">
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+        )
+    }
 }
 
 export default Index
