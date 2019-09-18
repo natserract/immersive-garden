@@ -65,6 +65,7 @@ const Links = styled(Link)`
 `
 const CaseMedia = styled.div`
     width: 61.538%;
+    max-height: 416px;
     position: relative;
     overflow: hidden;
 `

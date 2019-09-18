@@ -13,7 +13,7 @@ import Content from './Content'
 const PROPS = {
     headerProps: {
         menuName: 'About Us',
-        to: 'about'
+        to: 'about-us'
     },
 }
 
