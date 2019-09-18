@@ -1,10 +1,17 @@
 import React from 'react'
-import './styles/outsidearea.css'
+import styled from 'styled-components'
 
 type Props = {
     onClick(): void,
 }
 
-const OutsideArea = ({ onClick }:Props) => <div className="c_click_area" onClick={onClick}></div>;
+const OutsideArea = ({ onClick }: Props) => <Area onClick={onClick}></Area>
+
+const Area = styled.div`
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    z-index: 1;
+`
 
 export default OutsideArea

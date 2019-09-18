@@ -1,12 +1,11 @@
 
-import React, { useContext } from 'react'
-import './styles/index.css'
+import React from 'react'
 import { Redirect } from 'react-router'
 import Context from '../../../context/index'
 
 
 const Index = ({ match }) => {
-    const DATA = useContext(Context);
+    const DATA = React.useContext(Context);
     const GETURL = match.url.replace('/cases/', '')
 
     const URLFILTER = DATA.contentProps.some(URL =>

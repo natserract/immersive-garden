@@ -2,9 +2,10 @@
 let IMGPATHSOURCE = `assets/img/`,
     VIDEOPATHSOURCE = `assets/video/`
 
-const ImageSource = ({
+const ImageSource:any = ({
     global: {
         logo: require(`../${IMGPATHSOURCE}logotype.png`),
+        cursor: require(`../${IMGPATHSOURCE}arrow-cursor.png`),
     },
     video: {
         case1:  require(`../${VIDEOPATHSOURCE}citrix.mp4`),

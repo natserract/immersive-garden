@@ -1,6 +1,6 @@
 
 import React from "react";
-import './styles/index.css'
+import styled from 'styled-components'
 import Context from '../../../context'
 
 import Header from "../../reusable/header/Header";
@@ -9,9 +9,8 @@ import HomeNews from './HomeNews'
 import Content from './Content'
 
 
-
 //Initial props
-const staticProps = {
+const PROPS = {
     headerProps: {
         menuName: 'About Us',
         to: 'about'
@@ -28,9 +27,9 @@ const Index: React.SFC = () => {
         newTransform: false,
         mainTransform: false
     });
-    
-    //accessiblityHandler
-    const accessiblityHandler = (action) => {
+
+    //handlerChange
+    const handlerChange = (action) => {
         switch (action.type) {
             case 'FIRST': {
                 setMove({
@@ -57,35 +56,74 @@ const Index: React.SFC = () => {
         move.transform ? (move.transform = '-100%') : (move.newTransform ?
             (move.newTransform = 'translateY(-100%)') : (move.mainTransform = 'translateY(-200%)'));
 
-    let pushClassEl = move.mainTransform ? 'home-bg-active' : 'home-bg-normal',
-        changeColorEl = move.mainTransform ? 'color-active' : 'color-default'
+    let pushClassEl = move.mainTransform ? 'home-bg-active' : null,
+        changeColorEl = move.mainTransform ? 'active' : null
+
+
+    const CaseContent = () => STATE.contentProps.map((item, id) => {
+        let url = item.caseTitle.toLowerCase().replace(/ +/g, "-");
+        return <Content key={id} pathTo={url} {...item} />
+    })
+
+
 
     return (
-        <section className="c-home">
-            <Header {...staticProps.headerProps} passingClass={changeColorEl} />
+        <HomeMain>
+            {/* {<!-- Header --> */}
+            <Header {...PROPS.headerProps} getClass={changeColorEl} />
 
-            <div className={`home-landing-section ${pushClassEl}`}>
-                <Banner onClick={() =>
-                    accessiblityHandler({ type: 'FIRST' })}
-                    transformStyle={{ transform: newTransformStyle }}
-                />
-                <HomeNews onClick={() =>
-                    accessiblityHandler({ type: 'SECOND' })}
-                    transformStyle={{ transform: newTransformStyle }}
-                />
-                <div className="section-scrolled" style={{ transform: newTransformStyle }} >
-                    <div className="p-home__section">
-                        {
-                            STATE.contentProps.map((item, id) => {
-                                let url = item.caseTitle.toLowerCase().replace(/ +/g, "-");
-                                return <Content key={id} pathTo={url} {...item} />
-                            })
-                        }
-                    </div>
-                </div>
-            </div>
-        </section>
+            {/* {<!-- Container --> */}
+            <HomeContainer className={pushClassEl}>
+                <Banner onClick={() => handlerChange({ type: 'FIRST' })} style={{ transform: newTransformStyle }} />
+                <HomeNews onClick={() => handlerChange({ type: 'SECOND' })} style={{ transform: newTransformStyle }} />
+                
+                {/* {<!-- Scrolled content --> */}
+                <SectionScroller style={{ transform: newTransformStyle }}>
+                    <ContentSection>
+                        <CaseContent/>
+                    </ContentSection>
+                </SectionScroller>
+            </HomeContainer>
+        </HomeMain>
     )
 }
+
+
+/* Style */
+const HomeMain = styled.div`
+    position: relative
+`
+const HomeContainer = styled.div`
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    transition: background 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+    background: #000;
+
+    &.home-bg-active{
+        background: #f7f7f7;
+    }
+`
+const SectionScroller = styled.div`
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    overflow: auto;
+    overflow-x: hidden;
+    will-change: transform, background-color;
+    transition: transform 1s cubic-bezier(.23, 1, .32, 1) !important;
+`
+
+const ContentSection = styled.div`
+    max-width: 1866.66667px;
+    min-height: 100vh;
+    padding-top: 130px;
+    padding-bottom: 130px;
+    overflow-x: hidden;
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: 5.556%;
+    padding-left: 5.556%;
+`
 
 export default Index
