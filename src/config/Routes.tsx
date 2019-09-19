@@ -8,15 +8,17 @@ import About from '../components/pages/about/About'
 import Cases from '../components/pages/cases/'
 import NotFound from '../components/pages/404'
 
-const Routes = () => (
-    <Router>
-        <Switch>
-            <Route exact path="/" component={Home} />
-            <Route exact path="/about-us" component={About} />
-            <Route exact path="/cases/:caseId" component={Cases} />
-            <Route exact component={NotFound} />
-        </Switch>
-    </Router>
-)
+const Routes = () => {
+    return (
+        <Router>
+            <Switch>
+                <Route exact path="/" component={Home} />
+                <Route exact path="/about-us" component={About} />
+                <Route exact path="/cases/:caseId" component={Cases} />
+                <Route exact component={NotFound} />
+            </Switch>
+        </Router>
+    )
+}
 
 export default Routes

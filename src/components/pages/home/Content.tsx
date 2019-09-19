@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
+import FlexDisplay from '../../reusable/FlexDisplay'
 
 type Props = {
     caseTitle: string,
@@ -14,31 +15,29 @@ type Props = {
 
 const Content = ({ caseTitle, caseDescription, poster, title, source, pathTo }: Props) => (
     <CaseContainer>
-        <CaseColumnLeft>
-            <Span>Experience</Span>
-        </CaseColumnLeft>
-        <CaseColumnCenter>
-            <Links to={`/cases/${pathTo}`}>
-                <CaseMedia>
-                    <video preload="auto" autoPlay={true} loop={true} poster={poster} title={title}>
-                        <source src={source} type="video/mp4"></source>
-                    </video>
-                </CaseMedia>
-                <CaseContent>
-                    <Heading>{caseTitle}</Heading>
-                    <Description>{caseDescription}</Description>
-                </CaseContent>
-            </Links>
-        </CaseColumnCenter>
+        <FlexDisplay align="center">
+            <CaseColumnLeft>
+                <Text>Experience</Text>
+            </CaseColumnLeft>
+            <CaseColumnCenter>
+                <Links to={`/cases/${pathTo}`}>
+                    <CaseMedia>
+                        <video preload="auto" autoPlay={true} loop={true} poster={poster} title={title}>
+                            <source src={source} type="video/mp4"></source>
+                        </video>
+                    </CaseMedia>
+                    <CaseContent>
+                        <Heading>{caseTitle}</Heading>
+                        <Description>{caseDescription}</Description>
+                    </CaseContent>
+                </Links>
+            </CaseColumnCenter>
+        </FlexDisplay>
     </CaseContainer>
 )
 
 /* Styles */
 const CaseContainer = styled.div`
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-
     &:not(:first-child){
         margin-top: 280px;
     }
@@ -47,7 +46,7 @@ const CaseContainer = styled.div`
 const CaseColumnLeft = styled.div`
     width: 12.5%;
 `
-const Span = styled.span`
+const Text = styled.span`
     color: #a4a4a4;
     text-transform: uppercase;
     font-weight: 700;

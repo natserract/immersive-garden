@@ -6,9 +6,9 @@ import Context from '../../../context/index'
 
 const Index = ({ match }) => {
     const DATA = React.useContext(Context);
-    const GETURL = match.url.replace('/cases/', '')
-
-    const URLFILTER = DATA.contentProps.some(URL =>
+    
+    let GETURL = match.url.replace('/cases/', '')
+    let URLFILTER = DATA.contentProps.some(URL =>
         URL.caseTitle.toLowerCase().replace(/ +/g, "-") === GETURL
     )
 

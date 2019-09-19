@@ -7,6 +7,7 @@ const ImageSource:any = ({
         logo: require(`../${IMGPATHSOURCE}logotype.png`),
         logoSmall: require(`../${IMGPATHSOURCE}logotype--gray.png`),
         cursor: require(`../${IMGPATHSOURCE}arrow-cursor.png`),
+        cursorMenu: require(`../${IMGPATHSOURCE}close-cursor.png`), 
     },
     video: {
         case1:  require(`../${VIDEOPATHSOURCE}citrix.mp4`),

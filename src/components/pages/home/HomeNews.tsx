@@ -5,7 +5,7 @@ import source from '../../../config/MediaSource'
 import OutsideWrapper from './OutsideArea'
 
 type Props = {
-    onClick(),
+    onClick(): void,
     style: any,
 }
 

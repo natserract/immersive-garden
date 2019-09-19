@@ -1,15 +1,19 @@
 
 import React from 'react'
 import styled from 'styled-components'
-import Header from '../../reusable/header/Header'
+import Header from '../../reusable/Header'
+import { withRouter } from 'react-router-dom'
+import { createBrowserHistory } from 'history'
 
-const headerProps = {
-    to: '/',
-    menuName: 'close',
-    display: true
-}
 
-const About = () => {
+const About = ({ history }) => {
+    const headerProps = {
+        brandDisplay: true,
+        searchDisplay: false,
+        closeText: 'close',
+        onCloseTextClick: () => history.push('/')
+    }
+
     return (
         <Container>
             <Header {...headerProps} />
@@ -23,4 +27,4 @@ const Container = styled.section`
     min-height: 100vh;
     padding: 1px;
 `
-export default About
+export default withRouter(About)

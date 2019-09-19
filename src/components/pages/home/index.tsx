@@ -3,31 +3,23 @@ import React from "react";
 import styled from 'styled-components'
 import Context from '../../../context'
 
-import Header from "../../reusable/header/Header";
+import Header from "../../reusable/Header";
 import Banner from './Banner'
 import HomeNews from './HomeNews'
 import Content from './Content'
+import Menu from '../../reusable/Menu'
 
 
-//Initial props
-const PROPS = {
-    headerProps: {
-        menuName: 'About Us',
-        to: '/about-us',
-        display: false
-    },
-}
-
-
-const Index: React.SFC = () => {
+const Index = () => {
     const STATE = React.useContext(Context);
-
     const [move, setMove] = React.useState({
         color: 'red',
         transform: true,
         newTransform: false,
-        mainTransform: false
+        mainTransform: false,
+        visible: false,
     });
+
 
     //handlerChange
     const handlerChange = (action) => {
@@ -45,6 +37,18 @@ const Index: React.SFC = () => {
                 })
                 break
             }
+            case 'VISIBLE': {
+                setMove({
+                    visible: !move.visible
+                })
+                break
+            }
+            case `REMOVE`:{
+                setMove({
+                    visible: !move.visible
+                })
+                break
+            }
             default: {
                 return false
             }
@@ -58,7 +62,9 @@ const Index: React.SFC = () => {
             (move.newTransform = 'translateY(-100%)') : (move.mainTransform = 'translateY(-200%)'));
 
     let pushClassEl = move.mainTransform ? 'home-bg-active' : null,
-        changeColorEl = move.mainTransform ? 'active' : null
+        changeColorEl = move.mainTransform ? 'active' : null,
+        searchVisibility = move.mainTransform ? true : false,
+        menuVisibility = move.visible ? 'visible' : 'hidden';
 
 
     const CaseContent = () => STATE.contentProps.map((item, id) => {
@@ -67,24 +73,50 @@ const Index: React.SFC = () => {
     })
 
 
+    //Initial props
+    const props = {
+        headerProps: {
+            to: '/about-us',
+            menuName: 'About Us',
+            brandDisplay: false,
+            searchDisplay: searchVisibility,
+            getClass: changeColorEl,
+            showCategory: () => handlerChange({ type: 'VISIBLE' })
+        },
+        bannerProps: {
+            onClick: () => handlerChange({ type: 'FIRST' }),
+            style: { transform: newTransformStyle }
+        },
+        homeNewsProps: {
+            onClick: () => handlerChange({ type: 'SECOND' }),
+            style: { transform: newTransformStyle }
+        },
+        menuProps: {
+            visibilityHandler: menuVisibility,
+            closeThisSecond: () => handlerChange({ type: 'VISIBLE' })
+        }
+    }
+
 
     return (
         <HomeMain>
             {/* {<!-- Header --> */}
-            <Header {...PROPS.headerProps} getClass={changeColorEl} />
+            <Header {...props.headerProps}/>
 
             {/* {<!-- Container --> */}
             <HomeContainer className={pushClassEl}>
-                <Banner onClick={() => handlerChange({ type: 'FIRST' })} style={{ transform: newTransformStyle }} />
-                <HomeNews onClick={() => handlerChange({ type: 'SECOND' })} style={{ transform: newTransformStyle }} />
-                
+                <Banner {...props.bannerProps} />
+                <HomeNews  {...props.homeNewsProps} />
+
                 {/* {<!-- Scrolled content --> */}
                 <SectionScroller style={{ transform: newTransformStyle }}>
                     <ContentSection>
-                        <CaseContent/>
+                        <CaseContent />
                     </ContentSection>
                 </SectionScroller>
             </HomeContainer>
+
+            <Menu {...props.menuProps} />
         </HomeMain>
     )
 }

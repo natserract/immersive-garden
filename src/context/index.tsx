@@ -40,7 +40,7 @@ const store: ContextInterface = {
 //Create provider
 export const ContextProvider = ({ children }: any) => {
     return (
-        <Context.Provider value={store}>
+        <Context.Provider value={{...store}}>
             { children }
         </Context.Provider>
     )
