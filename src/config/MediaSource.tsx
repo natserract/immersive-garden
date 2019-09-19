@@ -5,6 +5,7 @@ let IMGPATHSOURCE = `assets/img/`,
 const ImageSource:any = ({
     global: {
         logo: require(`../${IMGPATHSOURCE}logotype.png`),
+        logoSmall: require(`../${IMGPATHSOURCE}logotype--gray.png`),
         cursor: require(`../${IMGPATHSOURCE}arrow-cursor.png`),
     },
     video: {

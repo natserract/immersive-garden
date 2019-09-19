@@ -2,19 +2,27 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
+import source from '../../../config/MediaSource'
 
 interface Props {
     to: string,
     menuName: string,
-    getClass: any,
+    getClass?: any,
     src?: string,
+    brand?: any,
+    display: boolean
 }
 
-const Header = ({ to, menuName, getClass }: Props) => {
+const Header = ({ to, menuName, getClass, display }: Props) => {
     return (
         <HeaderMain>
+            <Brand itemVisibility={display}>
+                <Link to="/">
+                    <img style={{ width: '100%' }}  alt="Immersive Garden - Logotype" src={source.global.logoSmall}></img>
+                </Link>
+            </Brand>
             <HeaderMenu>
-                <HeaderItem to={`/${to}`} className={getClass}>
+                <HeaderItem to={to} className={getClass}>
                     {menuName}
                 </HeaderItem>
             </HeaderMenu>
@@ -48,6 +56,12 @@ const HeaderItem = styled(Link)`
     &.active {
         color: #0c0c0d;
     }
+`
+const Brand = styled.div`
+    width: 14.286%;
+    position: relative;
+    float: left;
+    display: ${props => props.itemVisibility ? 'block' : 'none'}
 `
 
 export default Header
