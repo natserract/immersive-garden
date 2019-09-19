@@ -43,12 +43,6 @@ const Index = () => {
                 })
                 break
             }
-            case `REMOVE`:{
-                setMove({
-                    visible: !move.visible
-                })
-                break
-            }
             default: {
                 return false
             }
