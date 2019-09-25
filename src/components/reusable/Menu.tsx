@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 import source from '../../config/MediaSource'
-import Header from './Header'
 
 type Props = {
     visibilityHandler: string,

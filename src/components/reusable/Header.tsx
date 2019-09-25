@@ -18,14 +18,23 @@ interface Props {
 }
 
 const Header = ({ to, menuName, getClass, brandDisplay, searchDisplay, showCategory, closeText, onCloseTextClick }: Props) => {
+
+    //Show Menu Or Not
+    const MenuName = () => menuName ? (<Links to={to} className={getClass}>{menuName}</Links>) :
+        (<CloseText onClick={onCloseTextClick}>{closeText}</CloseText>)
+
     return (
         <HeaderMain>
             <FlexDisplay justify='space-between' align='center'>
                 <HeaderColumn>
                     {/* <!--- Brand - About Page ---> */}
                     <Brand brandVisibility={brandDisplay}>
-                        <Link to="/">
-                            <img style={{ width: '100%' }} alt="Immersive Garden - Logotype" title="Immersive Garden - Logotype" src={source.global.logoSmall} />
+                        <Link to="/" style={{ marginTop: '7px' }}>
+                            <img style={{ width: '100%' }}
+                                alt="Immersive Garden - Logotype"
+                                title="Immersive Garden - Logotype"
+                                src={source.global.logoSmall}
+                            />
                         </Link>
                     </Brand>
 
@@ -40,8 +49,7 @@ const Header = ({ to, menuName, getClass, brandDisplay, searchDisplay, showCateg
 
                 <HeaderColumn>
                     <HeaderMenu>
-                        <CloseText onClick={onCloseTextClick}>{closeText}</CloseText>
-                        <Links to={to} className={getClass}>{menuName}</Links>
+                        <MenuName />
                     </HeaderMenu>
                 </HeaderColumn>
             </FlexDisplay>
@@ -49,14 +57,14 @@ const Header = ({ to, menuName, getClass, brandDisplay, searchDisplay, showCateg
     )
 }
 
-const HeaderMain = styled.div`
+const HeaderMain = styled.header`
     height: 20px;
     width: 89%;
     position: fixed;
     top: 70px;
     left: 50%;
     transform: translateX(-50%);
-    z-index: 999;
+    z-index: 99;
 `
 const HeaderMenu = styled.div`
     text-align: right;

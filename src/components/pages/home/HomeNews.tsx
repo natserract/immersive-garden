@@ -9,21 +9,23 @@ type Props = {
     style: any,
 }
 
-const HomeNews = ({ onClick, style }: Props) => (
-    <NewsContainer style={style}>
-        <OutsideWrapper onClick={onClick} />
-        <HomeNewsRow>
-            <RowColumnLeft>
-                <Subtitle> <Span>Latest news</Span></Subtitle>
-            </RowColumnLeft>
-            <RowColumnRight>
-                <Link href="https://www.facebook.com/immersive.g/photos/a.850906044922470.1073741828.843690335644041/1884925721520492/?type=3&theater">
-                    <h2 className="font_weight_light"><span>Studio Of The Year 2017 by both Awwwards <br /> and CSS Design Awards</span></h2>
-                </Link>
-            </RowColumnRight>
-        </HomeNewsRow>
-    </NewsContainer>
-)
+const HomeNews = ({ onClick, style }: Props) => {
+    return (
+        <NewsContainer style={style}>
+            <OutsideWrapper onClick={onClick} />
+            <HomeNewsRow>
+                <RowColumnLeft>
+                    <Subtitle> <Span>Latest news</Span></Subtitle>
+                </RowColumnLeft>
+                <RowColumnRight>
+                    <Link href="https://www.facebook.com/immersive.g/photos/a.850906044922470.1073741828.843690335644041/1884925721520492/?type=3&theater" target="_blank">
+                        <h2 className="font_weight_light"><span>Studio Of The Year 2017 by both Awwwards <br /> and CSS Design Awards</span></h2>
+                    </Link>
+                </RowColumnRight>
+            </HomeNewsRow>
+        </NewsContainer>
+    )
+}
 
 /* Styles */
 const NewsContainer = styled.div`

@@ -9,7 +9,7 @@ type Props = {
     poster: string,
     title: string,
     source: string,
-    linkTo?: string,
+    linkTo?: string, 
     pathTo: any
 }
 

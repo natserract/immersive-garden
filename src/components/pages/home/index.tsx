@@ -103,7 +103,7 @@ const Index = () => {
                 <HomeNews  {...props.homeNewsProps} />
 
                 {/* {<!-- Scrolled content --> */}
-                <SectionScroller style={{ transform: newTransformStyle }}>
+                <SectionScroller style={props.bannerProps.style || props.homeNewsProps.style}>
                     <ContentSection>
                         <CaseContent />
                     </ContentSection>

@@ -6,17 +6,15 @@ import Context from '../../../context/index'
 
 const Index = ({ match }) => {
     const DATA = React.useContext(Context);
-    
+
     let GETURL = match.url.replace('/cases/', '')
     let URLFILTER = DATA.contentProps.some(URL =>
         URL.caseTitle.toLowerCase().replace(/ +/g, "-") === GETURL
     )
 
-    if (!URLFILTER) {
-        return <Redirect to='/' />
-    }
-    else {
-        return (
+    return (
+        // <!--Redirect if parameter values not correctly-->
+        !URLFILTER ? ( <Redirect to='/' /> ) : (
             <section className="p-case">
                 <div className="pc_container">
                     <div className="pc__label">
@@ -31,9 +29,9 @@ const Index = ({ match }) => {
                         </div>
                     </div>
                 </div>
-            </section>
-        )
-    }
+            </section>)
+    )
+
 }
 
 export default Index
