@@ -4,11 +4,7 @@ import styled from 'styled-components'
 import FlexDisplay from '../../reusable/FlexDisplay'
 
 type Props = {
-    caseTitle: string,
-    caseDescription: string,
-    poster: string,
-    title: string,
-    source: string,
+    caseTitle, caseDescription, poster, title, source: string,
     linkTo?: string, 
     pathTo: any
 }

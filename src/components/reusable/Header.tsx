@@ -5,7 +5,7 @@ import styled from 'styled-components'
 import source from '../../config/MediaSource'
 import FlexDisplay from '../reusable/FlexDisplay'
 
-interface Props {
+type Props = {
     to?: string,
     menuName?: string,
     getClass?: any,
@@ -17,11 +17,14 @@ interface Props {
     onCloseTextClick?: () => void
 }
 
+
 const Header = ({ to, menuName, getClass, brandDisplay, searchDisplay, showCategory, closeText, onCloseTextClick }: Props) => {
 
     //Show Menu Or Not
-    const MenuName = () => menuName ? (<Links to={to} className={getClass}>{menuName}</Links>) :
-        (<CloseText onClick={onCloseTextClick}>{closeText}</CloseText>)
+    const MenuName:typeof React.Component = () => menuName ? (
+        <Links to={to} className={getClass}>{menuName}</Links>) : (
+        <CloseText onClick={onCloseTextClick}>{closeText}</CloseText>
+    )
 
     return (
         <HeaderMain>

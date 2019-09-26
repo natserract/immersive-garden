@@ -12,8 +12,9 @@ import Menu from '../../reusable/Menu'
 
 const Index = () => {
     const STATE = React.useContext(Context);
+
     const [move, setMove] = React.useState({
-        color: 'red',
+        color: 10,
         transform: true,
         newTransform: false,
         mainTransform: false,
@@ -61,9 +62,10 @@ const Index = () => {
         menuVisibility = move.visible ? 'visible' : 'hidden';
 
 
-    const CaseContent = () => STATE.contentProps.map((item, id) => {
-        let url = item.caseTitle.toLowerCase().replace(/ +/g, "-");
-        return <Content key={id} pathTo={url} {...item} />
+    const CaseContent:typeof React.Component = () => 
+        STATE.contentProps.map((item, id) => {
+            let url = item.caseTitle.toLowerCase().replace(/ +/g, "-");
+            return <Content key={id} pathTo={url} {...item} />
     })
 
 

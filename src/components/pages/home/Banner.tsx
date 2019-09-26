@@ -5,9 +5,9 @@ import OutsideWrapper from './OutsideArea'
 import source from '../../../config/MediaSource'
 
 type Props = {
-    onClick(),
-    style: any
-}
+    onClick():void,
+    readonly style: any
+} 
 
 const Banner = ({ onClick, style }: Props) => (
     <Main style={style}>
