@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 type Props = {
-    onClick(): void,
+    onClick: () => void,
 }
 
 const OutsideArea = ({ onClick }: Props) => <Area onClick={onClick}></Area>

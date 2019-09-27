@@ -2,11 +2,11 @@ import React from "react";
 import styled from 'styled-components'
 
 import OutsideWrapper from './OutsideArea'
-import source from '../../../config/MediaSource'
+import source from '../../config/MediaSource'
 
 type Props = {
     onClick():void,
-    readonly style: any
+    style: any
 } 
 
 const Banner = ({ onClick, style }: Props) => (

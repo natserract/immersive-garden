@@ -1,7 +1,7 @@
 
 import * as React from 'react'
 import styled from 'styled-components'
-import Header from '../../reusable/Header'
+import Header from '../reusable/Header'
 import List from './List'
 
 
@@ -17,12 +17,12 @@ const About = ({ history }) => {
     ];
 
 
-    //Loop list 
+    //List Component
     const ListItemGrid:React.Component = ({ title }) => {
         return (
             <ul>
                 <span style={{ color: '#fff' }}>{title}</span>
-                    { items.map((item, index) => <List key={index} listItem={item}></List> ) } 
+                { items.map((item, index) => <List key={index} listItem={item}></List> ) } 
             </ul>
         )
     }

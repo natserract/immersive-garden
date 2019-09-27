@@ -1,7 +1,7 @@
 
 import React from 'react'
 import { Redirect } from 'react-router'
-import Context from '../../../context/index'
+import Context from '../../context/index'
 
 
 const Index = ({ match }) => {

@@ -1,6 +1,6 @@
 import React from "react";
 import styled from 'styled-components'
-import source from '../../../config/MediaSource'
+import source from '../../config/MediaSource'
 
 import OutsideWrapper from './OutsideArea'
 

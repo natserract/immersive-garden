@@ -1,13 +1,13 @@
 
 import React from "react";
 import styled from 'styled-components'
-import Context from '../../../context'
+import Context from '../../context'
 
-import Header from "../../reusable/Header";
+import Header from "../reusable/Header";
 import Banner from './Banner'
 import HomeNews from './HomeNews'
 import Content from './Content'
-import Menu from '../../reusable/Menu'
+import Menu from '../reusable/Menu'
 
 
 const Index = () => {

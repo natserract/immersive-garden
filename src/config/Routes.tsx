@@ -3,10 +3,10 @@ import React from 'react'
 import { BrowserRouter as Router, Route, Switch  } from 'react-router-dom'
 
 /* Pages */
-import Home from '../components/pages/home'
-import About from '../components/pages/about/About'
-import Cases from '../components/pages/cases/'
-import NotFound from '../components/pages/404'
+import Home from '../components/home'
+import About from '../components/about/About'
+import Cases from '../components/cases/'
+import NotFound from '../components/404'
 
 const Routes = () => {
     return (
