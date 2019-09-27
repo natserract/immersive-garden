@@ -68,7 +68,6 @@ const Index = () => {
             return <Content key={id} pathTo={url} {...item} />
     })
 
-
     //Initial props
     const props = {
         headerProps: {
@@ -89,7 +88,7 @@ const Index = () => {
         },
         menuProps: {
             visibilityHandler: menuVisibility,
-            closeThisSecond: () => handlerChange({ type: 'VISIBLE' })
+            closeThisMenu: () => handlerChange({ type: 'VISIBLE' })
         }
     }
 

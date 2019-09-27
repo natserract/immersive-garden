@@ -4,10 +4,10 @@ import source from '../../config/MediaSource'
 
 type Props = {
     visibilityHandler: string,
-    closeThisSecond:any
+    closeThisMenu: () => void
 }
 
-const Menu = ({ visibilityHandler, closeThisSecond }: Props) => {
+const Menu = ({ visibilityHandler, closeThisMenu }: Props) => {
     const [state] = React.useState({
         name: [
             'Featured Projects',
@@ -18,15 +18,16 @@ const Menu = ({ visibilityHandler, closeThisSecond }: Props) => {
         ]
     });
 
-    const MenuName = () => state.name.map((item, id) => 
-        <MenuText key={id}>
-            {item}
-        </MenuText>
+
+    const MenuName: typeof React.Component = () => (
+        state.name.map((item, id) =>{
+            return <MenuText key={id}> { item } </MenuText>
+        })
     )
 
     return (
-        <MenuMain onClick={closeThisSecond} visibleStyled={visibilityHandler}>
-            <MenuHeader onClick={closeThisSecond}>
+        <MenuMain onClick={closeThisMenu} visibleStyled={visibilityHandler}>
+            <MenuHeader onClick={closeThisMenu}>
                 <Text>Close</Text>
             </MenuHeader>
             <MenuContainer>

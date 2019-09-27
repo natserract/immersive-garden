@@ -6,7 +6,7 @@ import OutsideWrapper from './OutsideArea'
 
 type Props = {
     onClick(): void,
-    style,
+    readonly style: any,
 }
 
 const HomeNews = ({ onClick, style }: Props) => {
