@@ -4,7 +4,7 @@ import styled from 'styled-components'
 
 type Props = {
     title?: string
-    listItem?: any
+    listItem: string,
 }
 
 const List = ({ title, listItem }: Props) => {
@@ -18,7 +18,7 @@ const List = ({ title, listItem }: Props) => {
 
 
 /* Styles */
-const Main = styled.ul`
+const Main = styled.li`
     list-style: none;
 `
 

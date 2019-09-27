@@ -18,11 +18,15 @@ const About = ({ history }) => {
 
 
     //Loop list 
-    const ListItemGrid: typeof React.Component = () => (
-        items.map((item, index) => {
-            return <List key={index} listItem={item}></List>
-        })
-    )
+    const ListItemGrid:React.Component = ({ title }) => {
+        return (
+            <ul>
+                <span style={{ color: '#fff' }}>{title}</span>
+                    { items.map((item, index) => <List key={index} listItem={item}></List> ) } 
+            </ul>
+        )
+    }
+
 
     /* Inital Props */
     const getProps = {
@@ -47,7 +51,7 @@ const About = ({ history }) => {
                 </FirstContent>
                 <SubTitle>In-house we design and develop sites, app & interactive installations</SubTitle>
 
-                <ListItemGrid />
+                <ListItemGrid title="category" />
             </Content>
         </Main>
     )
