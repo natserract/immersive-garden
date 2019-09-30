@@ -10,7 +10,7 @@ ReactDOM.render(
         <Routes />
         <GlobalStyle />
     </ContextProvider>,
-    document.getElementById('root'));
+    document.getElementById('__immersive-g'));
 
 serviceWorker.unregister();
 

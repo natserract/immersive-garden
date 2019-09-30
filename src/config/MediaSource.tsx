@@ -1,8 +1,8 @@
 
-let IMGPATHSOURCE = `assets/img/`,
-    VIDEOPATHSOURCE = `assets/video/`
+let IMGPATHSOURCE:string = `assets/img/`,
+    VIDEOPATHSOURCE:string = `assets/video/`
 
-const ImageSource:any = ({
+const ImageSource = ({
     global: {
         logo: require(`../${IMGPATHSOURCE}logotype.png`),
         logoSmall: require(`../${IMGPATHSOURCE}logotype--gray.png`),

@@ -4,14 +4,14 @@ import styled from 'styled-components'
 import Context from '../../context'
 
 import Header from "../reusable/Header";
-import Banner from './Banner'
-import HomeNews from './HomeNews'
-import Content from './Content'
+import Banner from './home.banner'
+import HomeNews from './home.news'
+import Content from './home.content'
 import Menu from '../reusable/Menu'
 
 
 const Index = () => {
-    const STATE = React.useContext(Context);
+    const ContextConsumer = React.useContext(Context);
 
     const [move, setMove] = React.useState({
         color: 10,
@@ -63,7 +63,7 @@ const Index = () => {
 
 
     const CaseContent:typeof React.Component = () => 
-        STATE.contentProps.map((item, id) => {
+        ContextConsumer.contentProps.map((item, id) => {
             let url = item.caseTitle.toLowerCase().replace(/ +/g, "-");
             return <Content key={id} pathTo={url} {...item} />
     })
@@ -104,7 +104,7 @@ const Index = () => {
                 <HomeNews  {...props.homeNewsProps} />
 
                 {/* {<!-- Scrolled content --> */}
-                <SectionScroller style={props.bannerProps.style || props.homeNewsProps.style}>
+                <SectionScroller style={props.bannerProps.style}>
                     <ContentSection>
                         <CaseContent />
                     </ContentSection>

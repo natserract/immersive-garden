@@ -2,11 +2,11 @@ import React from "react";
 import styled from 'styled-components'
 import source from '../../config/MediaSource'
 
-import OutsideWrapper from './OutsideArea'
+import OutsideWrapper from './home.outside'
 
 type Props = {
-    onClick(): void,
-    readonly style: any,
+    onClick: () => void,
+    style: any,
 }
 
 const HomeNews = ({ onClick, style }: Props) => {
@@ -14,14 +14,16 @@ const HomeNews = ({ onClick, style }: Props) => {
         <NewsContainer style={style}>
             <OutsideWrapper onClick={onClick} />
             <HomeNewsRow>
-                <RowColumnLeft>
-                    <Subtitle> <Span>Latest news</Span></Subtitle>
-                </RowColumnLeft>
-                <RowColumnRight>
+                <ColumnLeft>
+                    <Subtitle> 
+                        <Text>Latest news</Text>
+                    </Subtitle>
+                </ColumnLeft>
+                <ColumnRight>
                     <Link href="https://www.facebook.com/immersive.g/photos/a.850906044922470.1073741828.843690335644041/1884925721520492/?type=3&theater" target="_blank">
                         <h2 className="font_weight_light"><span>Studio Of The Year 2017 by both Awwwards <br /> and CSS Design Awards</span></h2>
                     </Link>
-                </RowColumnRight>
+                </ColumnRight>
             </HomeNewsRow>
         </NewsContainer>
     )
@@ -47,13 +49,13 @@ const HomeNewsRow = styled.div`
     flex-direction: row;
 `
 
-const RowColumnLeft = styled.div`
+const ColumnLeft = styled.div`
     width: 21.429%;
     height: 100%;
     z-index: 5;
 `
 
-const RowColumnRight = styled.div`
+const ColumnRight = styled.div`
     width: 78.571%;
     z-index: 5;
 `
@@ -62,7 +64,7 @@ const Subtitle = styled.div`
     margin-top: 27px;
 `
 
-const Span = styled.span`
+const Text = styled.span`
     font-weight: 700;
     font-size: calc(12px + 0 * (100vw - 960px) / 960);
     line-height: 1.8;

@@ -1,11 +1,11 @@
 import React from "react";
 import styled from 'styled-components'
 
-import OutsideWrapper from './OutsideArea'
+import OutsideWrapper from './home.outside'
 import source from '../../config/MediaSource'
 
 type Props = {
-    onClick():void,
+    onClick: () => void,
     style: any
 } 
 

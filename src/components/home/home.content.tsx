@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link as A } from 'react-router-dom'
 import styled from 'styled-components'
 import FlexDisplay from '../reusable/FlexDisplay'
 
@@ -16,7 +16,7 @@ const Content = ({ caseTitle, caseDescription, poster, title, source, pathTo }: 
                 <Text>Experience</Text>
             </CaseColumnLeft>
             <CaseColumnCenter>
-                <Links to={`/cases/${pathTo}`}>
+                <Link to={`/cases/${pathTo}`}>
                     <CaseMedia>
                         <video preload="auto" autoPlay={true} loop={true} poster={poster} title={title}>
                             <source src={source} type="video/mp4"></source>
@@ -26,7 +26,7 @@ const Content = ({ caseTitle, caseDescription, poster, title, source, pathTo }: 
                         <Heading>{caseTitle}</Heading>
                         <Description>{caseDescription}</Description>
                     </CaseContent>
-                </Links>
+                </Link>
             </CaseColumnCenter>
         </FlexDisplay>
     </CaseContainer>
@@ -54,7 +54,7 @@ const CaseColumnCenter = styled.div`
     width: 81.25%;
 `
 
-const Links = styled(Link)`
+const Link = styled(A)`
     display: flex;
     flex-direction: row;
 `

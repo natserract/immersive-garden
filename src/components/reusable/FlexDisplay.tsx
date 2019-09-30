@@ -4,17 +4,19 @@ import styled from 'styled-components'
 type Props = {
     children: any,
     justify?: 'center' | 'space-between',
-    align?: 'center' | 'flex-end'
+    align?: 'center' | 'flex-end',
+    addStyle?: object
 }
 
-const Flex = ({ children, justify, align }: Props) => {
-    let GETPROPS = {
+const Flex = ({ children, justify, align, addStyle }: Props) => {
+    let componentProps = {
         justifyContentStyled: justify,
-        alignItemsStyled: align
+        alignItemsStyled: align,
+        style: addStyle 
     }
 
     return (
-        <FlexContainer { ...GETPROPS }>
+        <FlexContainer { ...componentProps }>
             { children }
         </FlexContainer>
     )

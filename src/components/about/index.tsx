@@ -2,30 +2,17 @@
 import * as React from 'react'
 import styled from 'styled-components'
 import Header from '../reusable/Header'
-import List from './List'
-
+import FlexDisplay from '../reusable/FlexDisplay'
+import List from './about.list'
 
 
 const About = ({ history }) => {
-
-    let items: readonly string[] = [
-        'Creative Strategy',
-        'Branding',
-        'Innovative digital concept',
-        'Copywrighting',
-        'Tone of voice'
-    ];
-
-
-    //List Component
-    const ListItemGrid:React.Component = ({ title }) => {
-        return (
-            <ul>
-                <span style={{ color: '#fff' }}>{title}</span>
-                { items.map((item, index) => <List key={index} listItem={item}></List> ) } 
-            </ul>
-        )
-    }
+    let [columnConcept, columnDesign, columnTech, columnRecognitions] = [
+        ['Creative Strategy', 'Branding', 'Innovative digital concept', 'Copywrighting', 'Tone of voice'],
+        ['Art direction', 'User experience design', 'User interface & interactive', 'design', 'Illustration', 'Motion design', '2D & 3D animation', 'Photo & video', 'Sound design'],
+        ['Creative development', 'Front-end development', 'Back-end development', 'App development', 'VR & AR development'],
+        ['Awwwards x 1 Studio of the Year', 'Awwwards x 1 Site of the Year', 'Awwwards x 1 Developer of the Year', 'Awwwards x 6 Site of the Month', 'Awwwards x 23 Site of the Day', 'CSSDA x 1 Corporate site of the Year', 'FWA x 1 Site of the Month', 'FWA x 2 Cuting edge awards', 'FWA x 30 Site of the Day', 'Webby Awards Best visual design x 1', 'Lovie Awards x 3']
+    ]
 
 
     /* Inital Props */
@@ -38,26 +25,43 @@ const About = ({ history }) => {
         },
     }
 
+
     return (
-        <Main>
+        <AboutSection>
             {/* <!--- Header --> */}
             <Header {...getProps.header} />
 
             {/* <!--- Content Container --> */}
-            <Content>
+            <Container>
                 <Title>We Create Emotional, Meaningful & Innovative Digital Experience</Title>
-                <FirstContent>
+                <ContentDesc>
                     Immersive Garden has been recognized as Studio of the year 2017 by both AWWWARDS and CSS Design Awards. Our vision is focused on crafting in-house meaningful concepts and stories thanks to digital experiences. This translates in websites but also installations, apps or any media that is relevant. Immersive Garden’s focus on details allows to bring high-end experiences that merge innovation in design and in technology to offer a powerful digital presence to brands. Our experience and dedication has brought us to collaborate with international clients: they reach out to us from all parts of the globe, leading us to have 75% of our collaborations with companies abroad.
-                </FirstContent>
+                </ContentDesc>
                 <SubTitle>In-house we design and develop sites, app & interactive installations</SubTitle>
 
-                <ListItemGrid title="category" />
-            </Content>
-        </Main>
+                <FlexDisplay justify="space-between" addStyle={{ marginTop: '140px' }}>
+                    <List title="Concept" lists={columnConcept} />
+                    <List title="Design" lists={columnDesign} />
+                    <List title="Technology" lists={columnTech} />
+                </FlexDisplay>
+
+                <ContentDesc>
+                    Immersive Garden has detailed and phased a process allowing to work hand in hand with our clients from the brief to the launch. We become one team working together on the same goal: creating a successful project.
+    This attitude has been leading us to work with marvellous clients such as:
+    Chanel, Nissan, Total, Redbull, Richemont, Decathlon, Adidas, Arte, Rainforest foods, Engie, Vente-privée, Orange, Google and more...
+    We are driven by the ambitious of a project rather than its scale. We believe that good ideas can grow anywhere.
+                </ContentDesc>
+
+                <FlexDisplay justify="space-between" addStyle={{ marginTop: '140px' }}>
+                    <List title="Recognitions" lists={columnRecognitions} />
+                </FlexDisplay>
+
+            </Container>
+        </AboutSection>
     )
 }
 
-const Main = styled.section`
+const AboutSection = styled.section`
             position: 'relative';
             background: #0c0c0d;
             min-height: 100vh;
@@ -67,7 +71,7 @@ const Main = styled.section`
             width: 100vw;
         `
 
-const Content = styled.div`
+const Container = styled.div`
             max-width: 880px;
             margin-bottom: 70px;
             margin-right: auto;
@@ -96,7 +100,7 @@ const SubTitle = styled.h2`
             font-family: sans-serif;
         `
 
-const FirstContent = styled.p`
+const ContentDesc = styled.p`
             margin-top: 130px;
             color: #555;
             font-weight: 300;   
@@ -104,5 +108,6 @@ const FirstContent = styled.p`
             line-height: 2;
             letter-spacing: 0.05em;
         `
+
 
 export default About

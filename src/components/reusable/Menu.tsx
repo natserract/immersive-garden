@@ -21,7 +21,7 @@ const Menu = ({ visibilityHandler, closeThisMenu }: Props) => {
 
     const MenuName: typeof React.Component = () => (
         state.name.map((item, id) =>{
-            return <MenuText key={id}> { item } </MenuText>
+            return <MenuText onClick={() => console.log('Hello')} key={id}> { item } </MenuText>
         })
     )
 
@@ -33,7 +33,7 @@ const Menu = ({ visibilityHandler, closeThisMenu }: Props) => {
             <MenuContainer>
                 <MenuCategory>
                     <MenuWrapper>
-                        <MenuName />
+                        <MenuName/>
                     </MenuWrapper>
                 </MenuCategory>
             </MenuContainer>
