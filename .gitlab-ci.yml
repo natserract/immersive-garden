@@ -1,5 +1,5 @@
 # Using the node alpine image to build the React app
-image: node:alpine
+image: alpine:latest
 
 # Announce the URL as per CRA docs
 # https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md#advanced-configuration
@@ -26,6 +26,6 @@ pages:
     - mv build public # Move build files to public dir for Gitlab Pages
   artifacts:
     paths:
-    - public/ # The built files for Gitlab Pages to serve
+    - build/ # The built files for Gitlab Pages to serve
   only:
     - master # Only run on master branch
