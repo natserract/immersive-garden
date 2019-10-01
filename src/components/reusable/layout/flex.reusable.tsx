@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 type Props = {
     children: any,
-    justify?: 'center' | 'space-between',
+    justify?: 'center' | 'space-between' | 'flex-start' | 'flex-end',
     align?: 'center' | 'flex-end',
     addStyle?: object
 }

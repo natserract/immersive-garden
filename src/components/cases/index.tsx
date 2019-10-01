@@ -1,19 +1,43 @@
 
 import React from 'react'
 import { Redirect } from 'react-router'
-import Context from '../../context/index'
-
 import styled from 'styled-components'
+
+import Context from '../../context/'
 import Header from '../reusable/header'
+import FlexDisplay from '../reusable/layout/flex.reusable'
+import CasesWrapperTitle from './cases.wrapper.title'
+import CaseCredits from './cases.credits'
 
 
 const Index = ({ match }) => {
-    const DATA = React.useContext(Context);
+    const ContextConsumer = React.useContext(Context);
 
     let GETURL = match.url.replace('/cases/', '')
-    let URLFILTER = DATA.contentProps.some(URL =>
+    let URLFILTER = ContextConsumer.contentProps.some(URL =>
         URL.caseTitle.toLowerCase().replace(/ +/g, "-") === GETURL
     )
+
+    let GetCaseContext = ContextConsumer.contentProps.find(val => {
+        return val.caseTitle.toLowerCase().replace(/ +/g, "-") === GETURL
+    })
+
+
+    let caseCreditItem = [
+        {
+            title: 'Role',
+            desc: ['Conception', 'Art direction', 'Motion design', 'Development']
+        },
+        {
+            title: 'Agency',
+            desc: ['Havas']
+        },
+        {
+            title: 'Awards',
+            desc: ['FWA of the Month', 'Awwwards Site of the Month', 'CSS Design Award Site of the Day']
+        }
+    ]
+
 
     let Props = {
         headerProps: {
@@ -25,6 +49,7 @@ const Index = ({ match }) => {
     }
 
 
+
     return (
         // <!--Redirect if parameter values not correctly-->
         !URLFILTER ? (<Redirect to='/' />) : (
@@ -33,17 +58,27 @@ const Index = ({ match }) => {
 
                 <PCaseSection>
                     <Container>
-                        <div className="pc__label">
-                            <span>Experience</span>
-                        </div>
-                        <div className="pc_container__wrapper">
-                            <div className="pc_wrap_column">
-                                <h1>{JSON.stringify(match.params.caseId)}</h1>
-                            </div>
-                            <div className="pc_wrap_column">
+                        <PCaseHeader>
+                            <Text>Experience</Text>
+                        </PCaseHeader>
 
-                            </div>
-                        </div>
+                        <FlexDisplay addStyle={{ marginTop: '60px' }}>
+                            <ContentColumn>
+                                <CasesWrapperTitle
+                                    caseTitle={GetCaseContext.caseTitle}
+                                    caseDesc={GetCaseContext.caseDescription}
+                                />
+                            </ContentColumn>
+                            <ContentColumn>
+                                <CaseCreditsMain>
+                                    <CaseCredits
+                                        caseLiveUrl={GetCaseContext.url}
+                                        caseCreditItem={caseCreditItem}
+                                    />
+                                </CaseCreditsMain>
+                            </ContentColumn>
+                        </FlexDisplay>
+
                     </Container>
                 </PCaseSection>
             </React.Fragment>)
@@ -67,5 +102,28 @@ const Container = styled.div`
     margin-right: auto;
     margin-left: auto;
 `
+
+const PCaseHeader = styled.div`
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: 30%;
+`
+const Text = styled.span`
+    text-transform: uppercase;
+    color: #a4a4a4;
+    font-weight: 700;
+    font-size: calc(10px + 0 * (100vw - 960px) / 960);
+    line-height: 1.5;
+    letter-spacing: .2em;
+`
+const ContentColumn = styled.div`
+    width: 50%;
+`
+const CaseCreditsMain = styled.aside`
+    margin-top: 20px;
+    display: block;
+    padding-left: 32%;
+`
+
 
 export default Index

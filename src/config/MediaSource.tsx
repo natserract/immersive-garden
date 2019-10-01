@@ -13,7 +13,8 @@ const ImageSource = ({
         case1:  require(`../${VIDEOPATHSOURCE}citrix.mp4`),
         case2:  require(`../${VIDEOPATHSOURCE}rainforest.mp4`),
         case3: require(`../${VIDEOPATHSOURCE}BrokenBack.mp4`)
-    }
+    },
+    arrow: require(`../${IMGPATHSOURCE}arrow-right--black.png`), 
 })
 
 export default ImageSource

@@ -35,11 +35,13 @@ const GlobalStyle = createGlobalStyle`
         height: 100%;   
     }
 
+    h1,
     h2,
     h3,
     h4 {
         font-family: 'serif';
         font-weight: 300;
+        -webkit-font-smoothing: antialiased;
     }
 `
 

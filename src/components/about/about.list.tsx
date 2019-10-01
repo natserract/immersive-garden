@@ -1,16 +1,26 @@
 import React from 'react'
 import styled from 'styled-components'
 
-type Props = {
+
+type T = {
     title?: string,
+}
+
+type P = {
+    titleProps?: string,
     lists: any,
     additionStyle?: object
 }
 
-const List = ({ title, lists, additionStyle }: Props) => {
+
+export const Title = ({ title }: T) => (
+    <TitleColumn>{title}</TitleColumn>
+)
+
+const List = ({ titleProps, lists, additionStyle }: P) => {
     return (
         <ul style={{ listStyle: 'none' }}>
-            <TitleColumn>{title}</TitleColumn>
+            { titleProps ? (<Title title={titleProps} />) : undefined }
             { lists.map((list, index) =>
                 <ListItem key={index} style={additionStyle}>{list}</ListItem>
             )}

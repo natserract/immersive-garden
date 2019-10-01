@@ -3,11 +3,11 @@ import * as React from 'react'
 import styled from 'styled-components'
 import Header from '../reusable/header'
 import FlexDisplay from '../reusable/layout/flex.reusable'
-import List from './about.list'
+import List, { Title as ListTitle } from './about.list'
 
 
 const About = ({ history }) => {
-  
+
     let [columnConcept, columnDesign, columnTech, columnRecognitions] = [
         ['Creative Strategy', 'Branding', 'Innovative digital concept', 'Copywrighting', 'Tone of voice'],
         ['Art direction', 'User experience design', 'User interface & interactive', 'design', 'Illustration', 'Motion design', '2D & 3D animation', 'Photo & video', 'Sound design'],
@@ -24,7 +24,6 @@ const About = ({ history }) => {
         },
     }
 
-
     return (
         <AboutSection>
             {/* <!--- Header --> */}
@@ -39,9 +38,9 @@ const About = ({ history }) => {
                 <SubTitle>In-house we design and develop sites, app & interactive installations</SubTitle>
 
                 <FlexDisplay justify="space-between" addStyle={{ marginTop: '140px' }}>
-                    <List title="Concept" lists={columnConcept} />
-                    <List title="Design" lists={columnDesign} />
-                    <List title="Technology" lists={columnTech} />
+                    <List titleProps="Concept" lists={columnConcept} />
+                    <List titleProps="Design" lists={columnDesign} />
+                    <List titleProps="Technology" lists={columnTech} />
                 </FlexDisplay>
 
                 <ContentDesc>
@@ -51,9 +50,13 @@ const About = ({ history }) => {
     We are driven by the ambitious of a project rather than its scale. We believe that good ideas can grow anywhere.
                 </ContentDesc>
 
-                <FlexDisplay justify="space-between" addStyle={{ marginTop: '140px' }}>
-                    <List title="Recognitions" lists={columnRecognitions} />
-                </FlexDisplay>
+                <WrappedContent>
+                    <ListTitle title="Recognitions" />
+                    <FlexDisplay justify="space-between">
+                        <List lists={columnRecognitions.slice(0, 6)} />
+                        <List lists={columnRecognitions.slice(6, 11)} />
+                    </FlexDisplay>
+                </WrappedContent>
 
             </Container>
         </AboutSection>
@@ -61,52 +64,63 @@ const About = ({ history }) => {
 }
 
 const AboutSection = styled.section`
-            position: 'relative';
-            background: #0c0c0d;
-            min-height: 100vh;
-            padding: 1px;
-            overflow-y: scroll;
-            height: 100vh;
-            width: 100vw;
-        `
+                    position: 'relative';
+                    background: #0c0c0d;
+                    min-height: 100vh;
+                    padding: 1px;
+                    overflow-y: scroll;
+                    height: 100vh;
+                    width: 100vw;
+                `
 
 const Container = styled.div`
-            max-width: 880px;
-            margin-bottom: 70px;
-            margin-right: auto;
-            margin-left: auto;
-            width: 55.556%;
-        `
+                    max-width: 880px;
+                    margin-bottom: 70px;
+                    margin-right: auto;
+                    margin-left: auto;
+                    width: 55.556%;
+                `
 
 const Title = styled.h1`
-            margin-top: 55px;
-            text-transform: uppercase;
-            color: #a4a4a4;
-            font-size: calc(31px + 19 * (100vw - 960px) / 960);
-            font-family: 'serif';
-            font-weight: 300;
-            line-height: 1.607142857142857;
-            letter-spacing: .1em;
-            -webkit-font-smoothing: antialiased;
-        `
+                    margin-top: 55px;
+                    text-transform: uppercase;
+                    color: #a4a4a4;
+                    font-size: calc(31px + 19 * (100vw - 960px) / 960);
+                    font-family: 'serif';
+                    font-weight: 300;
+                    line-height: 1.607142857142857;
+                    letter-spacing: .1em;
+                    -webkit-font-smoothing: antialiased;
+                `
 const SubTitle = styled.h2`
-            font-size: calc(26px + 0 * (100vw - 960px) / 960);
-            line-height: 1.923076923076923;
-            letter-spacing: .2em;
-            margin-top: 140px;
-            text-transform: uppercase;
-            color: #a4a4a4;
-            font-family: sans-serif;
-        `
+                    font-size: calc(26px + 0 * (100vw - 960px) / 960);
+                    line-height: 1.923076923076923;
+                    letter-spacing: .2em;
+                    margin-top: 140px;
+                    text-transform: uppercase;
+                    color: #a4a4a4;
+                    font-family: sans-serif;
+                `
+
+const WrappedContent = styled.div`
+            margin-top: 130px;
+        
+    & ul li:nth-child(1) {
+                margin-top: 40px;
+        }
+    & ul li:nth-child(2){
+                margin-top: 10px;
+        }
+`
 
 const ContentDesc = styled.p`
-            margin-top: 130px;
-            color: #555;
-            font-weight: 300;   
-            font-size: calc(19px + 0 * (100vw - 960px) / 960);
-            line-height: 2;
-            letter-spacing: 0.05em;
-        `
+                margin-top: 130px;
+                color: #555;
+                font-weight: 300;   
+                font-size: calc(19px + 0 * (100vw - 960px) / 960);
+                line-height: 2;
+                letter-spacing: 0.05em;
+            `
 
 
 export default About
