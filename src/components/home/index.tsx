@@ -3,11 +3,11 @@ import React from "react";
 import styled from 'styled-components'
 import Context from '../../context'
 
-import Header from "../reusable/Header";
+import Header from "../reusable/header";
 import Banner from './home.banner'
 import HomeNews from './home.news'
 import Content from './home.content'
-import Menu from '../reusable/Menu'
+import Menu from '../reusable/header/header.menu.reusable'
 
 
 const Index = () => {
@@ -73,10 +73,9 @@ const Index = () => {
         headerProps: {
             to: '/about-us',
             menuName: 'About Us',
-            brandDisplay: false,
-            searchDisplay: searchVisibility,
+            headerSearchVisibility: searchVisibility,
             getClass: changeColorEl,
-            showCategory: () => handlerChange({ type: 'VISIBLE' })
+            headerShowCategory: () => handlerChange({ type: 'VISIBLE' }),
         },
         bannerProps: {
             onClick: () => handlerChange({ type: 'FIRST' }),

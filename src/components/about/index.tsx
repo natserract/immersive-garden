@@ -1,12 +1,13 @@
 
 import * as React from 'react'
 import styled from 'styled-components'
-import Header from '../reusable/Header'
-import FlexDisplay from '../reusable/FlexDisplay'
+import Header from '../reusable/header'
+import FlexDisplay from '../reusable/layout/flex.reusable'
 import List from './about.list'
 
 
 const About = ({ history }) => {
+  
     let [columnConcept, columnDesign, columnTech, columnRecognitions] = [
         ['Creative Strategy', 'Branding', 'Innovative digital concept', 'Copywrighting', 'Tone of voice'],
         ['Art direction', 'User experience design', 'User interface & interactive', 'design', 'Illustration', 'Motion design', '2D & 3D animation', 'Photo & video', 'Sound design'],
@@ -14,12 +15,10 @@ const About = ({ history }) => {
         ['Awwwards x 1 Studio of the Year', 'Awwwards x 1 Site of the Year', 'Awwwards x 1 Developer of the Year', 'Awwwards x 6 Site of the Month', 'Awwwards x 23 Site of the Day', 'CSSDA x 1 Corporate site of the Year', 'FWA x 1 Site of the Month', 'FWA x 2 Cuting edge awards', 'FWA x 30 Site of the Day', 'Webby Awards Best visual design x 1', 'Lovie Awards x 3']
     ]
 
-
     /* Inital Props */
     const getProps = {
         header: {
-            brandDisplay: true,
-            searchDisplay: false,
+            brandVisibility: true,
             closeText: 'close',
             onCloseTextClick: () => history.push('/')
         },

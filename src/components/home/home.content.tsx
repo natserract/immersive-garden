@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link as A } from 'react-router-dom'
 import styled from 'styled-components'
-import FlexDisplay from '../reusable/FlexDisplay'
+import FlexDisplay from '../reusable/layout/flex.reusable'
 
 type Props = {
     caseTitle, caseDescription, poster, title, source: string,

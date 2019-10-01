@@ -1,13 +1,13 @@
 import React from 'react'
 import styled from 'styled-components'
-import source from '../../config/MediaSource'
+import source from '../../../config/MediaSource'
 
 type Props = {
     visibilityHandler: string,
     closeThisMenu: () => void
 }
 
-const Menu = ({ visibilityHandler, closeThisMenu }: Props) => {
+const HeaderMenu = ({ visibilityHandler, closeThisMenu }: Props) => {
     const [state] = React.useState({
         name: [
             'Featured Projects',
@@ -110,4 +110,4 @@ const MenuText = styled.span`
 `
 
 
-export default Menu
+export default HeaderMenu
