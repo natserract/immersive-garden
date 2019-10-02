@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import Header from '../reusable/header'
 import FlexDisplay from '../reusable/layout/flex.reusable'
 import List, { Title as ListTitle } from './about.list'
+import NewsLetter from './about.contact'
 
 
 const About = ({ history }) => {
@@ -14,6 +15,18 @@ const About = ({ history }) => {
         ['Creative development', 'Front-end development', 'Back-end development', 'App development', 'VR & AR development'],
         ['Awwwards x 1 Studio of the Year', 'Awwwards x 1 Site of the Year', 'Awwwards x 1 Developer of the Year', 'Awwwards x 6 Site of the Month', 'Awwwards x 23 Site of the Day', 'CSSDA x 1 Corporate site of the Year', 'FWA x 1 Site of the Month', 'FWA x 2 Cuting edge awards', 'FWA x 30 Site of the Day', 'Webby Awards Best visual design x 1', 'Lovie Awards x 3']
     ]
+    //Data
+    let NewsletterContext = [
+        {
+            title: 'Inquiries',
+            content: 'hello@immersive-g.com'
+        },
+        {
+            title: 'Jobs',
+            content: 'mailto:jobs@immersive-g.com'
+        }
+    ]
+
 
     /* Inital Props */
     const getProps = {
@@ -57,54 +70,57 @@ const About = ({ history }) => {
                         <List lists={columnRecognitions.slice(6, 11)} />
                     </FlexDisplay>
                 </WrappedContent>
-
             </Container>
+
+            <NewslaterMain>
+                <NewsLetter contactLists={NewsletterContext} />
+            </NewslaterMain>
         </AboutSection>
     )
 }
 
 const AboutSection = styled.section`
-                    position: 'relative';
-                    background: #0c0c0d;
-                    min-height: 100vh;
-                    padding: 1px;
-                    overflow-y: scroll;
-                    height: 100vh;
-                    width: 100vw;
-                `
+    position: 'relative';
+    background: #0c0c0d;
+    min-height: 100vh;
+    padding: 1px;
+    overflow-y: scroll;
+    height: 100vh;
+    width: 100vw;
+`
 
 const Container = styled.div`
-                    max-width: 880px;
-                    margin-bottom: 70px;
-                    margin-right: auto;
-                    margin-left: auto;
-                    width: 55.556%;
-                `
+    max-width: 880px;
+    margin-bottom: 70px;
+    margin-right: auto;
+    margin-left: auto;
+    width: 55.556%;
+`
 
 const Title = styled.h1`
-                    margin-top: 55px;
-                    text-transform: uppercase;
-                    color: #a4a4a4;
-                    font-size: calc(31px + 19 * (100vw - 960px) / 960);
-                    font-family: 'serif';
-                    font-weight: 300;
-                    line-height: 1.607142857142857;
-                    letter-spacing: .1em;
-                    -webkit-font-smoothing: antialiased;
-                `
+    margin-top: 55px;
+    text-transform: uppercase;
+    color: #a4a4a4;
+    font-size: calc(31px + 19 * (100vw - 960px) / 960);
+    font-family: 'serif';
+    font-weight: 300;
+    line-height: 1.607142857142857;
+    letter-spacing: .1em;
+    -webkit-font-smoothing: antialiased;
+`
 const SubTitle = styled.h2`
-                    font-size: calc(26px + 0 * (100vw - 960px) / 960);
-                    line-height: 1.923076923076923;
-                    letter-spacing: .2em;
-                    margin-top: 140px;
-                    text-transform: uppercase;
-                    color: #a4a4a4;
-                    font-family: sans-serif;
-                `
+    font-size: calc(26px + 0 * (100vw - 960px) / 960);
+    line-height: 1.923076923076923;
+    letter-spacing: .2em;
+    margin-top: 140px;
+    text-transform: uppercase;
+    color: #a4a4a4;
+    font-family: sans-serif;
+`
 
 const WrappedContent = styled.div`
-            margin-top: 130px;
-        
+    margin-top: 130px;
+    
     & ul li:nth-child(1) {
                 margin-top: 40px;
         }
@@ -114,13 +130,22 @@ const WrappedContent = styled.div`
 `
 
 const ContentDesc = styled.p`
-                margin-top: 130px;
-                color: #555;
-                font-weight: 300;   
-                font-size: calc(19px + 0 * (100vw - 960px) / 960);
-                line-height: 2;
-                letter-spacing: 0.05em;
-            `
+    margin-top: 130px;
+    color: #555;
+    font-weight: 300;   
+    font-size: calc(19px + 0 * (100vw - 960px) / 960);
+    line-height: 2;
+    letter-spacing: 0.05em;
+`
+
+const NewslaterMain = styled.div`
+    position: fixed;
+    will-change: transform;
+    left: 5.55556%;
+    display: block;
+    width: 16.66667%;
+    bottom: 138.01px;
+`
 
 
 export default About

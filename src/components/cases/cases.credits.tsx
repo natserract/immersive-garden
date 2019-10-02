@@ -24,7 +24,7 @@ const CasesCredits = ({ caseCreditItem, caseLiveUrl }: P) => (
         <a href={caseLiveUrl} rel="noopener noreferrer" style={{ marginTop: '40px' }} target="_blank">
             <FlexDisplay align="center" justify="flex-start">
                 <TextLink>Launch</TextLink>
-                <img src={MediaSource.arrow} style={{ marginLeft: '20px', width: '30px' }} />
+                <img alt="arrow-img" src={MediaSource.arrow} style={{ marginLeft: '20px', width: '30px' }} />
             </FlexDisplay>
         </a>
     </>
