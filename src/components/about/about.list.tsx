@@ -12,21 +12,21 @@ type P = {
     additionStyle?: object
 }
 
-
 export const Title = ({ title }: T) => (
     <TitleColumn>{title}</TitleColumn>
 )
 
-const List = ({ titleProps, lists, additionStyle }: P) => {
-    return (
-        <ul style={{ listStyle: 'none' }}>
-            { titleProps ? (<Title title={titleProps} />) : undefined }
-            { lists.map((list, index) =>
-                <ListItem key={index} style={additionStyle}>{list}</ListItem>
-            )}
-        </ul>
-    )
-}
+const List = ({ titleProps, lists, additionStyle }: P) => (
+    <ul style={{ listStyle: 'none' }}>
+        {/* ListTitle Visibility, if true is rendered */}
+        {titleProps ? (<Title title={titleProps} />) : undefined}
+
+        {/* Mapped this lists */}
+        {lists.map((list, index) =>
+            <ListItem key={index} style={additionStyle}>{list}</ListItem>
+        )}
+    </ul>
+)
 
 
 /* Styles */

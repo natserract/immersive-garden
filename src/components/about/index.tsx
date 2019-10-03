@@ -15,7 +15,8 @@ const About = ({ history }) => {
         ['Creative development', 'Front-end development', 'Back-end development', 'App development', 'VR & AR development'],
         ['Awwwards x 1 Studio of the Year', 'Awwwards x 1 Site of the Year', 'Awwwards x 1 Developer of the Year', 'Awwwards x 6 Site of the Month', 'Awwwards x 23 Site of the Day', 'CSSDA x 1 Corporate site of the Year', 'FWA x 1 Site of the Month', 'FWA x 2 Cuting edge awards', 'FWA x 30 Site of the Day', 'Webby Awards Best visual design x 1', 'Lovie Awards x 3']
     ]
-    //Data
+    
+    //Newslettercontext
     let NewsletterContext = [
         {
             title: 'Inquiries',
