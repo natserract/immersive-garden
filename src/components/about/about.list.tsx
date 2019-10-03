@@ -44,12 +44,12 @@ const ListItem = styled.li`
     }
 `
 const TitleColumn = styled.h4`
-            text-transform: uppercase;
-            color: #a4a4a4;
-            font-size: calc(13px + 0 * (100vw - 960px) / 960);
-            line-height: 1.846153846153846;
-            letter-spacing: .3em;
-            font-family: sans-serif;
+    text-transform: uppercase;
+    color: #a4a4a4;
+    font-size: calc(13px + 0 * (100vw - 960px) / 960);
+    line-height: 1.846153846153846;
+    letter-spacing: .3em;
+    font-family: sans-serif;
 `
 
 export default List

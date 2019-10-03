@@ -15,6 +15,7 @@ const ImageSource = ({
         case3: require(`../${VIDEOPATHSOURCE}BrokenBack.mp4`)
     },
     arrow: require(`../${IMGPATHSOURCE}arrow-right--black.png`), 
+    icon_submit: require(`../${IMGPATHSOURCE}arrow-right-bold--white.png`), 
 })
 
 export default ImageSource

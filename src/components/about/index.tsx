@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import Header from '../reusable/header'
 import FlexDisplay from '../reusable/layout/flex.reusable'
 import List, { Title as ListTitle } from './about.list'
-import NewsLetter from './about.contact'
+import AboutContact, { AboutNewsLetter } from './about.contact'
 
 
 const About = ({ history }) => {
@@ -16,6 +16,7 @@ const About = ({ history }) => {
         ['Awwwards x 1 Studio of the Year', 'Awwwards x 1 Site of the Year', 'Awwwards x 1 Developer of the Year', 'Awwwards x 6 Site of the Month', 'Awwwards x 23 Site of the Day', 'CSSDA x 1 Corporate site of the Year', 'FWA x 1 Site of the Month', 'FWA x 2 Cuting edge awards', 'FWA x 30 Site of the Day', 'Webby Awards Best visual design x 1', 'Lovie Awards x 3']
     ]
     
+
     //Newslettercontext
     let NewsletterContext = [
         {
@@ -25,8 +26,9 @@ const About = ({ history }) => {
         {
             title: 'Jobs',
             content: 'mailto:jobs@immersive-g.com'
-        }
+        },
     ]
+
 
 
     /* Inital Props */
@@ -73,9 +75,10 @@ const About = ({ history }) => {
                 </WrappedContent>
             </Container>
 
-            <NewslaterMain>
-                <NewsLetter contactLists={NewsletterContext} />
-            </NewslaterMain>
+            <Newsletter>
+                <AboutContact contactLists={NewsletterContext} />
+                <AboutNewsLetter contactTitle="Newsletter"/>
+            </Newsletter>
         </AboutSection>
     )
 }
@@ -139,13 +142,14 @@ const ContentDesc = styled.p`
     letter-spacing: 0.05em;
 `
 
-const NewslaterMain = styled.div`
+
+const Newsletter = styled.div`
     position: fixed;
     will-change: transform;
     left: 5.55556%;
     display: block;
-    width: 16.66667%;
-    bottom: 138.01px;
+    width: 13.66667%;
+    bottom: 98.01px;
 `
 
 
