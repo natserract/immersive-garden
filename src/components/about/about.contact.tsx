@@ -17,7 +17,7 @@ const AboutContact = ({ contactLists }: Props) => (
     contactLists.map(
         (contactList, index) =>
             <ContactsItem key={index}>
-                <Link href="hello@immersive-g.com" rel="nofollow noreferrer noopener" target="_blank">
+                <Link href={`mailto:${contactList.content}`} rel="nofollow noreferrer noopener" target="_blank">
                     <ContactsTitle>{contactList.title}</ContactsTitle>
                     <ContactsContent>
                         {contactList.content}

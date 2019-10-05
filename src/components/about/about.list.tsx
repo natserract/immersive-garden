@@ -18,11 +18,11 @@ export const Title = ({ title }: T) => (
 
 const List = ({ titleProps, lists, additionStyle }: P) => (
     <ul style={{ listStyle: 'none' }}>
-        {/* ListTitle Visibility, if true is rendered */}
-        {titleProps ? (<Title title={titleProps} />) : undefined}
+        { titleProps ? (
+            <Title title={titleProps} />)
+        : undefined }
 
-        {/* Mapped this lists */}
-        {lists.map((list, index) =>
+        { lists.map((list, index) =>
             <ListItem key={index} style={additionStyle}>{list}</ListItem>
         )}
     </ul>

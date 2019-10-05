@@ -1,10 +1,12 @@
 
 import * as React from 'react'
 import styled from 'styled-components'
-import Header from '../reusable/header'
+import Header from '../reusable/header/header'
 import FlexDisplay from '../reusable/layout/flex.reusable'
 import List, { Title as ListTitle } from './about.list'
+
 import AboutContact, { AboutNewsLetter } from './about.contact'
+import AboutInformation from './about.information'
 
 
 const About = ({ history }) => {
@@ -25,10 +27,9 @@ const About = ({ history }) => {
         },
         {
             title: 'Jobs',
-            content: 'mailto:jobs@immersive-g.com'
+            content: 'jobs@immersive-g.com'
         },
     ]
-
 
 
     /* Inital Props */
@@ -36,7 +37,7 @@ const About = ({ history }) => {
         header: {
             brandVisibility: true,
             closeText: 'close',
-            onCloseTextClick: () => history.push('/')
+            onCloseTextClick: () => history.goBack(),
         },
     }
 
@@ -75,10 +76,19 @@ const About = ({ history }) => {
                 </WrappedContent>
             </Container>
 
+            {/* <!-- About Newsletter --> */}
             <Newsletter>
                 <AboutContact contactLists={NewsletterContext} />
                 <AboutNewsLetter contactTitle="Newsletter"/>
             </Newsletter>
+
+
+            {/* <!-- About Information --> */}
+            <AboutInfoMain>
+                <AboutInformation infoTitle="Immersive Garden">
+                    14 Avenue Claude Vellefaux 75010 Paris, France
+                </AboutInformation>
+            </AboutInfoMain>
         </AboutSection>
     )
 }
@@ -111,6 +121,10 @@ const Title = styled.h1`
     line-height: 1.607142857142857;
     letter-spacing: .1em;
     -webkit-font-smoothing: antialiased;
+
+    @media (max-width: 981px){
+        margin-top: 177.5px;
+    }
 `
 const SubTitle = styled.h2`
     font-size: calc(26px + 0 * (100vw - 960px) / 960);
@@ -150,6 +164,23 @@ const Newsletter = styled.div`
     display: block;
     width: 13.66667%;
     bottom: 98.01px;
+
+    @media(max-width:981px){
+        display: none;
+    }
+`
+
+const AboutInfoMain = styled.div`
+    position: fixed;
+    will-change: transform;
+    right: 5.55556%;
+    display: block;
+    width: 11.11111%;
+    bottom: 71.01px;
+
+    @media(max-width:981px){
+        display: none;
+    }
 `
 
 

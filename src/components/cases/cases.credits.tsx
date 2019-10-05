@@ -16,7 +16,7 @@ const CasesCredits = ({ caseCreditItem, caseLiveUrl }: P) => (
             <CaseCreditsContainer key={index}>
                 <CaseCreditsTitle>{item.title}</CaseCreditsTitle>
                 <CaseCreditsDesc>
-                    {item.desc}
+                    {item.desc.join(', ')}
                 </CaseCreditsDesc>
             </CaseCreditsContainer>
         ))}

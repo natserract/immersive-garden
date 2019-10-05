@@ -3,11 +3,11 @@ import React from "react";
 import styled from 'styled-components'
 import Context from '../../context'
 
-import Header from "../reusable/header";
+import Header from "../reusable/header/header";
 import Banner from './home.banner'
 import HomeNews from './home.news'
 import Content from './home.content'
-import Menu from '../reusable/header/header.menu.reusable'
+import Menu from '../reusable/header/header.menu'
 
 
 const Index = () => {
