@@ -38,6 +38,7 @@ const store: ContextInterface = {
             title: 'Immersive Garden - You are the Stylist',
             source: MediaSource.video.case3,
             url: 'https://youarethestylist.imm-g-prod.com/',
+            caseImgDetail: MediaSource.cases.caseProject3
         },
         {
             caseTitle: 'ACME Experience',
@@ -46,6 +47,7 @@ const store: ContextInterface = {
             title: 'Immersive Garden - ACME Experience',
             source: MediaSource.video.case4,
             url: 'http://acme-experience.com/',
+            caseImgDetail: MediaSource.cases.caseProject4
         },
         {
             caseTitle: 'Zero Days Off',
@@ -54,14 +56,16 @@ const store: ContextInterface = {
             title: 'Immersive Garden - ACME Experience',
             source: MediaSource.video.case5,
             url: 'http://zerodaysoff.co.uk/',
+            caseImgDetail: MediaSource.cases.caseProject5
         },
         {
             caseTitle: 'Gleec',
             caseDescription: `Explore Gleec Chat's experience to promote the application and discover all its secured functionalities.`,
             poster: MediaSource.poster.project6,
             title: 'Immersive Garden - ACME Experience',
-            source: MediaSource.video.case3,
+            source: MediaSource.video.case6,
             url: 'https://gleec.com/',
+            caseImgDetail: MediaSource.cases.caseProject6
         },
     ]
 }

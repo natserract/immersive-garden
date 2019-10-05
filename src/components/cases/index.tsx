@@ -1,6 +1,7 @@
 
 import React, { createRef } from 'react'
 import { Redirect } from 'react-router'
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 import Context from '../../context/'
@@ -28,10 +29,20 @@ const Index = ({ match }) => {
 
     //Find next case url
     let findNextCaseIndex = ContextConsumer.contentProps.indexOf(GetCaseContext) + 1;
-    let findNextCaseTitle = ContextConsumer.contentProps[findNextCaseIndex].caseTitle;
-    let nextCaseURL = findNextCaseTitle.toLowerCase().replace(/ +/g, "-");
+    let findLastCaseIndex = ContextConsumer.contentProps.indexOf(GetCaseContext);
+    let findCaseItemLength = ContextConsumer.contentProps.length - 1;
+    let findNextCaseTitle = findLastCaseIndex !== findCaseItemLength ? ContextConsumer.contentProps[findNextCaseIndex].caseTitle : null
+    let nextCaseURL = findNextCaseTitle ? findNextCaseTitle.toLowerCase().replace(/ +/g, "-") : null
 
-    
+
+    //Prev Case URL 
+    let prevNextCaseIndex = ContextConsumer.contentProps.indexOf(GetCaseContext) - 1;
+    let CheckPrev = prevNextCaseIndex !== -1 ? ContextConsumer.contentProps[prevNextCaseIndex].caseTitle : null;
+    let prevCaseURL = CheckPrev ? CheckPrev.toLowerCase().replace(/ +/g, "-") : null
+    let classHasMargin = CheckPrev ? 'hasMargin' : null;
+
+
+
     let caseCreditItem = [
         {
             title: 'Role',
@@ -121,12 +132,25 @@ const Index = ({ match }) => {
                         <CaseImgList />
 
                         <div style={{ position: 'relative' }}>
-                            {/* <!-- Next Project -- > */}
+                            {/* <!-- Prev/next Project -- > */}
+
                             <CasePreviousNext>
-                                <CaseNextLink href={nextCaseURL}>
-                                    <LinkText>Next Project</LinkText>
-                                    <Underline />
-                                </CaseNextLink>
+                                {
+                                    prevCaseURL ? (
+                                        <CaseNextLink to={prevCaseURL}>
+                                            <LinkText>Previous Project</LinkText>
+                                            <Underline />
+                                        </CaseNextLink>
+                                    ) : undefined
+                                }
+                                {
+                                    nextCaseURL ? (
+                                        <CaseNextLink className={classHasMargin} to={nextCaseURL}>
+                                            <LinkText>Next Project</LinkText>
+                                            <Underline />
+                                        </CaseNextLink>
+                                    ) : undefined
+                                }
                             </CasePreviousNext>
 
                             {/* <!-- Back to top --> */}
@@ -187,7 +211,7 @@ const CasePreviousNext = styled.div`
     margin-top: 300px;
     text-align: center;
 `
-const CaseNextLink = styled.a`
+const CaseNextLink = styled(Link)`
     position: relative;
     color: inherit;
     text-decoration: none;
@@ -197,7 +221,12 @@ const CaseNextLink = styled.a`
     &:hover span:nth-child(2){
         opacity: .2;
     }
+
+    &.hasMargin {
+        margin-left: 5.55556vw;
+    }
 `
+
 const LinkText = styled.span`
     text-transform: uppercase;
     color: #555;
