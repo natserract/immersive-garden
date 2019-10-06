@@ -18,9 +18,9 @@ const Index = ({ match, history }) => {
 
     //Check case URL
     let GETURL = match.url.replace('/cases/', '')
-    let URLFILTER = ContextConsumer.contentProps.some(URL => {
+    let URLFILTER = ContextConsumer.contentProps.some(URL => 
         URL.caseTitle.toLowerCase().replace(/ +/g, "-") === GETURL
-    })
+    )
 
     // <!--Redirect if parameter values not correctly-->
     if (!URLFILTER) return <Redirect to='/' />
