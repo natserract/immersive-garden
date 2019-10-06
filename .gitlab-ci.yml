@@ -3,11 +3,6 @@
 image: node:6.5.0
 pages:
   stage: deploy
-  script:
-  - npm install
-  - npm run build
-  - rm -rf public
-  - mv build public
   artifacts:
     paths:
     - build # mandatory, other folder won't work
