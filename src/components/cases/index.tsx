@@ -22,6 +22,9 @@ const Index = ({ match, history }) => {
         URL.caseTitle.toLowerCase().replace(/ +/g, "-") === GETURL
     )
 
+    // <!--Redirect if parameter values not correctly-->
+    if (!URLFILTER) return <Redirect to='/' />
+
     //Get case values 
     let GetCaseContext = ContextConsumer.contentProps.find(val =>
         val.caseTitle.toLowerCase().replace(/ +/g, "-") === GETURL
@@ -35,12 +38,11 @@ const Index = ({ match, history }) => {
     let nextCaseURL = findNextCaseTitle ? findNextCaseTitle.toLowerCase().replace(/ +/g, "-") : null
 
 
-    //Prev Case URL 
+    // Prev Case URL 
     let prevNextCaseIndex = ContextConsumer.contentProps.indexOf(GetCaseContext) - 1;
     let CheckPrev = prevNextCaseIndex !== -1 ? ContextConsumer.contentProps[prevNextCaseIndex].caseTitle : null;
     let prevCaseURL = CheckPrev ? CheckPrev.toLowerCase().replace(/ +/g, "-") : null
     let classHasMargin = CheckPrev ? 'hasMargin' : null;
-
 
 
     let caseCreditItem = [
@@ -98,71 +100,69 @@ const Index = ({ match, history }) => {
     }
 
     return (
-        // <!--Redirect if parameter values not correctly-->
-        !URLFILTER ? (<Redirect to='/' />) : (
-            <React.Fragment>
-                <Header {...Props.headerProps} />
+        <React.Fragment>
+            <Header {...Props.headerProps} />
 
-                <PCaseSection>
-                    {/* <!-- Scroll Top Target --> */}
-                    <div ref={ref}></div>
+            <PCaseSection>
+                {/* <!-- Scroll Top Target --> */}
+                <div ref={ref}></div>
 
-                    {/* <!-- Container --> */}
-                    <Container>
-                        <PCaseHeader>
-                            <Text>Experience</Text>
-                        </PCaseHeader>
+                {/* <!-- Container --> */}
+                <Container>
+                    <PCaseHeader>
+                        <Text>Experience</Text>
+                    </PCaseHeader>
 
-                        <FlexDisplay addStyle={{ marginTop: '60px' }}>
-                            <ContentColumn>
-                                <CasesWrapperTitle
-                                    caseTitle={GetCaseContext.caseTitle}
-                                    caseDesc={GetCaseContext.caseDescription}
+                    <FlexDisplay className="_flexColumn" addStyle={{ marginTop: '60px' }}>
+                        <ContentColumn>
+                            <CasesWrapperTitle
+                                caseTitle={GetCaseContext.caseTitle}
+                                caseDesc={GetCaseContext.caseDescription}
+                            />
+                        </ContentColumn>
+                        <ContentColumn>
+                            <CaseCreditsMain>
+                                <CaseCredits
+                                    caseLiveUrl={GetCaseContext.url}
+                                    caseCreditItem={caseCreditItem}
                                 />
-                            </ContentColumn>
-                            <ContentColumn>
-                                <CaseCreditsMain>
-                                    <CaseCredits
-                                        caseLiveUrl={GetCaseContext.url}
-                                        caseCreditItem={caseCreditItem}
-                                    />
-                                </CaseCreditsMain>
-                            </ContentColumn>
-                        </FlexDisplay>
+                            </CaseCreditsMain>
+                        </ContentColumn>
+                    </FlexDisplay>
 
-                        <CaseImgList />
+                    <CaseImgList />
 
-                        <div style={{ position: 'relative' }}>
-                            {/* <!-- Prev/next Project -- > */}
+                    <div style={{ position: 'relative' }}>
+                        {/* <!-- Prev/next Project -- > */}
 
-                            <CasePreviousNext>
-                                {
-                                    prevCaseURL ? (
-                                        <CaseNextLink to={prevCaseURL}>
-                                            <LinkText>Previous Project</LinkText>
-                                            <Underline />
-                                        </CaseNextLink>
-                                    ) : undefined
-                                }
-                                {
-                                    nextCaseURL ? (
-                                        <CaseNextLink className={classHasMargin} to={nextCaseURL}>
-                                            <LinkText>Next Project</LinkText>
-                                            <Underline />
-                                        </CaseNextLink>
-                                    ) : undefined
-                                }
-                            </CasePreviousNext>
+                        <CasePreviousNext>
+                            {
+                                prevCaseURL ? (
+                                    <CaseNextLink to={prevCaseURL}>
+                                        <LinkText>Previous Project</LinkText>
+                                        <Underline />
+                                    </CaseNextLink>
+                                ) : undefined
+                            }
+                            {
+                                nextCaseURL ? (
+                                    <CaseNextLink className={classHasMargin} to={nextCaseURL}>
+                                        <LinkText>Next Project</LinkText>
+                                        <Underline />
+                                    </CaseNextLink>
+                                ) : undefined
+                            }
+                        </CasePreviousNext>
 
-                            {/* <!-- Back to top --> */}
-                            <BackToTop onClick={scrollToTop}>
-                                <img src={mediasource.arrowUp} alt="Back to top" title="Back to top" height="100%" />
-                            </BackToTop>
-                        </div>
+                        {/* <!-- Back to top --> */}
+                        <BackToTop onClick={scrollToTop}>
+                            <img src={mediasource.arrowUp} alt="Back to top" title="Back to top" height="100%" />
+                        </BackToTop>
+                    </div>
 
-                    </Container>
-                </PCaseSection>
-            </React.Fragment>)
+                </Container>
+            </PCaseSection>
+        </React.Fragment>
     )
 
 }
@@ -183,12 +183,28 @@ const Container = styled.div`
     width: 66.667%;
     margin-right: auto;
     margin-left: auto;
+
+    @media(max-width: 980px){
+        width: 100%;
+
+        ._flexColumn {
+            width: 80%;
+            margin: 0 auto;
+            flex-direction: column
+        }
+    }
 `
 
 const PCaseHeader = styled.div`
     margin-right: auto;
     margin-left: auto;
     padding-right: 30%;
+
+    @media(max-width: 980px){
+        width: 80%;
+        margin: 0 auto;
+        padding-right: 0;
+    }
 `
 const Text = styled.span`
     text-transform: uppercase;
@@ -200,17 +216,30 @@ const Text = styled.span`
 `
 const ContentColumn = styled.div`
     width: 50%;
+
+    @media(max-width: 980px){
+        width: 100%;
+    }
 `
 const CaseCreditsMain = styled.aside`
     margin-top: 20px;
     display: block;
     padding-left: 32%;
+
+    @media(max-width: 980px){
+        margin-top: 50px;
+        padding-left: 0;
+    }
 `
 const CasePreviousNext = styled.div`
     width: 50%;
     margin: 0 auto;
     margin-top: 300px;
     text-align: center;
+
+    @media(max-width: 980px){
+        width: 100%;
+    }
 `
 const CaseNextLink = styled(Link)`
     position: relative;
@@ -226,6 +255,7 @@ const CaseNextLink = styled(Link)`
     &.hasMargin {
         margin-left: 5.55556vw;
     }
+
 `
 
 const LinkText = styled.span`
@@ -263,6 +293,13 @@ const BackToTop = styled.div`
         left: -10px;
         right: -10px;
         top: -10px;
+    }
+
+    @media(max-width: 980px){
+        left: 50%;
+        right: auto;
+        bottom: -100px;
+        transform: translateX(-50%);
     }
 `
 

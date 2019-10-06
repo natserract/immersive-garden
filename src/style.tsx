@@ -19,6 +19,10 @@ const GlobalStyle = createGlobalStyle`
         overflow: hidden;
     }
 
+    #__immersive-g {
+        overflow: hidden;
+    }
+
     a {
         display: block;
         text-decoration: none;

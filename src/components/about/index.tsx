@@ -54,7 +54,7 @@ const About = ({ history }) => {
                 </ContentDesc>
                 <SubTitle>In-house we design and develop sites, app & interactive installations</SubTitle>
 
-                <FlexDisplay justify="space-between" addStyle={{ marginTop: '140px' }}>
+                <FlexDisplay className="_classExtern _itemHasMargin" justify="space-between" addStyle={{ marginTop: '140px' }}>
                     <List titleProps="Concept" lists={columnConcept} />
                     <List titleProps="Design" lists={columnDesign} />
                     <List titleProps="Technology" lists={columnTech} />
@@ -69,7 +69,7 @@ const About = ({ history }) => {
 
                 <WrappedContent>
                     <ListTitle title="Recognitions" />
-                    <FlexDisplay justify="space-between">
+                    <FlexDisplay className="_classExtern" justify="space-between">
                         <List lists={columnRecognitions.slice(0, 6)} />
                         <List lists={columnRecognitions.slice(6, 11)} />
                     </FlexDisplay>
@@ -109,6 +109,20 @@ const Container = styled.div`
     margin-right: auto;
     margin-left: auto;
     width: 55.556%;
+
+    @media(max-width: 981px){
+        max-width: 80%;
+        width: 100%;
+    }
+
+    @media(max-width: 980px){
+        & ._classExtern {
+            flex-direction: column
+        }
+        & ._itemHasMargin > ul:not(:nth-child(1)){
+            margin-top: 80px;
+        }
+    }
 `
 
 const Title = styled.h1`
@@ -122,8 +136,10 @@ const Title = styled.h1`
     letter-spacing: .1em;
     -webkit-font-smoothing: antialiased;
 
-    @media (max-width: 981px){
-        margin-top: 177.5px;
+   
+    @media(max-width: 981px){
+        margin-top: 40%;
+        font-size: calc(41px + 19 * (100vw - 960px) / 960)
     }
 `
 const SubTitle = styled.h2`
@@ -165,8 +181,13 @@ const Newsletter = styled.div`
     width: 13.66667%;
     bottom: 98.01px;
 
-    @media(max-width:981px){
-        display: none;
+    @media(max-width: 981px){
+        position: relative;
+        width: 80%;
+        bottom: 0;
+        left: 0;
+        height: auto;
+        margin: 40px auto;
     }
 `
 
@@ -178,8 +199,13 @@ const AboutInfoMain = styled.div`
     width: 11.11111%;
     bottom: 71.01px;
 
-    @media(max-width:981px){
-        display: none;
+    @media(max-width: 981px){
+        position: relative;
+        width: 80%;
+        bottom: 0;
+        left: 0;
+        height: auto;
+        margin: 40px auto;
     }
 `
 

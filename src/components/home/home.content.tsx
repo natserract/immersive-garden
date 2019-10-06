@@ -5,7 +5,7 @@ import FlexDisplay from '../reusable/layout/flex.reusable'
 
 type Props = {
     caseTitle, caseDescription, poster, title, source: string,
-    linkTo?: string, 
+    linkTo?: string,
     pathTo: any
 }
 
@@ -37,10 +37,25 @@ const CaseContainer = styled.div`
     &:not(:first-child){
         margin-top: 280px;
     }
+
+    @media(max-width: 980px){
+        & > div {
+            flex-direction: column
+            align-items: flex-start;
+        }
+        &:not(:first-child){
+            margin-top: 120px;
+        }
+    }
 `
 
 const CaseColumnLeft = styled.div`
     width: 12.5%;
+
+    @media (max-width: 980px){
+        width: 100%;
+        margin-left: 30px;
+    }
 `
 const Text = styled.span`
     color: #a4a4a4;
@@ -52,17 +67,30 @@ const Text = styled.span`
 `
 const CaseColumnCenter = styled.div`
     width: 81.25%;
+
+    @media (max-width: 980px){
+        width: 100%;
+        margin-top: 20px;
+    }
 `
 
 const Link = styled(A)`
     display: flex;
     flex-direction: row;
+    
+    @media (max-width: 980px){
+        flex-direction: column
+    }
 `
 const CaseMedia = styled.div`
     width: 61.538%;
     max-height: 416px;
     position: relative;
     overflow: hidden;
+
+    @media (max-width: 980px){
+        width: 100%;
+    }
 `
 
 const CaseContent = styled.div`
@@ -71,6 +99,11 @@ const CaseContent = styled.div`
     justify-content: center;
     width: 30.769%;
     margin-left: 7.692%;
+
+    @media (max-width: 980px){
+        width: 100%;
+        margin-top: 20px;
+    }
 `
 
 const Heading = styled.h3`
@@ -87,6 +120,10 @@ const Description = styled.p`
     letter-spacing: .05em;
     line-height: 2;
     margin-top: 40px;
+
+    @media(max-width: 980px){
+        display: none;
+    }
 `
 
 export default Content

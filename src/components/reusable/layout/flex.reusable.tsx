@@ -5,18 +5,19 @@ type Props = {
     children: any,
     justify?: 'center' | 'space-between' | 'flex-start' | 'flex-end',
     align?: 'center' | 'flex-end',
-    addStyle?: object
+    addStyle?: object,
+    className?: string
 }
 
-const Flex = ({ children, justify, align, addStyle }: Props) => {
+const Flex = ({ children, justify, align, addStyle, className }: Props) => {
     let componentProps = {
         justifyContentStyled: justify,
         alignItemsStyled: align,
-        style: addStyle 
+        style: addStyle
     }
 
     return (
-        <FlexContainer { ...componentProps }>
+        <FlexContainer className={className} { ...componentProps }>
             { children }
         </FlexContainer>
     )

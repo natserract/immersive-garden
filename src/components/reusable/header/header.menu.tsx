@@ -94,11 +94,19 @@ const MenuCategory = styled.div`
     &:first-child {
         margin-top: 0;
     }
+
+    @media(max-width: 980px){
+        bottom: 15%;
+    }
 `
 const MenuWrapper = styled.div`
     cursor: pointer;
     overflow: hidden;
     display: inline-block;
+
+    @media(max-width: 980px){
+        overflow: auto;
+    }
 `
 
 const MenuText = styled.span`
@@ -118,6 +126,14 @@ const MenuText = styled.span`
 
     &:not(:first-child){
         margin-top: 20px;
+    }
+
+    @media(max-width: 980px){
+        font-size: calc(42px + 26 * (100vw - 960px) / 960);
+        
+        &:not(:first-child){
+            margin-top: 40px;
+        }
     }
 `
 

@@ -115,6 +115,10 @@ const Links = styled(Link)`
     .is-color-black & {
         color: #000;
     }
+
+    @media(max-width: 980px){
+        margin-right: 20px;
+    }
 `
 const CloseText = styled.span`
     color: #555;
@@ -132,12 +136,17 @@ const HeaderColumn = styled.div`
     width: 14.286%;
     
     @media(max-width: 981px){
-        width: 27.778%;
+        width: 30%;
     }
+
 `
 const Brand = styled.div`
     position: relative;
     float: left;
+
+    @media(max-width: 980px){
+        display: none;
+    }
 `
 
 //Search
@@ -146,6 +155,10 @@ const Search = styled.div`
     cursor: pointer;
     transition: opacity .5s cubic-bezier(.23,1,.32,1), visibility .5s;
     will-change: opacity,visibility;
+
+    @media (max-width: 980px){
+        margin-left: 0;
+    }
 `
 const Circle = styled.div`
     width: 18px;
@@ -177,6 +190,10 @@ const Back = styled.div`
     line-height: 1.846153846153846;
     letter-spacing: .3em;
     cursor: pointer;
+
+    @media(max-width: 980px){
+        left: 20px;
+    }
 `
 
 export default Header

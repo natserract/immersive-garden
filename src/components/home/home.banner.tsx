@@ -7,7 +7,7 @@ import source from '../../config/MediaSource'
 type Props = {
     onClick: () => void,
     style: any
-} 
+}
 
 const Banner = ({ onClick, style }: Props) => (
     <Main style={style}>
@@ -32,8 +32,6 @@ const Main = styled.div`
     cursor: url(${source.global.cursor}), auto;
     will-change: transform, background-color;
     transition: transform 1s cubic-bezier(.23, 1, .32, 1) !important;
-
-
 `
 const BannerContainer = styled.div`
     width: 80%;
@@ -54,6 +52,10 @@ const Image = styled.img`
     opacity: .55;
     width: 100%;
     max-width: 35%;
+
+    @media (max-width: 980px){
+        max-width: 80%;
+    }
 `
 
 export default Banner

@@ -42,6 +42,10 @@ const ListItem = styled.li`
     &:not(:nth-child(2)){
         margin-top: 10px;
     }
+    
+    @media(max-width: 981px){
+        font-size: calc(17px + 0 * (100vw - 960px) / 960)
+    }
 `
 const TitleColumn = styled.h4`
     text-transform: uppercase;

@@ -15,7 +15,7 @@ const HomeNews = ({ onClick, style }: Props) => {
             <OutsideWrapper onClick={onClick} />
             <HomeNewsRow>
                 <ColumnLeft>
-                    <Subtitle> 
+                    <Subtitle>
                         <Text>Latest news</Text>
                     </Subtitle>
                 </ColumnLeft>
@@ -40,6 +40,10 @@ const NewsContainer = styled.div`
     position: relative;
     will-change: transform, background-color;
     transition: transform 1s cubic-bezier(.23, 1, .32, 1) !important;
+
+    @media (max-width: 980px){
+        flex-direction: column;
+    }
 `
 
 const HomeNewsRow = styled.div`
@@ -47,17 +51,31 @@ const HomeNewsRow = styled.div`
     margin: 0 auto;
     display: flex;
     flex-direction: row;
+
+    @media (max-width: 980px){
+        position: relative;
+        top: 25%;
+        flex-direction: column;
+    }
 `
 
 const ColumnLeft = styled.div`
     width: 21.429%;
     height: 100%;
     z-index: 5;
+
+    @media (max-width: 980px){
+        width: 100%;
+    }
 `
 
 const ColumnRight = styled.div`
     width: 78.571%;
     z-index: 5;
+
+    @media(max-width:980px){
+        width: 100%;
+    }
 `
 
 const Subtitle = styled.div`
@@ -79,8 +97,22 @@ const Link = styled.a`
     font-family: serif;
     text-transform: uppercase;
     color: #a4a4a4;
-    margin-right: 9% !important;
+    margin-right: 9%;
     z-index: 999;
+    
+    @media only screen and (min-width: 981px) and (max-width: 1099px){
+        font-size: 22px;
+    }
+    
+    @media (max-width: 980px){
+        font-size: 20px;
+        margin-top: 20px;
+        margin-right: 0;
+
+        & br {
+            display: none;
+        }
+    }
 `
 
 export default HomeNews

@@ -151,6 +151,12 @@ const ContentSection = styled.div`
     margin-left: auto;
     padding-right: 5.556%;
     padding-left: 5.556%;
+
+    @media (max-width: 980px){
+        max-width: 100%;
+        padding-left: 0;
+        padding-right: 0;
+    }
 `
 
 export default Index
