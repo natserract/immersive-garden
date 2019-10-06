@@ -13,14 +13,14 @@ import CaseImage from './cases.image'
 import mediasource from '../../config/MediaSource'
 
 const Index = ({ match, history }) => {
-    const ContextConsumer = React.useContext(Context);
+    const ContextConsumer:any = React.useContext(Context);
     const ref = createRef();
 
     //Check case URL
     let GETURL = match.url.replace('/cases/', '')
-    let URLFILTER = ContextConsumer.contentProps.some(URL =>
+    let URLFILTER = ContextConsumer.contentProps.some(URL => {
         URL.caseTitle.toLowerCase().replace(/ +/g, "-") === GETURL
-    )
+    })
 
     // <!--Redirect if parameter values not correctly-->
     if (!URLFILTER) return <Redirect to='/' />
