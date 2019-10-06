@@ -1,12 +1,31 @@
+stages:
+  - compile
+  - build
 
-
-image: node:6.5.0
-pages:
-  stage: deploy
-   script:
-    - echo "test"
+compile:
+  image: node:8.4.0
+  stage: compile
+  tags:
+    - docker
   artifacts:
+    expire_in: 10 minutes
     paths:
-    - build # mandatory, other folder won't work
+      - build/
+  script:
+    - yarn install
+    - yarn build
   only:
-  - master # or dev, the branch you want to publish
+    - develop
+    - master
+
+build:
+  image: inloopeu/devops
+  stage: build
+  tags:
+    - docker
+  services:
+    - docker:dind
+  script:
+    - devops gitlab docker build
+  only:
+    - master
