@@ -1,28 +1,15 @@
-build site:
-  image: node:6
-  stage: build
+
+
+image: node:6.5.0
+pages:
+  stage: deploy
   script:
-    - npm install --progress=false
-    - npm run build
+  - npm install
+  - npm run build
+  - rm -rf public
+  - mv build public
   artifacts:
-    expire_in: 1 week
     paths:
-      - dist
-
-unit test:
-  image: node:6
-  stage: test
-  script:
-    - npm install --progress=false
-    - npm run unit
-
-deploy:
-  image: alpine
-  stage: build/
-  script:
-    - apk add --no-cache rsync openssh
-    - mkdir -p ~/.ssh
-    - echo "$SSH_PRIVATE_KEY" >> ~/.ssh/id_dsa
-    - chmod 600 ~/.ssh/id_dsa
-    - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
-    - rsync -rav --delete dist/ user@server.com:/your/project/path/
+    - build # mandatory, other folder won't work
+  only:
+  - master # or dev, the branch you want to publish
