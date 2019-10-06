@@ -3,6 +3,8 @@
 image: node:6.5.0
 pages:
   stage: deploy
+   script:
+    - echo "test"
   artifacts:
     paths:
     - build # mandatory, other folder won't work
