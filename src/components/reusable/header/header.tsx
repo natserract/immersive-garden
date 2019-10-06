@@ -17,7 +17,8 @@ type Props = {
     onCloseTextClick?: () => void,
     closeText?: string,
     addClass?: string,
-    headerRef?:any
+    headerRef?: string,
+    backToLink?: () => void
 }
 
 
@@ -30,7 +31,8 @@ const Header = ({
     headerShowCategory, 
     closeText, 
     onCloseTextClick,
-    headerRef  }: Props) => {
+    headerRef,
+    backToLink  }: Props) => {
 
     //Show Menu Or Not
     const MenuName: typeof React.Component = () => menuName ? (
@@ -69,7 +71,7 @@ const Header = ({
 
                     {/* <!-- Back --> */}
                     { backLinkVisibility ? (
-                            <Back to="/"><span>Back</span></Back>
+                            <Back onClick={backToLink}><span>Back</span></Back>
                         ) : undefined }
 
                 </HeaderColumn>
@@ -162,7 +164,7 @@ const Text = styled.span`
 `
 
 //Back link
-const Back = styled(Link)`
+const Back = styled.div`
     position:absolute;
     top: 0;
     color: #000;
@@ -174,6 +176,7 @@ const Back = styled(Link)`
     font-size: calc(13px + 0 * (100vw - 960px) / 960);
     line-height: 1.846153846153846;
     letter-spacing: .3em;
+    cursor: pointer;
 `
 
 export default Header

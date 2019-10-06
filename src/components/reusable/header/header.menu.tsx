@@ -3,11 +3,11 @@ import styled from 'styled-components'
 import source from '../../../config/MediaSource'
 
 type Props = {
-    visibilityHandler: string,
-    closeThisMenu: () => void
+    closeThisMenu: () => void,
+    menuDisplay: string,
 }
 
-const HeaderMenu = ({ visibilityHandler, closeThisMenu }: Props) => {
+const HeaderMenu = ({ closeThisMenu, menuDisplay }: Props) => {
     const [state] = React.useState({
         name: [
             'Featured Projects',
@@ -20,20 +20,20 @@ const HeaderMenu = ({ visibilityHandler, closeThisMenu }: Props) => {
 
 
     const MenuName: typeof React.Component = () => (
-        state.name.map((item, id) =>{
-            return <MenuText onClick={() => console.log('Hello')} key={id}> { item } </MenuText>
+        state.name.map((item, id) => {
+            return <MenuText onClick={() => console.log('Hello')} key={id}> {item} </MenuText>
         })
     )
 
     return (
-        <MenuMain onClick={closeThisMenu} visibleStyled={visibilityHandler}>
+        <MenuMain onClick={closeThisMenu} menuDisplayProps={menuDisplay}>
             <MenuHeader onClick={closeThisMenu}>
                 <Text>Close</Text>
             </MenuHeader>
             <MenuContainer>
                 <MenuCategory>
                     <MenuWrapper>
-                        <MenuName/>
+                        <MenuName />
                     </MenuWrapper>
                 </MenuCategory>
             </MenuContainer>
@@ -44,9 +44,8 @@ const HeaderMenu = ({ visibilityHandler, closeThisMenu }: Props) => {
 
 /* Style */
 const MenuMain = styled.section`
-    opacity: 1;
-    visibility: ${props => props.visibleStyled};
-    transition: opacity .1s cubic-bezier(.23,1,.32,1),visibility .1s ease-out;
+    display: ${props => props.menuDisplayProps};
+    transition: display .3s cubic-bezier(.23,1,.32,1);
     will-change: opacity,visibility;
     position: fixed;
     width: 100%;
@@ -70,7 +69,7 @@ const Text = styled.span`
 const MenuContainer = styled.div`
     transform: translateZ(0);
     min-height: 100vh;
-    padding-top: 140px;
+    padding-top: 40px;
     padding-right: 5.55556vw;
     padding-left: 5.55556vw;
     cursor: default;
@@ -79,9 +78,12 @@ const MenuContainer = styled.div`
     cursor: url(${source.global.cursorMenu}) 16 16,pointer;
     will-change: transform;
     overflow-y: scroll;
+    position: relative;
 `
 
 const MenuCategory = styled.div`
+    position: absolute;
+    bottom: 20%;
     color: #000;
     margin-top: 20px;
     transform: translateZ(0);
@@ -103,10 +105,16 @@ const MenuText = styled.span`
     font-size: calc(34px + 26 * (100vw - 960px) / 960);
     line-height: 1.5;
     letter-spacing: .2em;
-    font-family: Freight,"serif";
+    font-family: serif;
     text-transform: uppercase;
     font-weight: 300;
     display: block;
+    -webkit-font-smoothing: antialiased;
+    transition: .3s all ease-out;
+
+    &:hover {
+        color: #0c0c0d;
+    }
 
     &:not(:first-child){
         margin-top: 20px;

@@ -59,7 +59,7 @@ const Index = () => {
     let pushClassEl = move.mainTransform ? 'home-bg-active' : null,
         changeColorEl = move.mainTransform ? 'active' : null,
         searchVisibility = move.mainTransform ? true : false,
-        menuVisibility = move.visible ? 'visible' : 'hidden';
+        menuVisibility = move.visible ? 'block': 'none' 
 
 
     const CaseContent:typeof React.Component = () => 
@@ -86,7 +86,7 @@ const Index = () => {
             style: { transform: newTransformStyle }
         },
         menuProps: {
-            visibilityHandler: menuVisibility,
+            menuDisplay: menuVisibility,
             closeThisMenu: () => handlerChange({ type: 'VISIBLE' })
         }
     }

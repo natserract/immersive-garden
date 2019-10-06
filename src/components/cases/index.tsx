@@ -12,7 +12,7 @@ import CaseCredits from './cases.credits'
 import CaseImage from './cases.image'
 import mediasource from '../../config/MediaSource'
 
-const Index = ({ match }) => {
+const Index = ({ match, history }) => {
     const ContextConsumer = React.useContext(Context);
     const ref = createRef();
 
@@ -73,6 +73,7 @@ const Index = ({ match }) => {
             menuName: 'About Us',
             addClass: "is-color-black",
             backLinkVisibility: true,
+            backToLink: () => history.goBack()
         }
     }
 
@@ -170,7 +171,7 @@ const Index = ({ match }) => {
 const PCaseSection = styled.section`
     background-color: #f7f7f7;
     padding: 1px;
-    width: 100%;
+    width: 100vw;
     height: 100vh;
     overflow: auto;
     scroll-behavior: smooth;
