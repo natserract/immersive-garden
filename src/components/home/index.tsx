@@ -62,7 +62,7 @@ const Index = () => {
         menuVisibility = move.visible ? 'block': 'none' 
 
 
-    const CaseContent:typeof React.Component = () => 
+    const CaseContent = () => 
         ContextConsumer.contentProps.map((item, id) => {
             let url = item.caseTitle.toLowerCase().replace(/ +/g, "-");
             return <Content key={id} pathTo={url} {...item} />
