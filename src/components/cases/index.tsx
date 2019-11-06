@@ -13,12 +13,29 @@ import CaseImage from './cases.image'
 import mediasource from '../../config/MediaSource'
 
 const Index = ({ match, history }) => {
-    const ContextConsumer:any = React.useContext(Context);
+    const ContextConsumer: any = React.useContext(Context);
     const ref = createRef();
+
+
+    //ScrollToTop
+    const scrollToTop = React.useCallback(
+        () => {
+            ref.current.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start',
+            });
+        },
+        [ref],
+    )
+
+    // to top when routes change
+    React.useEffect(() => {
+        scrollToTop();
+    }, [scrollToTop])
 
     //Check case URL
     let GETURL = match.url.replace('/cases/', '')
-    let URLFILTER = ContextConsumer.contentProps.some(URL => 
+    let URLFILTER = ContextConsumer.contentProps.some(URL =>
         URL.caseTitle.toLowerCase().replace(/ +/g, "-") === GETURL
     )
 
@@ -38,11 +55,13 @@ const Index = ({ match, history }) => {
     let nextCaseURL = findNextCaseTitle ? findNextCaseTitle.toLowerCase().replace(/ +/g, "-") : null
 
 
+
     // Prev Case URL 
     let prevNextCaseIndex = ContextConsumer.contentProps.indexOf(GetCaseContext) - 1;
     let CheckPrev = prevNextCaseIndex !== -1 ? ContextConsumer.contentProps[prevNextCaseIndex].caseTitle : null;
     let prevCaseURL = CheckPrev ? CheckPrev.toLowerCase().replace(/ +/g, "-") : null
     let classHasMargin = CheckPrev ? 'hasMargin' : null;
+
 
 
     let caseCreditItem = [
@@ -80,7 +99,7 @@ const Index = ({ match, history }) => {
     }
 
     //caseImage
-    const CaseImgList: typeof React.Component = () => (
+    const CaseImgList = () => (
         GetCaseContext.caseImgDetail.map((caseItem, key) =>
             <CaseImage
                 key={key}
@@ -90,14 +109,6 @@ const Index = ({ match, history }) => {
             />
         )
     )
-
-    //ScrollToTop
-    const scrollToTop = () => {
-        ref.current.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start',
-        });
-    }
 
     return (
         <React.Fragment>
