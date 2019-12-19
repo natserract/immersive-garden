@@ -14,11 +14,11 @@ import mediasource from '../../config/MediaSource'
 
 const Index = ({ match, history }) => {
     const ContextConsumer: any = React.useContext(Context);
-    const ref = createRef();
+    const ref:any = createRef();
 
 
     //ScrollToTop
-    const scrollToTop = React.useCallback(
+    const scrollToTop = React.useCallback<any>(
         () => {
             ref.current.scrollIntoView({
                 behavior: 'smooth',
