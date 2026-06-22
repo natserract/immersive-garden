@@ -80,7 +80,6 @@ async function registerValidSW(swUrl: string, config?: Config) {
             // At this point, everything has been precached.
             // It's the perfect time to display a
             // "Content is cached for offline use." message.
-            console.log('Content is cached for offline use.');
 
             // Execute callback
             if (config && config.onSuccess) {
@@ -117,10 +116,9 @@ async function checkValidServiceWorker(swUrl: string, config?: Config) {
   }
 }
 
-export function unregister() {
+export async function unregister() {
   if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.ready.then(registration => {
-      registration.unregister();
-    });
+    const registration = await navigator.serviceWorker.ready;
+    await registration.unregister();
   }
 }
