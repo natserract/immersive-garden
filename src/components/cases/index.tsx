@@ -1,4 +1,4 @@
-import React, { createRef } from 'react'
+import React, { createRef, useCallback, useContext, useEffect } from 'react'
 import { Redirect } from 'react-router'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
@@ -12,60 +12,43 @@ import CaseImage from './cases.image'
 import mediasource from '../../config/MediaSource'
 
 const Index = ({ match, history }) => {
-    const ContextConsumer: any = React.useContext(Context);
-    const ref:any = createRef();
+    const ContextConsumer = useContext(Context);
+    const ref = createRef();
 
+    const scrollToTop = useCallback(() => {
+        ref.current.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start',
+        });
+    }, [ref]);
 
-    //ScrollToTop
-    const scrollToTop = React.useCallback<any>(
-        () => {
-            ref.current.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start',
-            });
-        },
-        [ref],
-    )
-
-    // to top when routes change
-    React.useEffect(() => {
+    useEffect(() => {
         scrollToTop();
-    }, [scrollToTop])
+    }, [scrollToTop]);
 
-    //Check case URL
-    let GETURL = match.url.replace('/cases/', '')
-    let URLFILTER = ContextConsumer.contentProps.some(URL =>
+    const GETURL = match.url.replace('/cases/', '');
+    const URLFILTER = ContextConsumer.contentProps.some(URL =>
         URL.caseTitle.toLowerCase().replace(/ +/g, "-") === GETURL
-    )
+    );
 
-    // <!--Redirect if parameter values not correctly-->
     if (!URLFILTER) return <Redirect to='/' />
 
-    //Get case values 
-    let GetCaseContext = ContextConsumer.contentProps.find(val =>
+    const GetCaseContext = ContextConsumer.contentProps.find(val =>
         val.caseTitle.toLowerCase().replace(/ +/g, "-") === GETURL
-    )
+    );
 
-    if (!GetCaseContext) return <Redirect to='/' />
+    const findNextCaseIndex = ContextConsumer.contentProps.indexOf(GetCaseContext) + 1;
+    const findLastCaseIndex = ContextConsumer.contentProps.indexOf(GetCaseContext);
+    const findCaseItemLength = ContextConsumer.contentProps.length - 1;
+    const findNextCaseTitle = findLastCaseIndex !== findCaseItemLength ? ContextConsumer.contentProps[findNextCaseIndex].caseTitle : null;
+    const nextCaseURL = findNextCaseTitle ? findNextCaseTitle.toLowerCase().replace(/ +/g, "-") : null;
 
-    //Find next case url
-    let findNextCaseIndex = ContextConsumer.contentProps.indexOf(GetCaseContext) + 1;
-    let findLastCaseIndex = ContextConsumer.contentProps.indexOf(GetCaseContext);
-    let findCaseItemLength = ContextConsumer.contentProps.length - 1;
-    let findNextCaseTitle = findLastCaseIndex !== findCaseItemLength ? ContextConsumer.contentProps[findNextCaseIndex].caseTitle : null
-    let nextCaseURL = findNextCaseTitle ? findNextCaseTitle.toLowerCase().replace(/ +/g, "-") : null
+    const prevNextCaseIndex = ContextConsumer.contentProps.indexOf(GetCaseContext) - 1;
+    const CheckPrev = prevNextCaseIndex !== -1 ? ContextConsumer.contentProps[prevNextCaseIndex].caseTitle : null;
+    const prevCaseURL = CheckPrev ? CheckPrev.toLowerCase().replace(/ +/g, "-") : null;
+    const classHasMargin = CheckPrev ? 'hasMargin' : null;
 
-
-
-    // Prev Case URL 
-    let prevNextCaseIndex = ContextConsumer.contentProps.indexOf(GetCaseContext) - 1;
-    let CheckPrev = prevNextCaseIndex !== -1 ? ContextConsumer.contentProps[prevNextCaseIndex].caseTitle : null;
-    let prevCaseURL = CheckPrev ? CheckPrev.toLowerCase().replace(/ +/g, "-") : null
-    let classHasMargin = CheckPrev ? 'hasMargin' : null;
-
-
-
-    let caseCreditItem = [
+    const caseCreditItem = [
         {
             title: 'Role',
             desc: [
@@ -87,9 +70,9 @@ const Index = ({ match, history }) => {
                 'CSS Design Award Site of the Day'
             ]
         }
-    ]
+    ];
 
-    let Props = {
+    const Props = {
         headerProps: {
             to: '/about-us',
             menuName: 'About Us',
@@ -97,9 +80,8 @@ const Index = ({ match, history }) => {
             backLinkVisibility: true,
             backToLink: () => history.goBack()
         }
-    }
+    };
 
-    //caseImage
     const CaseImgList = () => (
         GetCaseContext.caseImgDetail.map((caseItem, key) =>
             <CaseImage
@@ -109,17 +91,15 @@ const Index = ({ match, history }) => {
                 imgSource={caseItem}
             />
         )
-    )
+    );
 
     return (
         <React.Fragment>
             <Header {...Props.headerProps} />
 
             <PCaseSection>
-                {/* <!-- Scroll Top Target --> */}
                 <div ref={ref}></div>
 
-                {/* <!-- Container --> */}
                 <Container>
                     <PCaseHeader>
                         <Text>Experience</Text>
@@ -145,8 +125,6 @@ const Index = ({ match, history }) => {
                     <CaseImgList />
 
                     <div style={{ position: 'relative' }}>
-                        {/* <!-- Prev/next Project -- > */}
-
                         <CasePreviousNext>
                             {
                                 prevCaseURL ? (
@@ -166,7 +144,6 @@ const Index = ({ match, history }) => {
                             }
                         </CasePreviousNext>
 
-                        {/* <!-- Back to top --> */}
                         <BackToTop onClick={scrollToTop}>
                             <img src={mediasource.arrowUp} alt="Back to top" title="Back to top" height="100%" />
                         </BackToTop>
@@ -176,10 +153,8 @@ const Index = ({ match, history }) => {
             </PCaseSection>
         </React.Fragment>
     )
-
 }
 
-/* Style */
 const PCaseSection = styled.section`
     background-color: #f7f7f7;
     padding: 1px;

@@ -20,14 +20,18 @@ const HomeNews = ({ onClick, style }: Props) => {
                     </Subtitle>
                 </ColumnLeft>
                 <ColumnRight>
-                    <Link rel="nofollow noreferrer noopener" href="https://www.facebook.com/immersive.g/photos/a.850906044922470.1073741828.843690335644041/1884925721520492/?type=3&theater" target="_blank">
-                        <h2><span>Studio Of The Year 2017 by both Awwwards <br /> and CSS Design Awards</span></h2>
-                    </Link>
+                    <NewsLink />
                 </ColumnRight>
             </HomeNewsRow>
         </NewsContainer>
     )
 }
+
+const NewsLink = () => (
+    <Link rel="nofollow noreferrer noopener" href="https://www.facebook.com/immersive.g/photos/a.850906044922470.1073741828.843690335644041/1884925721520492/?type=3&theater" target="_blank">
+        <h2><span>Studio Of The Year 2017 by both Awwwards <br /> and CSS Design Awards</span></h2>
+    </Link>
+)
 
 /* Styles */
 const NewsContainer = styled.div`

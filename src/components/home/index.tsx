@@ -19,53 +19,67 @@ const Index = () => {
         visible: false,
     });
 
-    //handlerChange
     const handlerChange = (action) => {
         switch (action.type) {
-            case 'FIRST': {
-                setMove({
-                    transform: !move.transform,
-                    newTransform: !move.newTransform,
-                });
-                break
-            }
-            case 'SECOND': {
-                setMove({
-                    mainTransform: !move.mainTransform
-                })
-                break
-            }
-            case 'VISIBLE': {
-                setMove({
-                    visible: !move.visible
-                })
-                break
-            }
-            default: {
-                return false
-            }
+            case 'FIRST':
+                toggleTransform();
+                break;
+            case 'SECOND':
+                toggleMainTransform();
+                break;
+            case 'VISIBLE':
+                toggleVisibility();
+                break;
+            default:
+                return false;
         }
     }
 
-    //state conditions
-    let newTransformStyle =
-        move.transform ? (move.transform = '-100%') : (move.newTransform ?
-            (move.newTransform = 'translateY(-100%)') : (move.mainTransform = 'translateY(-200%)'));
+    const toggleTransform = () => {
+        setMove((prevState) => ({
+            ...prevState,
+            transform: !prevState.transform,
+            newTransform: !prevState.newTransform,
+        }));
+    };
 
-    let pushClassEl = move.mainTransform ? 'home-bg-active' : null,
-        changeColorEl = move.mainTransform ? 'active' : null,
-        searchVisibility = move.mainTransform ? true : false,
-        menuVisibility = move.visible ? 'block': 'none' 
+    const toggleMainTransform = () => {
+        setMove((prevState) => ({
+            ...prevState,
+            mainTransform: !prevState.mainTransform,
+        }));
+    };
 
-    const generateUrl = (title) => title.toLowerCase().replace(/ +/g, "-");
+    const toggleVisibility = () => {
+        setMove((prevState) => ({
+            ...prevState,
+            visible: !prevState.visible,
+        }));
+    };
+
+    const newTransformStyle = calculateNewTransformStyle(move);
+    const pushClassEl = move.mainTransform ? 'home-bg-active' : null;
+    const changeColorEl = move.mainTransform ? 'active' : null;
+    const searchVisibility = move.mainTransform;
+    const menuVisibility = move.visible ? 'block' : 'none';
+
+    const calculateNewTransformStyle = (move) => {
+        if (move.transform) {
+            return '-100%';
+        } else if (move.newTransform) {
+            return 'translateY(-100%)';
+        } else if (move.mainTransform) {
+            return 'translateY(-200%)';
+        }
+        return '';
+    };
 
     const CaseContent = () => 
         ContextConsumer.contentProps.map((item, id) => {
-            let url = generateUrl(item.caseTitle);
+            let url = item.caseTitle.toLowerCase().replace(/ +/g, "-");
             return <Content key={id} pathTo={url} {...item} />
     })
 
-    //Initial props
     const props = {
         headerProps: {
             to: '/about-us',
@@ -90,28 +104,21 @@ const Index = () => {
 
     return (
         <HomeMain>
-            {/* {<!-- Header --> */}
             <Header {...props.headerProps}/>
-
-            {/* {<!-- Container --> */}
             <HomeContainer className={pushClassEl}>
                 <Banner {...props.bannerProps} />
                 <HomeNews  {...props.homeNewsProps} />
-
-                {/* {<!-- Scrolled content --> */}
                 <SectionScroller style={props.bannerProps.style}>
                     <ContentSection>
                         <CaseContent />
                     </ContentSection>
                 </SectionScroller>
             </HomeContainer>
-
             <Menu {...props.menuProps} />
         </HomeMain>
     )
 }
 
-/* Style */
 const HomeMain = styled.div`
     position: relative
 `

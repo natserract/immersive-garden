@@ -1,4 +1,3 @@
-
 import React from 'react'
 import styled from 'styled-components'
 import Flex from '../reusable/layout/flex.reusable'
@@ -14,19 +13,21 @@ type NewsLetterProps = {
 
 //contact information
 const AboutContact = ({ contactLists }: Props) => (
-    contactLists.map(
-        (contactList, index) =>
-            <ContactsItem key={index}>
-                <Link href={`mailto:${contactList.content}`} rel="nofollow noreferrer noopener" target="_blank">
-                    <ContactsTitle>{contactList.title}</ContactsTitle>
-                    <ContactsContent>
-                        {contactList.content}
-                    </ContactsContent>
-                </Link>
-            </ContactsItem>
-    )
+    contactLists.map((contactList, index) => (
+        <ContactItem key={index} contactList={contactList} />
+    ))
 )
 
+const ContactItem = ({ contactList }) => (
+    <ContactsItem>
+        <Link href={`mailto:${contactList.content}`} rel="nofollow noreferrer noopener" target="_blank">
+            <ContactsTitle>{contactList.title}</ContactsTitle>
+            <ContactsContent>
+                {contactList.content}
+            </ContactsContent>
+        </Link>
+    </ContactsItem>
+)
 
 //Newsletter
 export const AboutNewsLetter = ({ contactTitle }: NewsLetterProps) => (
@@ -40,7 +41,6 @@ export const AboutNewsLetter = ({ contactTitle }: NewsLetterProps) => (
         </Flex>
     </ContactsItem>
 )
-
 
 /* Style */
 const ContactsItem = styled.div`
