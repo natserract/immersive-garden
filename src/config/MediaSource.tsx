@@ -1,8 +1,14 @@
+// ImagePaths.ts
+export const IMGPATHSOURCE: string = `assets/img/`;
 
-let IMGPATHSOURCE: string = `assets/img/`,
-    VIDEOPATHSOURCE: string = `assets/video/`
+// VideoPaths.ts
+export const VIDEOPATHSOURCE: string = `assets/video/`;
 
-const ImageSource = ({
+// ImageSource.ts
+import { IMGPATHSOURCE } from './ImagePaths';
+import { VIDEOPATHSOURCE } from './VideoPaths';
+
+const ImageSource = {
     global: {
         logo: require(`../${IMGPATHSOURCE}logotype.png`),
         logoSmall: require(`../${IMGPATHSOURCE}logotype--gray.png`),
@@ -81,6 +87,6 @@ const ImageSource = ({
             require(`../${IMGPATHSOURCE}cases-project6-image7.jpg`),
         ]
     }
-})
+};
 
-export default ImageSource
+export default ImageSource;
