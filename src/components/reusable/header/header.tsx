@@ -1,4 +1,3 @@
-
 import React from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
@@ -21,7 +20,6 @@ type Props = {
     backToLink?: () => void
 }
 
-
 const Header = ({ 
     addClass, to, 
     backLinkVisibility, 
@@ -34,57 +32,63 @@ const Header = ({
     headerRef,
     backToLink  }: Props) => {
 
-    //Show Menu Or Not
-    const MenuName: typeof React.Component = () => menuName ? (
-        <Links to={to} className={getClass}>{menuName}</Links>) : (
-            <CloseText onClick={onCloseTextClick}>{closeText}</CloseText>
-        )
-
     return (
         <HeaderMain className={addClass ? `${addClass}` : null} ref={headerRef}>
             <FlexDisplay justify='space-between' align='center'>
                 <HeaderColumn>
-                    {/* <!--- Brand ---> */}
-                    {   brandVisibility ? (
-                            <Brand>
-                                <Link to="/" style={{ marginTop: '7px' }}>
-                                    <img style={{ width: '100%' }}
-                                        alt="Immersive Garden - Logotype"
-                                        title="Immersive Garden - Logotype"
-                                        src={source.global.logoSmall}
-                                    />
-                                </Link>
-                            </Brand>
-                    ) : undefined }
-
-
-                    {/* <!--- Search ---> */}
-                    {   headerSearchVisibility ? (
-                            <Search searchVisibility={headerSearchVisibility} onClick={headerShowCategory} >
-                                <FlexDisplay align='center'>
-                                    <Circle></Circle>
-                                    <Text>Search By</Text>
-                                </FlexDisplay>
-                            </Search>
-                    ) : undefined }
-
-
-                    {/* <!-- Back --> */}
-                    { backLinkVisibility ? (
-                            <Back onClick={backToLink}><span>Back</span></Back>
-                        ) : undefined }
-
+                    <BrandSection brandVisibility={brandVisibility} />
+                    <SearchSection headerSearchVisibility={headerSearchVisibility} headerShowCategory={headerShowCategory} />
+                    <BackSection backLinkVisibility={backLinkVisibility} backToLink={backToLink} />
                 </HeaderColumn>
 
                 <HeaderColumn>
                     <HeaderMenu>
-                        <MenuName />
+                        <MenuName menuName={menuName} to={to} getClass={getClass} onCloseTextClick={onCloseTextClick} closeText={closeText} />
                     </HeaderMenu>
                 </HeaderColumn>
             </FlexDisplay>
         </HeaderMain>
     )
 }
+
+const MenuName = ({ menuName, to, getClass, onCloseTextClick, closeText }) => (
+    menuName ? (
+        <Links to={to} className={getClass}>{menuName}</Links>
+    ) : (
+        <CloseText onClick={onCloseTextClick}>{closeText}</CloseText>
+    )
+)
+
+const BrandSection = ({ brandVisibility }) => (
+    brandVisibility ? (
+        <Brand>
+            <Link to="/" style={{ marginTop: '7px' }}>
+                <img style={{ width: '100%' }}
+                    alt="Immersive Garden - Logotype"
+                    title="Immersive Garden - Logotype"
+                    src={source.global.logoSmall}
+                />
+            </Link>
+        </Brand>
+    ) : null
+)
+
+const SearchSection = ({ headerSearchVisibility, headerShowCategory }) => (
+    headerSearchVisibility ? (
+        <Search searchVisibility={headerSearchVisibility} onClick={headerShowCategory} >
+            <FlexDisplay align='center'>
+                <Circle></Circle>
+                <Text>Search By</Text>
+            </FlexDisplay>
+        </Search>
+    ) : null
+)
+
+const BackSection = ({ backLinkVisibility, backToLink }) => (
+    backLinkVisibility ? (
+        <Back onClick={backToLink}><span>Back</span></Back>
+    ) : null
+)
 
 const HeaderMain = styled.header`
     height: 20px;
@@ -138,7 +142,6 @@ const HeaderColumn = styled.div`
     @media(max-width: 981px){
         width: 30%;
     }
-
 `
 const Brand = styled.div`
     position: relative;
@@ -148,8 +151,6 @@ const Brand = styled.div`
         display: none;
     }
 `
-
-//Search
 const Search = styled.div`
     margin-left: -42px;
     cursor: pointer;
@@ -175,8 +176,6 @@ const Text = styled.span`
     letter-spacing: .2em;
     margin-left: 20px;
 `
-
-//Back link
 const Back = styled.div`
     position:absolute;
     top: 0;
