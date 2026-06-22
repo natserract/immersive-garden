@@ -74,13 +74,9 @@ const Index = () => {
         return '';
     };
 
-    const formatCaseTitle = (title) => {
-        return title.toLowerCase().replace(/ +/g, "-");
-    };
-
     const CaseContent = () => 
         ContextConsumer.contentProps.map((item, id) => {
-            let url = formatCaseTitle(item.caseTitle);
+            let url = item.caseTitle.toLowerCase().replace(/ +/g, "-");
             return <Content key={id} pathTo={url} {...item} />
     })
 
