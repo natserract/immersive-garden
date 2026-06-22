@@ -37,6 +37,8 @@ const Index = ({ match, history }) => {
         val.caseTitle && val.caseTitle.toLowerCase().replace(/ +/g, "-") === GETURL
     );
 
+    if (!GetCaseContext) return <Redirect to='/' />
+
     const findNextCaseIndex = ContextConsumer.contentProps.indexOf(GetCaseContext) + 1;
     const findLastCaseIndex = ContextConsumer.contentProps.indexOf(GetCaseContext);
     const findCaseItemLength = ContextConsumer.contentProps.length - 1;
