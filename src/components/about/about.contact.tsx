@@ -33,13 +33,17 @@ const ContactItem = ({ contactList }) => (
 export const AboutNewsLetter = ({ contactTitle }: NewsLetterProps) => (
     <ContactsItem>
         <ContactsTitle>{contactTitle}</ContactsTitle>
-        <Flex align="center" justify="center" addStyle={{ marginTop: '5px', borderBottom: '1px solid', borderColor: 'rgba(85,85,85,.5)' }}>
-            <NewsletterInput type="email" name="email" autocapitalize="off" autocorrect="off" placeholder="Place your email address" />
-            <NewsLetterSubmit>
-                <img src={MediaSource.icon_submit} alt="Send my email" title="Send my email" style={{ width: '10px' }} />
-            </NewsLetterSubmit>
-        </Flex>
+        <NewsletterForm />
     </ContactsItem>
+)
+
+const NewsletterForm = () => (
+    <Flex align="center" justify="center" addStyle={{ marginTop: '5px', borderBottom: '1px solid', borderColor: 'rgba(85,85,85,.5)' }}>
+        <NewsletterInput type="email" name="email" autocapitalize="off" autocorrect="off" placeholder="Place your email address" />
+        <NewsLetterSubmit>
+            <img src={MediaSource.icon_submit} alt="Send my email" title="Send my email" style={{ width: '10px' }} />
+        </NewsLetterSubmit>
+    </Flex>
 )
 
 /* Style */

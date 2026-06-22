@@ -20,20 +20,24 @@ const Content = ({ caseTitle, caseDescription, poster, title, source, pathTo }: 
                 <Text>Experience</Text>
             </CaseColumnLeft>
             <CaseColumnCenter>
-                <StyledLink to={`/cases/${pathTo}`}>
-                    <CaseMedia>
-                        <video preload="auto" autoPlay={true} loop={true} poster={poster} title={title}>
-                            <source src={source} type="video/mp4"></source>
-                        </video>
-                    </CaseMedia>
-                    <CaseContent>
-                        <Heading>{caseTitle}</Heading>
-                        <Description>{caseDescription}</Description>
-                    </CaseContent>
-                </StyledLink>
+                <CaseLink pathTo={pathTo} poster={poster} title={title} source={source} caseTitle={caseTitle} caseDescription={caseDescription} />
             </CaseColumnCenter>
         </FlexDisplay>
     </CaseContainer>
+)
+
+const CaseLink = ({ pathTo, poster, title, source, caseTitle, caseDescription }: Props) => (
+    <StyledLink to={`/cases/${pathTo}`}>
+        <CaseMedia>
+            <video preload="auto" autoPlay={true} loop={true} poster={poster} title={title}>
+                <source src={source} type="video/mp4"></source>
+            </video>
+        </CaseMedia>
+        <CaseContent>
+            <Heading>{caseTitle}</Heading>
+            <Description>{caseDescription}</Description>
+        </CaseContent>
+    </StyledLink>
 )
 
 /* Styles */

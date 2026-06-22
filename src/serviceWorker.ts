@@ -50,10 +50,6 @@ export function register(config?: Config) {
         // service worker/PWA documentation.
         try {
           await navigator.serviceWorker.ready;
-          console.log(
-            'This web app is being served cache-first by a service ' +
-              'worker. To learn more, visit https://bit.ly/CRA-PWA'
-          );
         } catch (error) {
           console.error('Error during service worker readiness check:', error);
         }

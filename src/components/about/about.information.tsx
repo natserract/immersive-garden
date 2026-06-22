@@ -1,12 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
 
-type construct = {
+type ConstructProps = {
     infoTitle: string,
-    children: any
+    children: React.ReactNode
 }
 
-const AboutInformation = ({ infoTitle, children }: construct) => (
+const AboutInformation = ({ infoTitle, children }: ConstructProps) => (
     <React.Fragment>
         <MapSection infoTitle={infoTitle} children={children} />
         <PhoneSection />
@@ -14,7 +14,7 @@ const AboutInformation = ({ infoTitle, children }: construct) => (
     </React.Fragment>
 )
 
-const MapSection = ({ infoTitle, children }: construct) => (
+const MapSection = ({ infoTitle, children }: ConstructProps) => (
     <MapLink href="https://goo.gl/maps/xQJnhd9ihVr" target="_blank" rel="noopener noreferrer nofollow">
         <Title>{infoTitle}</Title>
         <ContentInfo>
@@ -57,8 +57,8 @@ const Title = styled.h4`
     line-height: 1.785714285714286;
 `
 const MapLink = styled.a`
-    display: 'inline-block'; 
-    position: 'relative';
+    display: inline-block; 
+    position: relative;
 `
 const ContentInfo = styled.div`
     letter-spacing: .05em;
