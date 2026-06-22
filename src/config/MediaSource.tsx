@@ -86,12 +86,11 @@ const caseImages = {
     ],
 };
 
-const ImageSource = {
+export const ImageSource = {
     global: globalImages,
-    video: videoSources,
     arrow: arrows,
     poster: posters,
     cases: caseImages,
 };
 
-export default ImageSource;
+export const VideoSource = videoSources;
