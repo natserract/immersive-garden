@@ -2,7 +2,7 @@ let IMGPATHSOURCE: string = `assets/img/`;
 let VIDEOPATHSOURCE: string = `assets/video/`;
 
 const loadImages = (path: string, images: string[]) => {
-    return images.map(image => require(`../${path}${image}`));
+    return images.map(image => loadImage(path, image));
 };
 
 const loadImage = (path: string, imageName: string) => {

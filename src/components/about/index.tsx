@@ -25,17 +25,15 @@ const newsletterContext = [
 ]
 
 const getProps = (history) => ({
-    header: {
-        brandVisibility: true,
-        closeText: 'close',
-        onCloseTextClick: () => history.goBack(),
-    },
+    brandVisibility: true,
+    closeText: 'close',
+    onCloseTextClick: () => history.goBack(),
 })
 
 const About = ({ history }) => {
     return (
         <AboutSection>
-            <Header {...getProps(history).header} />
+            <Header {...getProps(history)} />
             <Container>
                 <Title>We Create Emotional, Meaningful & Innovative Digital Experience</Title>
                 <ContentDesc>

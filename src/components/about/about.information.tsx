@@ -33,20 +33,18 @@ const SocialMediaSection = () => (
     <div>
         <Separator />
         <SocialMediaLists>
-            <SCList>
-                <a href="https://www.facebook.com/immersive.g/" target="_blank" rel="noopener noreferrer nofollow">facebook</a>
-            </SCList>
-            <SCList>
-                <a href="https://twitter.com/Immersive_g" target="_blank" rel="noopener noreferrer nofollow" >twitter</a>
-            </SCList>
-            <SCList>
-                <a href="https://www.behance.net/immersive-g" target="_blank" rel="noopener noreferrer nofollow">behance</a>
-            </SCList>
-            <SCList>
-                <a href="https://www.linkedin.com/company/immersive-garden/" target="_blank" rel="noopener noreferrer nofollow">linkedIn</a>
-            </SCList>
+            <SocialMediaLink href="https://www.facebook.com/immersive.g/" label="facebook" />
+            <SocialMediaLink href="https://twitter.com/Immersive_g" label="twitter" />
+            <SocialMediaLink href="https://www.behance.net/immersive-g" label="behance" />
+            <SocialMediaLink href="https://www.linkedin.com/company/immersive-garden/" label="linkedIn" />
         </SocialMediaLists>
     </div>
+)
+
+const SocialMediaLink = ({ href, label }: { href: string, label: string }) => (
+    <SCList>
+        <a href={href} target="_blank" rel="noopener noreferrer nofollow">{label}</a>
+    </SCList>
 )
 
 //Style

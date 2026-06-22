@@ -29,15 +29,19 @@ const Content = ({ caseTitle, caseDescription, poster, title, source, pathTo }: 
 const CaseLink = ({ pathTo, poster, title, source, caseTitle, caseDescription }: Props) => (
     <StyledLink to={`/cases/${pathTo}`}>
         <CaseMedia>
-            <video preload="auto" autoPlay={true} loop={true} poster={poster} title={title}>
-                <source src={source} type="video/mp4"></source>
-            </video>
+            <VideoComponent poster={poster} title={title} source={source} />
         </CaseMedia>
         <CaseContent>
             <Heading>{caseTitle}</Heading>
             <Description>{caseDescription}</Description>
         </CaseContent>
     </StyledLink>
+)
+
+const VideoComponent = ({ poster, title, source }: { poster: string, title: string, source: string }) => (
+    <video preload="auto" autoPlay={true} loop={true} poster={poster} title={title}>
+        <source src={source} type="video/mp4"></source>
+    </video>
 )
 
 /* Styles */

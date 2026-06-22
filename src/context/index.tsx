@@ -1,4 +1,4 @@
-import React, { createContext } from 'react';
+import React, { createContext, ReactNode } from 'react';
 import MediaSource from '../config/MediaSource';
 
 export interface ContextInterface {
@@ -6,8 +6,12 @@ export interface ContextInterface {
     contentProps: object;
 }
 
+interface ContextProviderProps {
+    children: ReactNode;
+}
+
 //Create Context  
-const Context: any = createContext<ContextInterface | null>(null);
+const Context = createContext<ContextInterface | null>(null);
 
 const createContentProps = () => [
     createContentProp(
@@ -90,7 +94,7 @@ const store: ContextInterface = {
 };
 
 //Create provider
-export const ContextProvider = ({ children }: any) => {
+export const ContextProvider = ({ children }: ContextProviderProps) => {
     return (
         <Context.Provider value={{ ...store }}>
             {children}

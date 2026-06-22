@@ -1,8 +1,7 @@
 import React from "react";
-import styled from 'styled-components'
-import source from '../../config/MediaSource'
-
-import OutsideWrapper from './home.outside'
+import styled from 'styled-components';
+import source from '../../config/MediaSource';
+import OutsideWrapper from './home.outside';
 
 type Props = {
     onClick: () => void,
@@ -119,4 +118,4 @@ const Link = styled.a`
     }
 `
 
-export default HomeNews
+export default HomeNews;

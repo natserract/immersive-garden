@@ -48,39 +48,9 @@ const Index = ({ match, history }) => {
     const prevCaseURL = CheckPrev ? CheckPrev.toLowerCase().replace(/ +/g, "-") : null;
     const classHasMargin = CheckPrev ? 'hasMargin' : null;
 
-    const caseCreditItem = [
-        {
-            title: 'Role',
-            desc: [
-                'Conception',
-                'Art direction',
-                'Motion design',
-                'Development'
-            ]
-        },
-        {
-            title: 'Agency',
-            desc: ['Havas']
-        },
-        {
-            title: 'Awards',
-            desc: [
-                'FWA of the Month',
-                'Awwwards Site of the Month',
-                'CSS Design Award Site of the Day'
-            ]
-        }
-    ];
+    const caseCreditItem = getCaseCreditItem();
 
-    const Props = {
-        headerProps: {
-            to: '/about-us',
-            menuName: 'About Us',
-            addClass: "is-color-black",
-            backLinkVisibility: true,
-            backToLink: () => history.goBack()
-        }
-    };
+    const Props = getHeaderProps(history);
 
     const CaseImgList = () => (
         GetCaseContext.caseImgDetail.map((caseItem, key) =>
@@ -154,6 +124,40 @@ const Index = ({ match, history }) => {
         </React.Fragment>
     )
 }
+
+const getCaseCreditItem = () => [
+    {
+        title: 'Role',
+        desc: [
+            'Conception',
+            'Art direction',
+            'Motion design',
+            'Development'
+        ]
+    },
+    {
+        title: 'Agency',
+        desc: ['Havas']
+    },
+    {
+        title: 'Awards',
+        desc: [
+            'FWA of the Month',
+            'Awwwards Site of the Month',
+            'CSS Design Award Site of the Day'
+        ]
+    }
+];
+
+const getHeaderProps = (history) => ({
+    headerProps: {
+        to: '/about-us',
+        menuName: 'About Us',
+        addClass: "is-color-black",
+        backLinkVisibility: true,
+        backToLink: () => history.goBack()
+    }
+});
 
 const PCaseSection = styled.section`
     background-color: #f7f7f7;
