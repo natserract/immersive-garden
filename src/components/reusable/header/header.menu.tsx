@@ -8,19 +8,7 @@ type Props = {
 }
 
 const HeaderMenu = ({ closeThisMenu, menuDisplay }: Props) => {
-    const menuItems = [
-        'Featured Projects',
-        'Interactive Experience',
-        'Corporate Sites / Branding',
-        'Motions, Films & Photos',
-        'All Projects'
-    ];
-
-    const renderMenuItems = () => (
-        menuItems.map((item, id) => (
-            <MenuText onClick={() => console.log('Hello')} key={id}> {item} </MenuText>
-        ))
-    );
+    const menuItems = getMenuItems();
 
     return (
         <MenuMain onClick={closeThisMenu} menuDisplayProps={menuDisplay}>
@@ -30,7 +18,7 @@ const HeaderMenu = ({ closeThisMenu, menuDisplay }: Props) => {
             <MenuContainer>
                 <MenuCategory>
                     <MenuWrapper>
-                        {renderMenuItems()}
+                        {renderMenuItems(menuItems)}
                     </MenuWrapper>
                 </MenuCategory>
             </MenuContainer>
@@ -38,6 +26,19 @@ const HeaderMenu = ({ closeThisMenu, menuDisplay }: Props) => {
     )
 }
 
+const getMenuItems = () => [
+    'Featured Projects',
+    'Interactive Experience',
+    'Corporate Sites / Branding',
+    'Motions, Films & Photos',
+    'All Projects'
+];
+
+const renderMenuItems = (menuItems: string[]) => (
+    menuItems.map((item, id) => (
+        <MenuText onClick={() => console.log('Hello')} key={id}> {item} </MenuText>
+    ))
+);
 
 /* Style */
 const MenuMain = styled.section`

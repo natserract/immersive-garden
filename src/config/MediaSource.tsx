@@ -5,31 +5,35 @@ const loadImages = (path: string, images: string[]) => {
     return images.map(image => require(`../${path}${image}`));
 };
 
-const ImageSource = ({
+const loadImage = (path: string, imageName: string) => {
+    return require(`../${path}${imageName}`);
+};
+
+const ImageSource = {
     global: {
-        logo: require(`../${IMGPATHSOURCE}logotype.png`),
-        logoSmall: require(`../${IMGPATHSOURCE}logotype--gray.png`),
-        cursor: require(`../${IMGPATHSOURCE}arrow-cursor.png`),
-        cursorMenu: require(`../${IMGPATHSOURCE}close-cursor.png`),
+        logo: loadImage(IMGPATHSOURCE, 'logotype.png'),
+        logoSmall: loadImage(IMGPATHSOURCE, 'logotype--gray.png'),
+        cursor: loadImage(IMGPATHSOURCE, 'arrow-cursor.png'),
+        cursorMenu: loadImage(IMGPATHSOURCE, 'close-cursor.png'),
     },
     video: {
-        case1: require(`../${VIDEOPATHSOURCE}case-1.mp4`),
-        case2: require(`../${VIDEOPATHSOURCE}case-2.mp4`),
-        case3: require(`../${VIDEOPATHSOURCE}case-3.mp4`),
-        case4: require(`../${VIDEOPATHSOURCE}case-4.mp4`),
-        case5: require(`../${VIDEOPATHSOURCE}case-5.mp4`),
-        case6: require(`../${VIDEOPATHSOURCE}case-6.mp4`)
+        case1: loadImage(VIDEOPATHSOURCE, 'case-1.mp4'),
+        case2: loadImage(VIDEOPATHSOURCE, 'case-2.mp4'),
+        case3: loadImage(VIDEOPATHSOURCE, 'case-3.mp4'),
+        case4: loadImage(VIDEOPATHSOURCE, 'case-4.mp4'),
+        case5: loadImage(VIDEOPATHSOURCE, 'case-5.mp4'),
+        case6: loadImage(VIDEOPATHSOURCE, 'case-6.mp4')
     },
-    arrow: require(`../${IMGPATHSOURCE}arrow-right--black.png`),
-    arrowUp: require(`../${IMGPATHSOURCE}arrow-up--black.png`),
-    icon_submit: require(`../${IMGPATHSOURCE}arrow-right-bold--white.png`),
+    arrow: loadImage(IMGPATHSOURCE, 'arrow-right--black.png'),
+    arrowUp: loadImage(IMGPATHSOURCE, 'arrow-up--black.png'),
+    icon_submit: loadImage(IMGPATHSOURCE, 'arrow-right-bold--white.png'),
     poster: {
-        project1: require(`../${IMGPATHSOURCE}poster-project-1.jpg`),
-        project2: require(`../${IMGPATHSOURCE}poster-project-2.jpg`),
-        project3: require(`../${IMGPATHSOURCE}poster-project-3.jpg`),
-        project4: require(`../${IMGPATHSOURCE}poster-project-4.jpg`),
-        project5: require(`../${IMGPATHSOURCE}poster-project-5.jpg`),
-        project6: require(`../${IMGPATHSOURCE}poster-project-6.jpg`),
+        project1: loadImage(IMGPATHSOURCE, 'poster-project-1.jpg'),
+        project2: loadImage(IMGPATHSOURCE, 'poster-project-2.jpg'),
+        project3: loadImage(IMGPATHSOURCE, 'poster-project-3.jpg'),
+        project4: loadImage(IMGPATHSOURCE, 'poster-project-4.jpg'),
+        project5: loadImage(IMGPATHSOURCE, 'poster-project-5.jpg'),
+        project6: loadImage(IMGPATHSOURCE, 'poster-project-6.jpg'),
     },
     cases: {
         caseProject1: loadImages(IMGPATHSOURCE, [
@@ -84,6 +88,6 @@ const ImageSource = ({
             'cases-project6-image7.jpg',
         ])
     }
-});
+};
 
 export default ImageSource;
