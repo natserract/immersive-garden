@@ -8,22 +8,19 @@ type Props = {
 }
 
 const HeaderMenu = ({ closeThisMenu, menuDisplay }: Props) => {
-    const [state] = React.useState({
-        name: [
-            'Featured Projects',
-            'Interactive Experience',
-            'Corporate Sites / Branding',
-            'Motions, Films & Photos',
-            'All Projects'
-        ]
-    });
+    const menuItems = [
+        'Featured Projects',
+        'Interactive Experience',
+        'Corporate Sites / Branding',
+        'Motions, Films & Photos',
+        'All Projects'
+    ];
 
-
-    const MenuName: typeof React.Component = () => (
-        state.name.map((item, id) => {
-            return <MenuText onClick={() => console.log('Hello')} key={id}> {item} </MenuText>
-        })
-    )
+    const renderMenuItems = () => (
+        menuItems.map((item, id) => (
+            <MenuText onClick={() => console.log('Hello')} key={id}> {item} </MenuText>
+        ))
+    );
 
     return (
         <MenuMain onClick={closeThisMenu} menuDisplayProps={menuDisplay}>
@@ -33,7 +30,7 @@ const HeaderMenu = ({ closeThisMenu, menuDisplay }: Props) => {
             <MenuContainer>
                 <MenuCategory>
                     <MenuWrapper>
-                        <MenuName />
+                        {renderMenuItems()}
                     </MenuWrapper>
                 </MenuCategory>
             </MenuContainer>
@@ -136,6 +133,5 @@ const MenuText = styled.span`
         }
     }
 `
-
 
 export default HeaderMenu

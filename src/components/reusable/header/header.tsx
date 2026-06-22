@@ -1,4 +1,3 @@
-
 import React from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
@@ -21,7 +20,6 @@ type Props = {
     backToLink?: () => void
 }
 
-
 const Header = ({ 
     addClass, to, 
     backLinkVisibility, 
@@ -34,56 +32,62 @@ const Header = ({
     headerRef,
     backToLink  }: Props) => {
 
-    //Show Menu Or Not
-    const MenuName: typeof React.Component = () => menuName ? (
-        <Links to={to} className={getClass}>{menuName}</Links>) : (
-            <CloseText onClick={onCloseTextClick}>{closeText}</CloseText>
-        )
-
     return (
         <HeaderMain className={addClass ? `${addClass}` : null} ref={headerRef}>
             <FlexDisplay justify='space-between' align='center'>
                 <HeaderColumn>
-                    {/* <!--- Brand ---> */}
-                    {   brandVisibility ? (
-                            <Brand>
-                                <Link to="/" style={{ marginTop: '7px' }}>
-                                    <img style={{ width: '100%' }}
-                                        alt="Immersive Garden - Logotype"
-                                        title="Immersive Garden - Logotype"
-                                        src={source.global.logoSmall}
-                                    />
-                                </Link>
-                            </Brand>
-                    ) : undefined }
-
-
-                    {/* <!--- Search ---> */}
-                    {   headerSearchVisibility ? (
-                            <Search searchVisibility={headerSearchVisibility} onClick={headerShowCategory} >
-                                <FlexDisplay align='center'>
-                                    <Circle></Circle>
-                                    <Text>Search By</Text>
-                                </FlexDisplay>
-                            </Search>
-                    ) : undefined }
-
-
-                    {/* <!-- Back --> */}
-                    { backLinkVisibility ? (
-                            <Back onClick={backToLink}><span>Back</span></Back>
-                        ) : undefined }
-
+                    {renderBrand(brandVisibility)}
+                    {renderSearch(headerSearchVisibility, headerShowCategory)}
+                    {renderBackLink(backLinkVisibility, backToLink)}
                 </HeaderColumn>
 
                 <HeaderColumn>
                     <HeaderMenu>
-                        <MenuName />
+                        {renderMenuName(menuName, to, getClass, onCloseTextClick, closeText)}
                     </HeaderMenu>
                 </HeaderColumn>
             </FlexDisplay>
         </HeaderMain>
     )
+}
+
+const renderBrand = (brandVisibility) => {
+    return brandVisibility ? (
+        <Brand>
+            <Link to="/" style={{ marginTop: '7px' }}>
+                <img style={{ width: '100%' }}
+                    alt="Immersive Garden - Logotype"
+                    title="Immersive Garden - Logotype"
+                    src={source.global.logoSmall}
+                />
+            </Link>
+        </Brand>
+    ) : undefined;
+}
+
+const renderSearch = (headerSearchVisibility, headerShowCategory) => {
+    return headerSearchVisibility ? (
+        <Search searchVisibility={headerSearchVisibility} onClick={headerShowCategory} >
+            <FlexDisplay align='center'>
+                <Circle></Circle>
+                <Text>Search By</Text>
+            </FlexDisplay>
+        </Search>
+    ) : undefined;
+}
+
+const renderBackLink = (backLinkVisibility, backToLink) => {
+    return backLinkVisibility ? (
+        <Back onClick={backToLink}><span>Back</span></Back>
+    ) : undefined;
+}
+
+const renderMenuName = (menuName, to, getClass, onCloseTextClick, closeText) => {
+    return menuName ? (
+        <Links to={to} className={getClass}>{menuName}</Links>
+    ) : (
+        <CloseText onClick={onCloseTextClick}>{closeText}</CloseText>
+    );
 }
 
 const HeaderMain = styled.header`
@@ -149,7 +153,6 @@ const Brand = styled.div`
     }
 `
 
-//Search
 const Search = styled.div`
     margin-left: -42px;
     cursor: pointer;
@@ -176,7 +179,6 @@ const Text = styled.span`
     margin-left: 20px;
 `
 
-//Back link
 const Back = styled.div`
     position:absolute;
     top: 0;

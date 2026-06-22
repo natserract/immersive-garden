@@ -1,7 +1,5 @@
-
 import React from 'react'
 import styled from 'styled-components'
-
 
 type construct = {
     infoTitle: string,
@@ -10,38 +8,45 @@ type construct = {
 
 const AboutInformation = ({ infoTitle, children }: construct) => (
     <React.Fragment>
-        {/* <!-- Map info --> */}
-        <MapLink href="https://goo.gl/maps/xQJnhd9ihVr" target="_blank" rel="noopener noreferrer nofollow">
-            <Title>{infoTitle}</Title>
-            <ContentInfo>
-                {children}
-            </ContentInfo>
-        </MapLink>
-
-        {/* <!-- Phone info -->  */}
-        <Phone href="tel:+33 (0)1 75 50 05 85" target="_blank" rel="noopener noreferrer nofollow">
-            <PhoneText>+33 (0)1 75 50 05 85</PhoneText>
-        </Phone>
-
-        {/* <!-- Social Media --> */}
-        <div>
-            <Separator />
-            <SocialMediaLists>
-                <SCList>
-                    <a href="https://www.facebook.com/immersive.g/" target="_blank" rel="noopener noreferrer nofollow">facebook</a>
-                </SCList>
-                <SCList>
-                    <a href="https://twitter.com/Immersive_g" target="_blank" rel="noopener noreferrer nofollow" >twitter</a>
-                </SCList>
-                <SCList>
-                    <a href="https://www.behance.net/immersive-g" target="_blank" rel="noopener noreferrer nofollow">behance</a>
-                </SCList>
-                <SCList>
-                    <a href="https://www.linkedin.com/company/immersive-garden/" target="_blank" rel="noopener noreferrer nofollow">linkedIn</a>
-                </SCList>
-            </SocialMediaLists>
-        </div>
+        <MapSection infoTitle={infoTitle} children={children} />
+        <PhoneSection />
+        <SocialMediaSection />
     </React.Fragment>
+)
+
+const MapSection = ({ infoTitle, children }: construct) => (
+    <MapLink href="https://goo.gl/maps/xQJnhd9ihVr" target="_blank" rel="noopener noreferrer nofollow">
+        <Title>{infoTitle}</Title>
+        <ContentInfo>
+            {children}
+        </ContentInfo>
+    </MapLink>
+)
+
+const PhoneSection = () => (
+    <Phone href="tel:+33 (0)1 75 50 05 85" target="_blank" rel="noopener noreferrer nofollow">
+        <PhoneText>+33 (0)1 75 50 05 85</PhoneText>
+    </Phone>
+)
+
+const SocialMediaSection = () => (
+    <div>
+        <Separator />
+        <SocialMediaLists>
+            <SCList>
+                <a href="https://www.facebook.com/immersive.g/" target="_blank" rel="noopener noreferrer nofollow">facebook</a>
+            </SCList>
+            <SCList>
+                <a href="https://twitter.com/Immersive_g" target="_blank" rel="noopener noreferrer nofollow" >twitter</a>
+            </SCList>
+            <SCList>
+                <a href="https://www.behance.net/immersive-g" target="_blank" rel="noopener noreferrer nofollow">behance</a>
+            </SCList>
+            <SCList>
+                <a href="https://www.linkedin.com/company/immersive-garden/" target="_blank" rel="noopener noreferrer nofollow">linkedIn</a>
+            </SCList>
+        </SocialMediaLists>
+    </div>
 )
 
 //Style

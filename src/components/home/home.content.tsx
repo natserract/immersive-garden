@@ -4,7 +4,11 @@ import styled from 'styled-components'
 import FlexDisplay from '../reusable/layout/flex.reusable'
 
 type Props = {
-    caseTitle, caseDescription, poster, title, source: string,
+    caseTitle: string,
+    caseDescription: string,
+    poster: string,
+    title: string,
+    source: string,
     linkTo?: string,
     pathTo: any
 }
@@ -16,7 +20,7 @@ const Content = ({ caseTitle, caseDescription, poster, title, source, pathTo }: 
                 <Text>Experience</Text>
             </CaseColumnLeft>
             <CaseColumnCenter>
-                <Link to={`/cases/${pathTo}`}>
+                <StyledLink to={`/cases/${pathTo}`}>
                     <CaseMedia>
                         <video preload="auto" autoPlay={true} loop={true} poster={poster} title={title}>
                             <source src={source} type="video/mp4"></source>
@@ -26,7 +30,7 @@ const Content = ({ caseTitle, caseDescription, poster, title, source, pathTo }: 
                         <Heading>{caseTitle}</Heading>
                         <Description>{caseDescription}</Description>
                     </CaseContent>
-                </Link>
+                </StyledLink>
             </CaseColumnCenter>
         </FlexDisplay>
     </CaseContainer>
@@ -40,7 +44,7 @@ const CaseContainer = styled.div`
 
     @media(max-width: 980px){
         & > div {
-            flex-direction: column
+            flex-direction: column;
             align-items: flex-start;
         }
         &:not(:first-child){
@@ -74,12 +78,12 @@ const CaseColumnCenter = styled.div`
     }
 `
 
-const Link = styled(A)`
+const StyledLink = styled(A)`
     display: flex;
     flex-direction: row;
     
     @media (max-width: 980px){
-        flex-direction: column
+        flex-direction: column;
     }
 `
 const CaseMedia = styled.div`

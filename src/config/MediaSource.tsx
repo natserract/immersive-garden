@@ -1,6 +1,9 @@
+let IMGPATHSOURCE: string = `assets/img/`;
+let VIDEOPATHSOURCE: string = `assets/video/`;
 
-let IMGPATHSOURCE: string = `assets/img/`,
-    VIDEOPATHSOURCE: string = `assets/video/`
+const loadImages = (path: string, images: string[]) => {
+    return images.map(image => require(`../${path}${image}`));
+};
 
 const ImageSource = ({
     global: {
@@ -29,58 +32,58 @@ const ImageSource = ({
         project6: require(`../${IMGPATHSOURCE}poster-project-6.jpg`),
     },
     cases: {
-        caseProject1: [
-            require(`../${IMGPATHSOURCE}cases-project1-image1.jpg`),
-            require(`../${IMGPATHSOURCE}cases-project1-image2.jpg`),
-            require(`../${IMGPATHSOURCE}cases-project1-image3.jpg`),
-            require(`../${IMGPATHSOURCE}cases-project1-image4.jpg`),
-            require(`../${IMGPATHSOURCE}cases-project1-image5.jpg`),
-            require(`../${IMGPATHSOURCE}cases-project1-image6.jpg`),
-            require(`../${IMGPATHSOURCE}cases-project1-image7.jpg`),
-        ],
-        caseProject2: [
-            require(`../${IMGPATHSOURCE}cases-project2-image1.jpg`),
-            require(`../${IMGPATHSOURCE}cases-project2-image2.jpg`),
-            require(`../${IMGPATHSOURCE}cases-project2-image3.jpg`),
-            require(`../${IMGPATHSOURCE}cases-project2-image4.jpg`),
-            require(`../${IMGPATHSOURCE}cases-project2-image5.jpg`),
-            require(`../${IMGPATHSOURCE}cases-project2-image6.jpg`),
-            require(`../${IMGPATHSOURCE}cases-project2-image7.jpg`),
-        ],
-        caseProject3: [
-            require(`../${IMGPATHSOURCE}cases-project3-image1.jpg`),
-            require(`../${IMGPATHSOURCE}cases-project3-image2.jpg`),
-            require(`../${IMGPATHSOURCE}cases-project3-image3.jpg`),
-            require(`../${IMGPATHSOURCE}cases-project3-image4.jpg`),
-            require(`../${IMGPATHSOURCE}cases-project3-image5.jpg`),
-            require(`../${IMGPATHSOURCE}cases-project3-image6.jpg`),
-            require(`../${IMGPATHSOURCE}cases-project3-image7.jpg`),
-        ],
-        caseProject4: [
-            require(`../${IMGPATHSOURCE}cases-project4-image1.jpg`),
-            require(`../${IMGPATHSOURCE}cases-project4-image2.jpg`),
-            require(`../${IMGPATHSOURCE}cases-project4-image3.jpg`),
-            require(`../${IMGPATHSOURCE}cases-project4-image4.jpg`),
-        ],
-        caseProject5: [
-            require(`../${IMGPATHSOURCE}cases-project5-image1.jpg`),
-            require(`../${IMGPATHSOURCE}cases-project5-image2.jpg`),
-            require(`../${IMGPATHSOURCE}cases-project5-image3.jpg`),
-            require(`../${IMGPATHSOURCE}cases-project5-image4.jpg`),
-            require(`../${IMGPATHSOURCE}cases-project5-image5.jpg`),
-            require(`../${IMGPATHSOURCE}cases-project5-image6.jpg`),
-            require(`../${IMGPATHSOURCE}cases-project5-image7.jpg`),
-        ],
-        caseProject6: [
-            require(`../${IMGPATHSOURCE}cases-project6-image1.jpg`),
-            require(`../${IMGPATHSOURCE}cases-project6-image2.jpg`),
-            require(`../${IMGPATHSOURCE}cases-project6-image3.jpg`),
-            require(`../${IMGPATHSOURCE}cases-project6-image4.jpg`),
-            require(`../${IMGPATHSOURCE}cases-project6-image5.jpg`),
-            require(`../${IMGPATHSOURCE}cases-project6-image6.jpg`),
-            require(`../${IMGPATHSOURCE}cases-project6-image7.jpg`),
-        ]
+        caseProject1: loadImages(IMGPATHSOURCE, [
+            'cases-project1-image1.jpg',
+            'cases-project1-image2.jpg',
+            'cases-project1-image3.jpg',
+            'cases-project1-image4.jpg',
+            'cases-project1-image5.jpg',
+            'cases-project1-image6.jpg',
+            'cases-project1-image7.jpg',
+        ]),
+        caseProject2: loadImages(IMGPATHSOURCE, [
+            'cases-project2-image1.jpg',
+            'cases-project2-image2.jpg',
+            'cases-project2-image3.jpg',
+            'cases-project2-image4.jpg',
+            'cases-project2-image5.jpg',
+            'cases-project2-image6.jpg',
+            'cases-project2-image7.jpg',
+        ]),
+        caseProject3: loadImages(IMGPATHSOURCE, [
+            'cases-project3-image1.jpg',
+            'cases-project3-image2.jpg',
+            'cases-project3-image3.jpg',
+            'cases-project3-image4.jpg',
+            'cases-project3-image5.jpg',
+            'cases-project3-image6.jpg',
+            'cases-project3-image7.jpg',
+        ]),
+        caseProject4: loadImages(IMGPATHSOURCE, [
+            'cases-project4-image1.jpg',
+            'cases-project4-image2.jpg',
+            'cases-project4-image3.jpg',
+            'cases-project4-image4.jpg',
+        ]),
+        caseProject5: loadImages(IMGPATHSOURCE, [
+            'cases-project5-image1.jpg',
+            'cases-project5-image2.jpg',
+            'cases-project5-image3.jpg',
+            'cases-project5-image4.jpg',
+            'cases-project5-image5.jpg',
+            'cases-project5-image6.jpg',
+            'cases-project5-image7.jpg',
+        ]),
+        caseProject6: loadImages(IMGPATHSOURCE, [
+            'cases-project6-image1.jpg',
+            'cases-project6-image2.jpg',
+            'cases-project6-image3.jpg',
+            'cases-project6-image4.jpg',
+            'cases-project6-image5.jpg',
+            'cases-project6-image6.jpg',
+            'cases-project6-image7.jpg',
+        ])
     }
-})
+});
 
-export default ImageSource
+export default ImageSource;

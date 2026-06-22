@@ -1,4 +1,3 @@
-
 import React from "react";
 import styled from 'styled-components'
 import Context from '../../context'
@@ -8,7 +7,6 @@ import Banner from './home.banner'
 import HomeNews from './home.news'
 import Content from './home.content'
 import Menu from '../reusable/header/header.menu'
-
 
 const Index = () => {
     const ContextConsumer = React.useContext(Context);
@@ -20,7 +18,6 @@ const Index = () => {
         mainTransform: false,
         visible: false,
     });
-
 
     //handlerChange
     const handlerChange = (action) => {
@@ -50,7 +47,6 @@ const Index = () => {
         }
     }
 
-
     //state conditions
     let newTransformStyle =
         move.transform ? (move.transform = '-100%') : (move.newTransform ?
@@ -61,10 +57,11 @@ const Index = () => {
         searchVisibility = move.mainTransform ? true : false,
         menuVisibility = move.visible ? 'block': 'none' 
 
+    const generateUrl = (title) => title.toLowerCase().replace(/ +/g, "-");
 
     const CaseContent = () => 
         ContextConsumer.contentProps.map((item, id) => {
-            let url = item.caseTitle.toLowerCase().replace(/ +/g, "-");
+            let url = generateUrl(item.caseTitle);
             return <Content key={id} pathTo={url} {...item} />
     })
 
@@ -91,7 +88,6 @@ const Index = () => {
         }
     }
 
-
     return (
         <HomeMain>
             {/* {<!-- Header --> */}
@@ -114,7 +110,6 @@ const Index = () => {
         </HomeMain>
     )
 }
-
 
 /* Style */
 const HomeMain = styled.div`

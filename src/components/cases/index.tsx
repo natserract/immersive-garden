@@ -1,4 +1,3 @@
-
 import React, { createRef } from 'react'
 import { Redirect } from 'react-router'
 import { Link } from 'react-router-dom'
@@ -46,6 +45,8 @@ const Index = ({ match, history }) => {
     let GetCaseContext = ContextConsumer.contentProps.find(val =>
         val.caseTitle.toLowerCase().replace(/ +/g, "-") === GETURL
     )
+
+    if (!GetCaseContext) return <Redirect to='/' />
 
     //Find next case url
     let findNextCaseIndex = ContextConsumer.contentProps.indexOf(GetCaseContext) + 1;
