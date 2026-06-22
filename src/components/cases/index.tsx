@@ -26,26 +26,28 @@ const Index = ({ match, history }) => {
         scrollToTop();
     }, [scrollToTop]);
 
+    const formatCaseTitle = (title) => title.toLowerCase().replace(/ +/g, "-");
+
     const GETURL = match.url.replace('/cases/', '');
     const URLFILTER = ContextConsumer.contentProps.some(URL =>
-        URL.caseTitle && URL.caseTitle.toLowerCase().replace(/ +/g, "-") === GETURL
+        URL.caseTitle && formatCaseTitle(URL.caseTitle) === GETURL
     );
 
     if (!URLFILTER) return <Redirect to='/' />
 
     const GetCaseContext = ContextConsumer.contentProps.find(val =>
-        val.caseTitle && val.caseTitle.toLowerCase().replace(/ +/g, "-") === GETURL
+        val.caseTitle && formatCaseTitle(val.caseTitle) === GETURL
     );
 
     const findNextCaseIndex = ContextConsumer.contentProps.indexOf(GetCaseContext) + 1;
     const findLastCaseIndex = ContextConsumer.contentProps.indexOf(GetCaseContext);
     const findCaseItemLength = ContextConsumer.contentProps.length - 1;
     const findNextCaseTitle = findLastCaseIndex !== findCaseItemLength ? ContextConsumer.contentProps[findNextCaseIndex].caseTitle : null;
-    const nextCaseURL = findNextCaseTitle ? findNextCaseTitle.toLowerCase().replace(/ +/g, "-") : null;
+    const nextCaseURL = findNextCaseTitle ? formatCaseTitle(findNextCaseTitle) : null;
 
     const prevNextCaseIndex = ContextConsumer.contentProps.indexOf(GetCaseContext) - 1;
     const CheckPrev = prevNextCaseIndex !== -1 ? ContextConsumer.contentProps[prevNextCaseIndex].caseTitle : null;
-    const prevCaseURL = CheckPrev ? CheckPrev.toLowerCase().replace(/ +/g, "-") : null;
+    const prevCaseURL = CheckPrev ? formatCaseTitle(CheckPrev) : null;
     const classHasMargin = CheckPrev ? 'hasMargin' : null;
 
     const caseCreditItem = [
