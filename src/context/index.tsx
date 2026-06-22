@@ -1,4 +1,3 @@
-
 import React, { createContext } from 'react'
 import MediaSource from '../config/MediaSource'
 
@@ -10,9 +9,13 @@ export interface ContextInterface {
 //Create Context  
 const Context:any = createContext<ContextInterface | null>(null);
 
-const store: ContextInterface = {
+const initialStore: ContextInterface = {
     mainScroll: false,
-    contentProps: [
+    contentProps: getContentProps()
+}
+
+function getContentProps() {
+    return [
         {
             caseTitle: 'The new Mobile Workforce',
             caseDescription: 'Race Day requires optimal performance. Take a look at how the Citrix team uses data to analyze, model, & design the car.',
@@ -67,13 +70,13 @@ const store: ContextInterface = {
             url: 'https://gleec.com/',
             caseImgDetail: MediaSource.cases.caseProject6
         },
-    ]
+    ];
 }
 
 //Create provider
 export const ContextProvider = ({ children }: any) => {
     return (
-        <Context.Provider value={{...store}}>
+        <Context.Provider value={{...initialStore}}>
             { children }
         </Context.Provider>
     )
