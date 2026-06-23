@@ -8,13 +8,7 @@ type Props = {
 }
 
 const HeaderMenu = ({ closeThisMenu, menuDisplay }: Props) => {
-    const menuItems = [
-        'Featured Projects',
-        'Interactive Experience',
-        'Corporate Sites / Branding',
-        'Motions, Films & Photos',
-        'All Projects'
-    ];
+    const menuItems = getMenuItems();
 
     return (
         <MenuMain onClick={closeThisMenu} menuDisplayProps={menuDisplay}>
@@ -25,7 +19,7 @@ const HeaderMenu = ({ closeThisMenu, menuDisplay }: Props) => {
                 <MenuCategory>
                     <MenuWrapper>
                         {menuItems.map((item, id) => (
-                            <MenuText onClick={() => console.log('Hello')} key={id}>
+                            <MenuText onClick={() => handleMenuItemClick(item)} key={id}>
                                 {item}
                             </MenuText>
                         ))}
@@ -34,6 +28,18 @@ const HeaderMenu = ({ closeThisMenu, menuDisplay }: Props) => {
             </MenuContainer>
         </MenuMain>
     );
+};
+
+const getMenuItems = () => [
+    'Featured Projects',
+    'Interactive Experience',
+    'Corporate Sites / Branding',
+    'Motions, Films & Photos',
+    'All Projects'
+];
+
+const handleMenuItemClick = (item: string) => {
+    console.log(`Menu item clicked: ${item}`);
 };
 
 /* Style */
