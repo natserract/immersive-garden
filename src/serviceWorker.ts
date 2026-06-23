@@ -47,11 +47,8 @@ export function register(config?: Config) {
   }
 }
 
-function handleLocalhost(swUrl: string, config?: Config) {
-  checkValidServiceWorker(swUrl, config);
-  navigator.serviceWorker.ready.then(() => {
-    console.log('Service worker ready on localhost');
-  });
+async function handleLocalhost(swUrl: string, config?: Config) {
+  await checkValidServiceWorker(swUrl, config);
 }
 
 async function registerValidSW(swUrl: string, config?: Config) {
