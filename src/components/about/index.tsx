@@ -1,26 +1,26 @@
-
 import * as React from 'react'
 import styled from 'styled-components'
 import Header from '../reusable/header/header'
 import FlexDisplay from '../reusable/layout/flex.reusable'
 import List, { Title as ListTitle } from './about.list'
-
 import AboutContact, { AboutNewsLetter } from './about.contact'
 import AboutInformation from './about.information'
 
-
 const About = ({ history }) => {
+    const columnConcept = [
+        'Creative Strategy', 'Branding', 'Innovative digital concept', 'Copywrighting', 'Tone of voice'
+    ];
+    const columnDesign = [
+        'Art direction', 'User experience design', 'User interface & interactive', 'design', 'Illustration', 'Motion design', '2D & 3D animation', 'Photo & video', 'Sound design'
+    ];
+    const columnTech = [
+        'Creative development', 'Front-end development', 'Back-end development', 'App development', 'VR & AR development'
+    ];
+    const columnRecognitions = [
+        'Awwwards x 1 Studio of the Year', 'Awwwards x 1 Site of the Year', 'Awwwards x 1 Developer of the Year', 'Awwwards x 6 Site of the Month', 'Awwwards x 23 Site of the Day', 'CSSDA x 1 Corporate site of the Year', 'FWA x 1 Site of the Month', 'FWA x 2 Cuting edge awards', 'FWA x 30 Site of the Day', 'Webby Awards Best visual design x 1', 'Lovie Awards x 3'
+    ];
 
-    let [columnConcept, columnDesign, columnTech, columnRecognitions] = [
-        ['Creative Strategy', 'Branding', 'Innovative digital concept', 'Copywrighting', 'Tone of voice'],
-        ['Art direction', 'User experience design', 'User interface & interactive', 'design', 'Illustration', 'Motion design', '2D & 3D animation', 'Photo & video', 'Sound design'],
-        ['Creative development', 'Front-end development', 'Back-end development', 'App development', 'VR & AR development'],
-        ['Awwwards x 1 Studio of the Year', 'Awwwards x 1 Site of the Year', 'Awwwards x 1 Developer of the Year', 'Awwwards x 6 Site of the Month', 'Awwwards x 23 Site of the Day', 'CSSDA x 1 Corporate site of the Year', 'FWA x 1 Site of the Month', 'FWA x 2 Cuting edge awards', 'FWA x 30 Site of the Day', 'Webby Awards Best visual design x 1', 'Lovie Awards x 3']
-    ]
-    
-
-    //Newslettercontext
-    let NewsletterContext = [
+    const NewsletterContext = [
         {
             title: 'Inquiries',
             content: 'hello@immersive-g.com'
@@ -29,44 +29,31 @@ const About = ({ history }) => {
             title: 'Jobs',
             content: 'jobs@immersive-g.com'
         },
-    ]
+    ];
 
-
-    /* Inital Props */
-    const getProps = {
-        header: {
-            brandVisibility: true,
-            closeText: 'close',
-            onCloseTextClick: () => history.goBack(),
-        },
-    }
+    const headerProps = {
+        brandVisibility: true,
+        closeText: 'close',
+        onCloseTextClick: () => history.goBack(),
+    };
 
     return (
         <AboutSection>
-            {/* <!--- Header --> */}
-            <Header {...getProps.header} />
-
-            {/* <!--- Content Container --> */}
+            <Header {...headerProps} />
             <Container>
                 <Title>We Create Emotional, Meaningful & Innovative Digital Experience</Title>
                 <ContentDesc>
                     Immersive Garden has been recognized as Studio of the year 2017 by both AWWWARDS and CSS Design Awards. Our vision is focused on crafting in-house meaningful concepts and stories thanks to digital experiences. This translates in websites but also installations, apps or any media that is relevant. Immersive Garden’s focus on details allows to bring high-end experiences that merge innovation in design and in technology to offer a powerful digital presence to brands. Our experience and dedication has brought us to collaborate with international clients: they reach out to us from all parts of the globe, leading us to have 75% of our collaborations with companies abroad.
                 </ContentDesc>
                 <SubTitle>In-house we design and develop sites, app & interactive installations</SubTitle>
-
                 <FlexDisplay className="_classExtern _itemHasMargin" justify="space-between" addStyle={{ marginTop: '140px' }}>
                     <List titleProps="Concept" lists={columnConcept} />
                     <List titleProps="Design" lists={columnDesign} />
                     <List titleProps="Technology" lists={columnTech} />
                 </FlexDisplay>
-
                 <ContentDesc>
-                    Immersive Garden has detailed and phased a process allowing to work hand in hand with our clients from the brief to the launch. We become one team working together on the same goal: creating a successful project.
-    This attitude has been leading us to work with marvellous clients such as:
-    Chanel, Nissan, Total, Redbull, Richemont, Decathlon, Adidas, Arte, Rainforest foods, Engie, Vente-privée, Orange, Google and more...
-    We are driven by the ambitious of a project rather than its scale. We believe that good ideas can grow anywhere.
+                    Immersive Garden has detailed and phased a process allowing to work hand in hand with our clients from the brief to the launch. We become one team working together on the same goal: creating a successful project. This attitude has been leading us to work with marvellous clients such as: Chanel, Nissan, Total, Redbull, Richemont, Decathlon, Adidas, Arte, Rainforest foods, Engie, Vente-privée, Orange, Google and more... We are driven by the ambitious of a project rather than its scale. We believe that good ideas can grow anywhere.
                 </ContentDesc>
-
                 <WrappedContent>
                     <ListTitle title="Recognitions" />
                     <FlexDisplay className="_classExtern" justify="space-between">
@@ -75,15 +62,10 @@ const About = ({ history }) => {
                     </FlexDisplay>
                 </WrappedContent>
             </Container>
-
-            {/* <!-- About Newsletter --> */}
             <Newsletter>
                 <AboutContact contactLists={NewsletterContext} />
-                <AboutNewsLetter contactTitle="Newsletter"/>
+                <AboutNewsLetter contactTitle="Newsletter" />
             </Newsletter>
-
-
-            {/* <!-- About Information --> */}
             <AboutInfoMain>
                 <AboutInformation infoTitle="Immersive Garden">
                     14 Avenue Claude Vellefaux 75010 Paris, France
@@ -136,7 +118,6 @@ const Title = styled.h1`
     letter-spacing: .1em;
     -webkit-font-smoothing: antialiased;
 
-   
     @media(max-width: 981px){
         margin-top: 40%;
         font-size: calc(41px + 19 * (100vw - 960px) / 960)
@@ -171,7 +152,6 @@ const ContentDesc = styled.p`
     line-height: 2;
     letter-spacing: 0.05em;
 `
-
 
 const Newsletter = styled.div`
     position: fixed;
@@ -208,6 +188,5 @@ const AboutInfoMain = styled.div`
         margin: 40px auto;
     }
 `
-
 
 export default About
