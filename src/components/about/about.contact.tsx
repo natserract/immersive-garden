@@ -1,4 +1,3 @@
-
 import React from 'react'
 import styled from 'styled-components'
 import Flex from '../reusable/layout/flex.reusable'
@@ -27,7 +26,6 @@ const AboutContact = ({ contactLists }: Props) => (
     )
 )
 
-
 //Newsletter
 export const AboutNewsLetter = ({ contactTitle }: NewsLetterProps) => (
     <ContactsItem>
@@ -41,8 +39,7 @@ export const AboutNewsLetter = ({ contactTitle }: NewsLetterProps) => (
     </ContactsItem>
 )
 
-
-/* Style */
+/* Style Components */
 const ContactsItem = styled.div`
     margin-top: 40px;
     
