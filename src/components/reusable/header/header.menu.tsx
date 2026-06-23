@@ -1,6 +1,6 @@
-import React from 'react'
-import styled from 'styled-components'
-import source from '../../../config/MediaSource'
+import React from 'react';
+import styled from 'styled-components';
+import source from '../../../config/MediaSource';
 
 type Props = {
     closeThisMenu: () => void,
@@ -8,22 +8,13 @@ type Props = {
 }
 
 const HeaderMenu = ({ closeThisMenu, menuDisplay }: Props) => {
-    const [state] = React.useState({
-        name: [
-            'Featured Projects',
-            'Interactive Experience',
-            'Corporate Sites / Branding',
-            'Motions, Films & Photos',
-            'All Projects'
-        ]
-    });
-
-
-    const MenuName: typeof React.Component = () => (
-        state.name.map((item, id) => {
-            return <MenuText onClick={() => console.log('Hello')} key={id}> {item} </MenuText>
-        })
-    )
+    const menuItems = [
+        'Featured Projects',
+        'Interactive Experience',
+        'Corporate Sites / Branding',
+        'Motions, Films & Photos',
+        'All Projects'
+    ];
 
     return (
         <MenuMain onClick={closeThisMenu} menuDisplayProps={menuDisplay}>
@@ -33,14 +24,17 @@ const HeaderMenu = ({ closeThisMenu, menuDisplay }: Props) => {
             <MenuContainer>
                 <MenuCategory>
                     <MenuWrapper>
-                        <MenuName />
+                        {menuItems.map((item, id) => (
+                            <MenuText onClick={() => console.log('Hello')} key={id}>
+                                {item}
+                            </MenuText>
+                        ))}
                     </MenuWrapper>
                 </MenuCategory>
             </MenuContainer>
         </MenuMain>
-    )
-}
-
+    );
+};
 
 /* Style */
 const MenuMain = styled.section`
@@ -51,21 +45,24 @@ const MenuMain = styled.section`
     width: 100%;
     background-color: #f7f7f7;
     z-index: 999;
-`
+`;
+
 const MenuHeader = styled.div`
     cursor: pointer;
     position: absolute;
     top: 70px;
     left: 5.55556vw;
     z-index: 3;
-`
+`;
+
 const Text = styled.span`
     font-size: calc(10px + 0 * (100vw - 960px) / 960);
     line-height: 1.5;
     letter-spacing: .2em;
     font-weight: 700;
     text-transform: uppercase;
-`
+`;
+
 const MenuContainer = styled.div`
     transform: translateZ(0);
     min-height: 100vh;
@@ -79,7 +76,7 @@ const MenuContainer = styled.div`
     will-change: transform;
     overflow-y: scroll;
     position: relative;
-`
+`;
 
 const MenuCategory = styled.div`
     position: absolute;
@@ -98,7 +95,8 @@ const MenuCategory = styled.div`
     @media(max-width: 980px){
         bottom: 15%;
     }
-`
+`;
+
 const MenuWrapper = styled.div`
     cursor: pointer;
     overflow: hidden;
@@ -107,7 +105,7 @@ const MenuWrapper = styled.div`
     @media(max-width: 980px){
         overflow: auto;
     }
-`
+`;
 
 const MenuText = styled.span`
     font-size: calc(34px + 26 * (100vw - 960px) / 960);
@@ -135,7 +133,6 @@ const MenuText = styled.span`
             margin-top: 40px;
         }
     }
-`
+`;
 
-
-export default HeaderMenu
+export default HeaderMenu;
