@@ -39,7 +39,7 @@ const getMenuItems = () => [
 ];
 
 const handleMenuItemClick = (item: string) => {
-    console.log(`Menu item clicked: ${item}`);
+    // Handle menu item click logic here
 };
 
 /* Style */
