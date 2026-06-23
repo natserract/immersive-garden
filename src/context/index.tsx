@@ -1,5 +1,6 @@
-import React, { createContext } from 'react'
-import MediaSource from '../config/MediaSource'
+import React, { createContext } from 'react';
+import MediaSource from '../config/MediaSource';
+import { getContentProps } from './contentProps';
 
 export interface ContextInterface {
     mainScroll: boolean,
@@ -14,8 +15,19 @@ const store: ContextInterface = {
     contentProps: getContentProps()
 }
 
-// Function to get content properties
-function getContentProps() {
+//Create provider
+export const ContextProvider = ({ children }: any) => {
+    return (
+        <Context.Provider value={{...store}}>
+            { children }
+        </Context.Provider>
+    )
+}
+
+export default Context
+
+// contentProps.ts
+export function getContentProps() {
     return [
         createContentProp(
             'The new Mobile Workforce',
@@ -85,14 +97,3 @@ function createContentProp(caseTitle: string, caseDescription: string, poster: s
         caseImgDetail
     };
 }
-
-//Create provider
-export const ContextProvider = ({ children }: any) => {
-    return (
-        <Context.Provider value={{...store}}>
-            { children }
-        </Context.Provider>
-    )
-}
-
-export default Context
