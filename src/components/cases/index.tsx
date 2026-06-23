@@ -1,4 +1,3 @@
-
 import React, { createRef } from 'react'
 import { Redirect } from 'react-router'
 import { Link } from 'react-router-dom'
@@ -12,10 +11,37 @@ import CaseCredits from './cases.credits'
 import CaseImage from './cases.image'
 import mediasource from '../../config/MediaSource'
 
+// Utility function for transforming case titles to URL format
+const transformCaseTitleToURL = (caseTitle) => caseTitle.toLowerCase().replace(/ +/g, "-");
+
+// Constant for case credit items
+const CASE_CREDIT_ITEMS = [
+    {
+        title: 'Role',
+        desc: [
+            'Conception',
+            'Art direction',
+            'Motion design',
+            'Development'
+        ]
+    },
+    {
+        title: 'Agency',
+        desc: ['Havas']
+    },
+    {
+        title: 'Awards',
+        desc: [
+            'FWA of the Month',
+            'Awwwards Site of the Month',
+            'CSS Design Award Site of the Day'
+        ]
+    }
+];
+
 const Index = ({ match, history }) => {
     const ContextConsumer: any = React.useContext(Context);
-    const ref:any = createRef();
-
+    const ref: any = createRef();
 
     //ScrollToTop
     const scrollToTop = React.useCallback<any>(
@@ -36,7 +62,7 @@ const Index = ({ match, history }) => {
     //Check case URL
     let GETURL = match.url.replace('/cases/', '')
     let URLFILTER = ContextConsumer.contentProps.some(URL =>
-        URL.caseTitle.toLowerCase().replace(/ +/g, "-") === GETURL
+        transformCaseTitleToURL(URL.caseTitle) === GETURL
     )
 
     // <!--Redirect if parameter values not correctly-->
@@ -44,49 +70,23 @@ const Index = ({ match, history }) => {
 
     //Get case values 
     let GetCaseContext = ContextConsumer.contentProps.find(val =>
-        val.caseTitle.toLowerCase().replace(/ +/g, "-") === GETURL
+        transformCaseTitleToURL(val.caseTitle) === GETURL
     )
+
+    if (!GetCaseContext) return <Redirect to='/' />
 
     //Find next case url
     let findNextCaseIndex = ContextConsumer.contentProps.indexOf(GetCaseContext) + 1;
     let findLastCaseIndex = ContextConsumer.contentProps.indexOf(GetCaseContext);
     let findCaseItemLength = ContextConsumer.contentProps.length - 1;
     let findNextCaseTitle = findLastCaseIndex !== findCaseItemLength ? ContextConsumer.contentProps[findNextCaseIndex].caseTitle : null
-    let nextCaseURL = findNextCaseTitle ? findNextCaseTitle.toLowerCase().replace(/ +/g, "-") : null
-
-
+    let nextCaseURL = findNextCaseTitle ? transformCaseTitleToURL(findNextCaseTitle) : null
 
     // Prev Case URL 
     let prevNextCaseIndex = ContextConsumer.contentProps.indexOf(GetCaseContext) - 1;
     let CheckPrev = prevNextCaseIndex !== -1 ? ContextConsumer.contentProps[prevNextCaseIndex].caseTitle : null;
-    let prevCaseURL = CheckPrev ? CheckPrev.toLowerCase().replace(/ +/g, "-") : null
+    let prevCaseURL = CheckPrev ? transformCaseTitleToURL(CheckPrev) : null
     let classHasMargin = CheckPrev ? 'hasMargin' : null;
-
-
-
-    let caseCreditItem = [
-        {
-            title: 'Role',
-            desc: [
-                'Conception',
-                'Art direction',
-                'Motion design',
-                'Development'
-            ]
-        },
-        {
-            title: 'Agency',
-            desc: ['Havas']
-        },
-        {
-            title: 'Awards',
-            desc: [
-                'FWA of the Month',
-                'Awwwards Site of the Month',
-                'CSS Design Award Site of the Day'
-            ]
-        }
-    ]
 
     let Props = {
         headerProps: {
@@ -135,7 +135,7 @@ const Index = ({ match, history }) => {
                             <CaseCreditsMain>
                                 <CaseCredits
                                     caseLiveUrl={GetCaseContext.url}
-                                    caseCreditItem={caseCreditItem}
+                                    caseCreditItem={CASE_CREDIT_ITEMS}
                                 />
                             </CaseCreditsMain>
                         </ContentColumn>
