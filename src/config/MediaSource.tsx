@@ -1,14 +1,23 @@
-let IMGPATHSOURCE: string = `assets/img/`;
-let VIDEOPATHSOURCE: string = `assets/video/`;
+// ImagePaths.ts
+export const IMGPATHSOURCE: string = `assets/img/`;
 
-const globalImages = {
+// VideoPaths.ts
+export const VIDEOPATHSOURCE: string = `assets/video/`;
+
+// GlobalImages.ts
+import { IMGPATHSOURCE } from './ImagePaths';
+
+export const globalImages = {
     logo: require(`../${IMGPATHSOURCE}logotype.png`),
     logoSmall: require(`../${IMGPATHSOURCE}logotype--gray.png`),
     cursor: require(`../${IMGPATHSOURCE}arrow-cursor.png`),
     cursorMenu: require(`../${IMGPATHSOURCE}close-cursor.png`),
 };
 
-const videoSources = {
+// VideoSources.ts
+import { VIDEOPATHSOURCE } from './VideoPaths';
+
+export const videoSources = {
     case1: require(`../${VIDEOPATHSOURCE}case-1.mp4`),
     case2: require(`../${VIDEOPATHSOURCE}case-2.mp4`),
     case3: require(`../${VIDEOPATHSOURCE}case-3.mp4`),
@@ -17,13 +26,19 @@ const videoSources = {
     case6: require(`../${VIDEOPATHSOURCE}case-6.mp4`),
 };
 
-const arrows = {
+// Arrows.ts
+import { IMGPATHSOURCE } from './ImagePaths';
+
+export const arrows = {
     arrow: require(`../${IMGPATHSOURCE}arrow-right--black.png`),
     arrowUp: require(`../${IMGPATHSOURCE}arrow-up--black.png`),
     icon_submit: require(`../${IMGPATHSOURCE}arrow-right-bold--white.png`),
 };
 
-const posters = {
+// Posters.ts
+import { IMGPATHSOURCE } from './ImagePaths';
+
+export const posters = {
     project1: require(`../${IMGPATHSOURCE}poster-project-1.jpg`),
     project2: require(`../${IMGPATHSOURCE}poster-project-2.jpg`),
     project3: require(`../${IMGPATHSOURCE}poster-project-3.jpg`),
@@ -32,7 +47,10 @@ const posters = {
     project6: require(`../${IMGPATHSOURCE}poster-project-6.jpg`),
 };
 
-const caseImages = {
+// CaseImages.ts
+import { IMGPATHSOURCE } from './ImagePaths';
+
+export const caseImages = {
     caseProject1: [
         require(`../${IMGPATHSOURCE}cases-project1-image1.jpg`),
         require(`../${IMGPATHSOURCE}cases-project1-image2.jpg`),
@@ -85,6 +103,13 @@ const caseImages = {
         require(`../${IMGPATHSOURCE}cases-project6-image7.jpg`),
     ],
 };
+
+// MediaSource.tsx
+import { globalImages } from './GlobalImages';
+import { videoSources } from './VideoSources';
+import { arrows } from './Arrows';
+import { posters } from './Posters';
+import { caseImages } from './CaseImages';
 
 const ImageSource = {
     global: globalImages,
